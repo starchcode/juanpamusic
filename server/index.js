@@ -13,52 +13,56 @@ require("dotenv").config();
 app = express();
 const PORT = process.env.PORT || 4000;
 
-var whitelist = ['http://localhost:3000', 'http://192.168.0.31:3000', 'https://juanpamusic.com', 'https://www.juanpamusic.com']
+var whitelist = [
+  "http://localhost:3000",
+  "http://192.168.0.31:3000",
+  "https://juanpamusic.com",
+  "https://www.juanpamusic.com",
+];
 var corsOptions = {
   origin: function (origin, callback) {
-    try{
+    try {
       // console.log(origin)
       if (whitelist.indexOf(origin) !== -1) {
-        console.log('CORS allowed!')
-        callback(null, true)
+        console.log("CORS allowed!");
+        callback(null, true);
       } else {
-        console.log('CORS NOT allowed!')
-        callback(null, false)
+        console.log("CORS NOT allowed!");
+        callback(null, false);
         // callback(new Error('Not allowed by CORS'))
       }
-    }catch(e){
-      console.log('CORS NOT ALLOWED!')
+    } catch (e) {
+      console.log("CORS NOT ALLOWED!");
     }
-  }
-}
-app.use(cors(corsOptions))
+  },
+};
+app.use(cors(corsOptions));
 
 const limiter1 = rateLimit({
-    windowMs: 3 * 1000, // 1 seconds
-    max: 4, // limit each IP to 1 requests per windowMs
-  });
-  const limiter2 = rateLimit({
-    windowMs: 15000, // 15 seconds
-    max: 1, // limit each IP to 1 requests per windowMs
-  });
-  const limiter3 = rateLimit({
-    windowMs: 15 * 60 * 1000, // 15 minutes
-    max: 6, // limit each IP to 1 requests per windowMs
-  });
+  windowMs: 3 * 1000, // 1 seconds
+  max: 4, // limit each IP to 1 requests per windowMs
+});
+const limiter2 = rateLimit({
+  windowMs: 15000, // 15 seconds
+  max: 1, // limit each IP to 1 requests per windowMs
+});
+const limiter3 = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 6, // limit each IP to 1 requests per windowMs
+});
 
 app.use(morgan("dev"));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-
-
 //Routes:
 app.get("/", (req, res) => {
-    res.send("Hello There!");
-  });
+  res.send("Welcome to JuanpaMusic!");
+});
 
-
+const admindata = require("./admindata");
+app.use("/admindata", limiter1, admindata);
 
 // Error handler route:
 /*
@@ -80,6 +84,6 @@ app.get("/", (req, res) => {
     res.status(status).send(err.message);
   });
 */
-  app.listen(PORT, () => {
-    console.log("App started... on 4000");
-  });
+app.listen(PORT, () => {
+  console.log("App started... on 4000");
+});

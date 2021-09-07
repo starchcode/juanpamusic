@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { contactServer } from '../actions';
+// import history from '../history';
 
 class App extends React.Component {
     componentDidMount() {
@@ -8,7 +9,7 @@ class App extends React.Component {
     }
     
     render() {
-        console.log(this.props)
+        // console.log(this.props)
         if (!this.props.state || !this.props.serverResponse) return 'Loading...'
         return(
             <div>
