@@ -22,9 +22,9 @@ admindata.get("/", async (req, res) => {
 
 //sheet
 const SP_ID='173A6E2LtQgSKSRPzSB_jappnMiLzlicK8ZVaCNrkNAc'
-const SHEET= 'Sheet1!'
+const SHEET= 'data!'
 //Range    
-const GET_RANGE = 'A:B';
+const GET_RANGE = 'A:O';
 
     try {
         await sheets.spreadsheets.values.get(
@@ -33,7 +33,7 @@ const GET_RANGE = 'A:B';
             spreadsheetId: SP_ID,
             range: SHEET + GET_RANGE,
           },
-          (err, res) => {
+          (err, gres) => {
             if (err) {
             //   logger(DATE, "The API returned an error.");
                 console.log('API returned an error')
@@ -48,13 +48,15 @@ const GET_RANGE = 'A:B';
               return !row[1] && row[3] && row[5] && row[6];
             });
             */
-            if (res.status === 200) {
+            if (gres.status === 200) {
             //     logger(DATE,`☑️  Data recieved, there are ${this.data.length} emails to be sent
             //   `)
-            console.log(res.data.values);
+            return res.json({
+                response: gres.data.values,
+              });
             }
   
-            if (res.data.length) {
+            if (gres.data.length) {
             //   logger(DATE,`
             //   Going to send emails.
             //   `);
@@ -67,9 +69,10 @@ const GET_RANGE = 'A:B';
         console.log(e.response);
       }
 
-  return res.json({
-    response: "admin data requested",
-  });
+
 });
 
 module.exports = admindata;
+
+
+//https://drive.google.com/uc?id=
