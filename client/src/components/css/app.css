@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@100;200;300;400;600;700&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "IBM Plex Serif";
+    color: #404040;
+}
+
+#root{
+    overflow: hidden;
+  }
+
+.overlay {
+    display: absolute;
+}
