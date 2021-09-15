@@ -21,6 +21,6 @@ export const contactServer = () => async (dispatch) => {
 };
 
 export const languageChange = (lan) => {
-  console.log('language change request has come in for: ', lan);
   if(lan === 'en' || lan === 'es') return { type: "languageChange", payload: lan };
+  return { type: "languageChange", payload: null};
 };

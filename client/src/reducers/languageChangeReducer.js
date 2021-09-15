@@ -1,7 +1,7 @@
-export default (state = {lan: 'en'}, action) => {
+export default (state = {lan: null}, action) => {
     if(action.type === 'languageChange') {
         return {
-            ...state, lan: action.payload
+            lan: action.payload
         }
     } else {
         return state;
