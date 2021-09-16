@@ -1,9 +1,30 @@
-import React from 'react';
+import React from "react";
+import { connect } from "react-redux";
+import { languageChange } from "../actions";
 
-const Notfound = () => {
+class Notfound extends React.Component {
+  componentDidMount() {
+    if (!this.props.selectedLanguage && !window.localStorage.getItem("lan")) {
+      this.props.languageChange("en");
+    } else if (!this.props.selectedLanguage) {
+      this.props.languageChange(window.localStorage.getItem("lan"));
+    }
+  }
+
+  render() {
     return (
-        <div style={{color: 'red'}}>Not Found</div>
-    )
+      <div>
+        <div style={{ color: "red" }}>Not Found</div>
+        <div>{this.props.selectedLanguage}</div>
+      </div>
+    );
+  }
 }
 
-export default Notfound;
+const mapStateToProps = (state) => {
+  return {
+    selectedLanguage: state.selectedLanguage.lan,
+  };
+};
+
+export default connect(mapStateToProps, { languageChange })(Notfound);

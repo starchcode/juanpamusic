@@ -21,6 +21,10 @@ export const contactServer = () => async (dispatch) => {
 };
 
 export const languageChange = (lan) => {
-  if(lan === 'en' || lan === 'es') return { type: "languageChange", payload: lan };
+  const storage = window.localStorage;
+  if(lan === 'en' || lan === 'es'){
+    storage.setItem('lan', lan)
+    return { type: "languageChange", payload: lan };
+  } 
   return { type: "languageChange", payload: null};
 };

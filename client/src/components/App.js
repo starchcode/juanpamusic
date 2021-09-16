@@ -25,88 +25,65 @@ const Temp = (props) => {
   );
 };
 
-
-
-const languageCheck = (selectedLanguage, languageChange) => {
-
-  if(selectedLanguage && !window.location.pathname.match(/e[ns]/)) history.push(`/${selectedLanguage}`)
-  if (selectedLanguage &&  window.location.pathname.match(/e[ns]/) && window.location.pathname.match(/e[ns]/)[0] !== selectedLanguage) {
-    console.log(
-      'Trying to match "URL" with "selected Language" and "urlLanguage" = ',
-      window.location.pathname,
-      selectedLanguage,
-      window.location.pathname.match(/e[ns]/)[0]
-    );
-
-      console.log("URL and Lan are not match.", window.location.pathname, selectedLanguage);
-      const regex = new RegExp(window.location.pathname.match(/e[ns]/)[0]);
-      const newHistory = window.location.pathname.replace(regex, selectedLanguage)
-      console.log('newHistory is', newHistory);
-      history.push(newHistory)
-  }
-
-
-  if (selectedLanguage &&  window.location.pathname === '/') history.push(`/${selectedLanguage}`)
-
-
-  if (!window.location.pathname.match(/e[ns]/)) return;
-  const urlLanguage = window.location.pathname.match(/e[ns]/)[0];
-
-  console.log(
-    "CDU. Current path: ",
-    window.location.pathname
-  );  
-
-};
-
 class App extends React.Component {
   urlLanguageCheck(selectedLanguage, languageChange) {
-    //TODO: if it's an address like: /en/home
-    // if (!/^(\/en|\/es)/.test(window.location.pathname)) {
-    if (window.location.pathname.length > 1 && !/^(\/en|\/es)/.test(window.location.pathname)) {
-      console.log("404: URL NOT FOUND!");
-      history.push("/notfound");
+    const urlPathname = window.location.pathname;
+    const browserStorage = window.localStorage.getItem("lan")
+    if (urlPathname === "/" && browserStorage) {
+      languageChange(browserStorage);
     }
-    if (!window.location.pathname.match(/e[ns]/)) return;
-    console.log("urlLanguageCheck");
-    //TODO: if it's de..?
-    const urlLanguage = window.location.pathname.match(/e[ns]/)[0];
+
+    if (urlPathname.length > 1 && !/^(\/en|\/es)/.test(urlPathname))
+      history.push("/notfound");
+
+    if (!urlPathname.match(/e[ns]/)) return;
+    const urlLanguage = urlPathname.match(/e[ns]/)[0];
+
+    if (/^(\/en|\/es)/.test(urlPathname) && selectedLanguage !== urlLanguage)
+      languageChange(urlLanguage);
+  }
+
+  languageCheck(selectedLanguage) {
+    const urlPathname = window.location.pathname;
+    if (
+      selectedLanguage &&
+      !urlPathname.match(/^e[ns]$/) &&
+      urlPathname.length < 5
+    )
+      history.push(`/${selectedLanguage}/home`);
 
     if (
-      /^(\/en|\/es)/.test(window.location.pathname) &&
-      selectedLanguage !== urlLanguage
+      selectedLanguage &&
+      urlPathname.match(/e[ns]/) &&
+      urlPathname.match(/e[ns]/)[0] !== selectedLanguage
     ) {
-      console.log(
-        "will select 'Language' based on entered 'URL'",
-        selectedLanguage,
-        urlLanguage
-      );
-      languageChange(urlLanguage);
-      // history.push(`/${urlLanguage}`);
-      return;
+      const regex = new RegExp(urlPathname.match(/e[ns]/)[0]);
+      const newHistory = urlPathname.replace(regex, selectedLanguage);
+      history.push(newHistory);
     }
-
-
-
   }
   componentDidMount() {
-    console.log("App Mounted for first time!");
     this.props.contactServer(); // get data from backend
-
-    //if language is in URL add it to Redux
+    //if language is typed as en or es in URL add it to Redux state on initial render
     this.urlLanguageCheck(
       this.props.selectedLanguage,
       this.props.languageChange
     );
   }
-  componentDidUpdate(prevProps, prevState) {
-    languageCheck(this.props.selectedLanguage, this.props.languageChange); //check each time that URL and selected language are a match
+  componentDidUpdate() {
+    this.languageCheck(this.props.selectedLanguage); //ensuring that on every update ensure URL and selected language are a match.
   }
 
   render() {
-    console.log("app rendered. Lan is: ", this.props.selectedLanguage);
     if (!this.props.state || !this.props.serverResponse) return "Loading...";
-    if (!this.props.selectedLanguage && window.location.pathname !== '/notfound') return <LanguageSelect />;
+    // if (window.localStorage.getItem('lan')){
+    //   this.props.languageChange(window.localStorage.getItem('lan'))
+    // }
+    if (
+      !this.props.selectedLanguage &&
+      window.location.pathname !== "/notfound"
+    )
+      return <LanguageSelect />;
     return (
       <Router history={history}>
         <div>
