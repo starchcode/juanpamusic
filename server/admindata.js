@@ -52,7 +52,7 @@ const GET_RANGE = 'A:O';
             //     logger(DATE,`☑️  Data recieved, there are ${this.data.length} emails to be sent
             //   `)
             return res.json({
-                response: gres.data.values,
+                data: gres.data.values,
               });
             }
   

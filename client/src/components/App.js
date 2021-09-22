@@ -1,7 +1,7 @@
 import React from "react";
 import { Router, Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
-import { contactServer, languageChange } from "../actions";
+import { contactServer, languageChange, getAdminData } from "../actions";
 import history from "../history";
 import "./css/app.css";
 
@@ -12,6 +12,7 @@ import Home from "./Home";
 import NotFound from "./NotFound";
 
 const Temp = (props) => {
+  if(!props.adminData.response) return <div>Loading...</div>
   return (
     <div className="overlay">
       <div>Welcome to Juanpa Music</div>
@@ -20,6 +21,9 @@ const Temp = (props) => {
       <div>{props.state}</div>
       <div>
         {'This is response from backend server "' + props.serverResponse + '"'}
+      </div>
+      <div>
+        {`admin data: ${props.adminData.response.data[0][0]}`}
       </div>
     </div>
   );
@@ -63,6 +67,7 @@ class App extends React.Component {
     }
   }
   componentDidMount() {
+    this.props.getAdminData();
     this.props.contactServer(); // get data from backend
     //if language is typed as en or es in URL add it to Redux state on initial render
     this.urlLanguageCheck(
@@ -92,6 +97,7 @@ class App extends React.Component {
           <Temp
             state={this.props.state}
             serverResponse={this.props.serverResponse}
+            adminData={this.props.adminData}
             lan={this.props.selectedLanguage}
           />
           <Switch>
@@ -109,7 +115,8 @@ const mapStateToProps = (state) => {
     state: state.noReducer,
     serverResponse: state.serverResponse.response,
     selectedLanguage: state.selectedLanguage.lan,
+    adminData: state.adminData
   };
 };
 
-export default connect(mapStateToProps, { contactServer, languageChange })(App);
+export default connect(mapStateToProps, { contactServer, languageChange, getAdminData })(App);
