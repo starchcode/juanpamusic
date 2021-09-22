@@ -1,8 +1,24 @@
 const { google } = require("googleapis");
 const sheets = google.sheets("v4");
-
+const fs = require("fs");
 const admindata = require("express").Router();
 
+//FS:
+let date = new Date();
+const YEAR = date.getFullYear()
+const MONTH =  date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1
+const DAY =  date.getDate()
+const HOUR = date.getHours() < 10 ? '0' + date.getHours(): date.getHours();
+const MINUTE = date.getMinutes() < 10 ? '0' + date.getMinutes(): date.getMinutes();
+const SECONDS = date.getSeconds() < 10 ? '0' + date.getSeconds(): date.getSeconds();
+const DATE = ''+YEAR+MONTH+DAY + ' - ' + HOUR+MINUTE+SECONDS; //append date and convert to string
+
+const logger = (DATE, DATA) => {
+  fs.appendFile(`log/log${DATE}.txt`, DATA, function (err) {
+    if (err) throw err;
+    console.log(DATA);
+  });
+};
 
 //SETUP
 const auth = new google.auth.GoogleAuth({
@@ -21,6 +37,7 @@ const auth = new google.auth.GoogleAuth({
 admindata.get("/", async (req, res) => {
 
 //sheet
+// const SP_ID='173A6E2LtQgSKSRPzSB_jappnMiLzlicK8ZVaCNrkNA'
 const SP_ID='173A6E2LtQgSKSRPzSB_jappnMiLzlicK8ZVaCNrkNAc'
 const SHEET= 'data!'
 //Range    
@@ -35,7 +52,9 @@ const GET_RANGE = 'A:O';
           },
           (err, gres) => {
             if (err) {
-            //   logger(DATE, "The API returned an error.");
+              logger(DATE, err.response.data.error.code + '\n');
+              logger(DATE, err.response.data.error.message);
+              
                 console.log('API returned an error')
               throw err;
             }
@@ -48,25 +67,30 @@ const GET_RANGE = 'A:O';
               return !row[1] && row[3] && row[5] && row[6];
             });
             */
+           
             if (gres.status === 200) {
-            //     logger(DATE,`☑️  Data recieved, there are ${this.data.length} emails to be sent
-            //   `)
+                logger(DATE,`☑️  Data recieved, this is your data:`)
+                logger(DATE, gres.data.values[0][0])
             return res.json({
                 data: gres.data.values,
               });
             }
-  
-            if (gres.data.length) {
+            logger(DATE,`Response status: ${gres.status} `)
+
+            // if (gres.data.length) {
             //   logger(DATE,`
             //   Going to send emails.
             //   `);
-            }
+            // }
           }
         );
       } catch (e) {
-        //   logger(e.response);
+          logger(DATE, e.response);
         console.log('CATCH');
         console.log(e.response);
+        return res.json({
+          error: e.response,
+        });
       }
 
 
