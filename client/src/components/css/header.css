@@ -1,0 +1,25 @@
+#header{
+    display: flex;
+    /* flex-direction: row; */
+    position: absolute;
+    justify-content: space-between;
+    flex-basis: 800px;
+    padding-top: 3%;
+}
+#header img{
+    opacity: .9;
+    width: 240px;
+}
+#header ul{
+    display: flex;
+    list-style: none;
+}
+#header li{
+    font-size: 16px;
+    padding:0 15px;
+    padding-bottom: 14px;
+}
+#header a{
+    font-weight: 200;
+    text-decoration: none;
+}

@@ -6,12 +6,14 @@ import history from "../history";
 import "./css/app.css";
 
 import Header from "./Header";
+import Language from "./Language";
 import LanguageSelect from "./LanguageSelect";
 import Welcome from "./Welcome";
 import Home from "./Home";
 import NotFound from "./NotFound";
 
 const Temp = (props) => {
+  console.log(props.adminData)
   if(!props.adminData.response) return <div>Loading...</div>
   return (
     <div className="overlay">
@@ -91,15 +93,16 @@ class App extends React.Component {
       return <LanguageSelect />;
     return (
       <Router history={history}>
-        <div>
+        <div className="main">
           <Header />
+          <Language />
           <Welcome />
-          <Temp
+          {/* <Temp
             state={this.props.state}
             serverResponse={this.props.serverResponse}
             adminData={this.props.adminData}
             lan={this.props.selectedLanguage}
-          />
+          /> */}
           <Switch>
             <Route path="/:lan/home" exact component={Home} />
             <Route component={NotFound} />

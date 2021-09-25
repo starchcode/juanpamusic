@@ -1,17 +1,29 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@100;200;300;400;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@100;200;300;400;600;700&display=swap");
 
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: "IBM Plex Serif";
-    color: #404040;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "IBM Plex Serif";
+  font-size: 18px;
+  color: #fff;
 }
 
-#root{
-    overflow: hidden;
-  }
+body {
+  background-color: #5a4839;
+}
+#root {
+  overflow: hidden;
+}
 
 .overlay {
-    display: absolute;
+  display: absolute;
+}
+.main {
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+    text-align: center;
+}
+@media (hover: hover) {
 }

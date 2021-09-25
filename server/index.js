@@ -1,4 +1,4 @@
-const nodemailer = require("nodemailer");
+// const nodemailer = require("nodemailer");
 const express = require("express");
 const fs = require("fs");
 const morgan = require("morgan");
@@ -24,6 +24,7 @@ var corsOptions = {
     try {
       // console.log(origin)
       if (whitelist.indexOf(origin) !== -1) {
+        console.log('request for: ', origin)
         console.log("CORS allowed!");
         callback(null, true);
       } else {
@@ -36,6 +37,7 @@ var corsOptions = {
     }
   },
 };
+// app.use(cors());
 app.use(cors(corsOptions));
 
 const limiter1 = rateLimit({
@@ -63,6 +65,9 @@ app.get("/", (req, res) => {
 
 const admindata = require("./admindata");
 app.use("/admindata", limiter1, admindata);
+
+// const test = require("./test");
+// app.use("/test", limiter1, test);
 
 // Error handler route:
 /*

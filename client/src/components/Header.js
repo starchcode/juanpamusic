@@ -1,28 +1,48 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { languageChange } from '../actions';
-import history from "../history";
+
+import "./css/header.css";
+
+import logo from '../media/logo.png'
 
 class Header extends React.Component {
-languageHandler (lan) {
-    this.props.languageChange(lan)
-    // history.push(`/${lan}/home`)
-}
-  render() {
 
+  render() {
     return (
-      <div>
-        <Link to={`/${this.props.selectedLanguage}/home`}>Home</Link>
-        <button onClick={() => this.languageHandler('en')} >EN</button>
-        <button onClick={() => this.languageHandler('es')}>ES</button>
+      <div id="header">
+        <img src={logo} />
+        <ul>
+          <li>
+            {" "}
+            <Link to={`/${this.props.selectedLanguage}/home`}>Home</Link>
+          </li>
+          <li>
+            {" "}
+            <Link to={`/${this.props.selectedLanguage}/biography`}>Biography</Link>
+          </li>
+          <li>
+            {" "}
+            <Link to={`/${this.props.selectedLanguage}/home`}>Music</Link>
+          </li>
+          <li>
+            {" "}
+            <Link to={`/${this.props.selectedLanguage}/home`}>Shows</Link>
+          </li>
+          <li>
+            {" "}
+            <Link to={`/${this.props.selectedLanguage}/home`}>Contact</Link>
+          </li>
+        </ul>
+
       </div>
     );
   }
 }
 
 const mapStateToProps = state => {
-    return {selectedLanguage: state.selectedLanguage.lan}
+  return {
+    selectedLanguage: state.selectedLanguage.lan
+  }
 }
-
-export default connect(mapStateToProps, { languageChange })(Header);
+export default connect(mapStateToProps, { } )(Header);
