@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import './css/welcome.css';
 
 const Welcome = () => {
-const [hide, setHide] = useState(false)
+const [hide, setHide] = useState(true)
 const handler = e => {
     return e.key === '~' ? setHide(!hide): null;
 }
