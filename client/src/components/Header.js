@@ -11,7 +11,7 @@ class Header extends React.Component {
   render() {
     return (
       <div id="header">
-        <img src={logo} />
+        <img src={logo} alt="logo of juanpa music"/>
         <ul>
           <li>
             {" "}

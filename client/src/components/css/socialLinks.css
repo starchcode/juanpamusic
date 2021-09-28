@@ -1,0 +1,10 @@
+#social_links {
+    display: flex;
+    flex-wrap: nowrap;
+    max-width: 100%;
+  }
+  
+  #social_links img {
+    width: 20%;
+    transition: transform 0.1s ease-out;
+  }

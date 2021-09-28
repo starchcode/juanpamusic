@@ -14,8 +14,8 @@ class Language extends React.Component {
     return (
       <div id="language">
           
-        <div onClick={() => this.languageHandler("en")}><img src={ukus} /></div>
-        <div onClick={() => this.languageHandler("es")}><img src={es} /></div>
+        <div onClick={() => this.languageHandler("en")}><img src={ukus} alt='uk and us flag' /></div>
+        <div onClick={() => this.languageHandler("es")}><img src={es} alt='spain flag'/></div>
       </div>
     );
   }

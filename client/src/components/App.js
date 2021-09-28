@@ -12,24 +12,24 @@ import Welcome from "./Welcome";
 import Home from "./Home";
 import NotFound from "./NotFound";
 
-const Temp = (props) => {
-  console.log(props.adminData)
-  if(!props.adminData.response) return <div>Loading...</div>
-  return (
-    <div className="overlay">
-      <div>Welcome to Juanpa Music</div>
-      <div>Language: {props.lan}</div>
-      <br />
-      <div>{props.state}</div>
-      <div>
-        {'This is response from backend server "' + props.serverResponse + '"'}
-      </div>
-      <div>
-        {`admin data: ${props.adminData.response.data[0][0]}`}
-      </div>
-    </div>
-  );
-};
+// const Temp = (props) => {
+//   console.log(props.adminData)
+//   if(!props.adminData.response) return <div>Loading...</div>
+//   return (
+//     <div className="overlay">
+//       <div>Welcome to Juanpa Music</div>
+//       <div>Language: {props.lan}</div>
+//       <br />
+//       <div>{props.state}</div>
+//       <div>
+//         {'This is response from backend server "' + props.serverResponse + '"'}
+//       </div>
+//       <div>
+//         {`admin data: ${props.adminData.response.data[0][0]}`}
+//       </div>
+//     </div>
+//   );
+// };
 
 class App extends React.Component {
   urlLanguageCheck(selectedLanguage, languageChange) {

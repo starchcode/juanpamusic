@@ -20,15 +20,25 @@ body {
   display: absolute;
 }
 .main {
-    display: flex;
-    /* align-items: center; */
-    justify-content: center;
-    text-align: center;
+  display: flex;
+  /* align-items: center; */
+  justify-content: center;
+  text-align: center;
 }
 @media (hover: hover) {
-  #home_linkBox h1:hover{
+  #home_linkBox h1:hover {
     color: saddlebrown;
     cursor: pointer;
-    
+  }
+  #social_links img:hover {
+    filter: invert(28%) sepia(88%) saturate(518%) hue-rotate(343deg)
+      brightness(93%) contrast(96%);
+    cursor: pointer;
+    transform: scale(1.2);
+  }
+  #header a:hover {
+    opacity: 0.8;
+    transition: all 0.1s;
+    color: rgb(189, 167, 46);
   }
 }
