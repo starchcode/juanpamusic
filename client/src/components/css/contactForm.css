@@ -1,9 +1,14 @@
-#contactForm {
-    /* display: flex; */
-    /* justify-content: right; */
-    /* background-color: #4B4540; */
-    display: block;
-    height: 10vh;
-    position: absolute;
-    /* z-index: 20; */
+
+#contactComponent {
+    padding: 30px;
+    position: relative;
+    z-index: 20;
+    background-color: rgba(40, 80, 79, 0.5);
 }
+#contactForm input, textarea {
+
+
+    color: red;
+
+}
+
