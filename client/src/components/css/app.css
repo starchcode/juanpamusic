@@ -24,6 +24,8 @@ body {
   /* align-items: center; */
   justify-content: center;
   text-align: center;
+  /* overflow: hidden; */
+
 }
 @media (hover: hover) {
   #home_linkBox h1:hover {

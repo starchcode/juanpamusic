@@ -5,6 +5,7 @@
     justify-content: space-between;
     flex-basis: 800px;
     padding-top: 3%;
+    z-index: 20;
 }
 #header img{
     opacity: .9;

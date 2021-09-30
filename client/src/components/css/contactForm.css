@@ -1,14 +1,42 @@
 
 #contactComponent {
-    padding: 30px;
-    position: relative;
-    z-index: 20;
-    background-color: rgba(40, 80, 79, 0.5);
+    padding: 15px;
+    padding-right: 30px;
+    flex: 1;
 }
 #contactForm input, textarea {
-
-
-    color: red;
+    color: #262626;
+    font-size: 0.9rem;
 
 }
 
+.form label{
+    display: block;
+    text-align: left;
+}
+
+.form textarea{
+    height: 150px;
+}
+.form input, .form textarea{
+    width: 100%;
+}
+
+
+.form input:focus, .form textarea:focus{
+    outline: none;
+}
+
+form button{
+    text-transform: uppercase;
+    background-color: #262626;
+    border: none;
+    padding: 3px 12px;
+    font-size: 0.8rem;
+}
+
+.error > div{
+    color: tomato;
+    background-color: rgba(38, 38, 38, 0.2);
+    font-style: italic;
+}

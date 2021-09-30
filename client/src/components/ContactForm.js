@@ -19,7 +19,7 @@ class ContactForm extends React.Component {
       Email: "[a-zA-Z0-9._%+-]+@[[a-zA-Z0-9.-]+.[a-zA-Z]{2,4}$",
       Phone: "([+])?[0-9]+",
     };
-    const className = `${meta.error && meta.touched ? "error" : ""}`;
+    const className = `${meta.error && meta.touched ? "form error" : "form"}`;
     return (
       <div className={className}>
         <label>{label}</label>
@@ -76,7 +76,7 @@ class ContactForm extends React.Component {
             }}
             onSubmit={this.onSubmit}
             render={({ handleSubmit }) => (
-              <form onSubmit={handleSubmit} className="ui form error">
+              <form onSubmit={handleSubmit} className="">
                 <Field name="Name" component={this.renderInput} label="Name" />
                 <Field
                   name="Email"

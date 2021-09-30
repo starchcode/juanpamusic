@@ -13,7 +13,7 @@ class Home extends React.Component {
 
     render(){
         return (
-            <div id="#home">
+            <div id="home">
                 <div id="homeBG"></div>
                 <div id="juanpapic1"><img src={juanpapic1} alt='juanpa playing guitar' /></div>
                 <div id="home_main">
@@ -27,7 +27,14 @@ class Home extends React.Component {
                 </div>
                 </div>
                 <Bio />
-                <ContactForm />
+                <div id="contactSection">
+                    <div id="contactText">
+                        <h2>Get in touch</h2>
+                        <p>Feel free to contact me for all your enquires including <b>lessons</b> and <b>collabroations</b> <br />or just say hi.</p>
+                        <p>You can also reach me via this email:</p><a href="mailto: juanpapilla@hotmail.com">juanpapilla@hotmail.com</a>
+                    </div>
+                    <ContactForm />
+                </div>
             </div>
         )
     }
