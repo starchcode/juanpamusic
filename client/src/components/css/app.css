@@ -20,8 +20,7 @@ body {
   display: absolute;
 }
 .main {
-  display: flex;
-  /* align-items: center; */
+  /* display: flex; */
   justify-content: center;
   text-align: center;
   /* overflow: hidden; */

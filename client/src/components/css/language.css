@@ -2,7 +2,13 @@
     display: block;
     position: absolute;
     right: 0;
+    padding: 5px;
+    z-index: 20;
 }
 #language img{
-    width: 40px;
+    width: 20px;
+}
+
+.displayLan {
+    display: none;
 }

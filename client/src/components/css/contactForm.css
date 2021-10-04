@@ -20,11 +20,14 @@
 }
 .form input, .form textarea{
     width: 100%;
+    background-color: rgba(245, 245, 245, 0.87);
+    padding: 4px;
 }
 
 
 .form input:focus, .form textarea:focus{
     outline: none;
+
 }
 
 form button{

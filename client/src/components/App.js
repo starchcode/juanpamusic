@@ -11,6 +11,7 @@ import LanguageSelect from "./LanguageSelect";
 import Welcome from "./Welcome";
 import Home from "./Home";
 import NotFound from "./NotFound";
+import Footer from "./Footer";
 
 // const Temp = (props) => {
 //   console.log(props.adminData)
@@ -34,7 +35,7 @@ import NotFound from "./NotFound";
 class App extends React.Component {
   urlLanguageCheck(selectedLanguage, languageChange) {
     const urlPathname = window.location.pathname;
-    const browserStorage = window.localStorage.getItem("lan")
+    const browserStorage = window.localStorage.getItem("lan");
     if (urlPathname === "/" && browserStorage) {
       languageChange(browserStorage);
     }
@@ -107,6 +108,7 @@ class App extends React.Component {
             <Route path="/:lan/home" exact component={Home} />
             <Route component={NotFound} />
           </Switch>
+          <Footer />
         </div>
       </Router>
     );
@@ -118,8 +120,12 @@ const mapStateToProps = (state) => {
     state: state.noReducer,
     serverResponse: state.serverResponse.response,
     selectedLanguage: state.selectedLanguage.lan,
-    adminData: state.adminData
+    adminData: state.adminData,
   };
 };
 
-export default connect(mapStateToProps, { contactServer, languageChange, getAdminData })(App);
+export default connect(mapStateToProps, {
+  contactServer,
+  languageChange,
+  getAdminData,
+})(App);

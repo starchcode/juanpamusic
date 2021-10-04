@@ -1,0 +1,15 @@
+#footer{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+#footer #social_links{
+    width: 250px;
+    justify-content: center;
+
+
+}
+#footer #social_links img{
+    padding: 0 10px;
+    z-index: 10;
+}

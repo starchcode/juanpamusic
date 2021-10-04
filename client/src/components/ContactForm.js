@@ -35,7 +35,7 @@ class ContactForm extends React.Component {
             {...input}
             autoComplete="off"
             pattern={patterns[input.name] ? patterns[input.name] : null}
-            maxLength={input.name == "Enquiry" ? 250 : null}
+            maxLength="200"
           />
         )}
 
