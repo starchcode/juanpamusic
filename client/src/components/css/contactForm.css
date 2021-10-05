@@ -17,6 +17,7 @@
 
 .form textarea{
     height: 150px;
+    resize: none;
 }
 .form input, .form textarea{
     width: 100%;
@@ -36,6 +37,7 @@ form button{
     border: none;
     padding: 3px 12px;
     font-size: 0.8rem;
+    margin-top: 5px;
 }
 
 .error > div{
