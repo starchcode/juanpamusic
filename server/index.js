@@ -60,7 +60,7 @@ app.use(express.json());
 
 //Routes:
 app.get("/", (req, res) => {
-  res.send("Welcome to JuanpaMusic!");
+  return res.json("Welcome to JuanpaMusic!");
 });
 
 const admindata = require("./admindata");
@@ -92,3 +92,6 @@ app.use("/admindata", limiter1, admindata);
 app.listen(PORT, () => {
   console.log("App started... on 4000");
 });
+
+
+module.exports = app;

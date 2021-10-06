@@ -70,6 +70,7 @@ const GET_RANGE = 'A:O';
             if (gres.status === 200) {
                 logger(DATE,`☑️  Data recieved, this is your data:`)
                 logger(DATE, gres.data.values[0][0])
+                console.log(gres);
             return res.json({
                 data: gres.data.values,
               });
