@@ -16,7 +16,7 @@ const DATE = ''+YEAR+MONTH+DAY + ' - ' + HOUR+MINUTE+SECONDS; //append date and 
 const logger = (DATE, DATA) => {
   fs.appendFile(`log/log${DATE}.txt`, DATA, function (err) {
     if (err) throw err;
-    console.log(DATA);
+    // console.log(DATA);
   });
 };
 
@@ -31,7 +31,6 @@ const auth = new google.auth.GoogleAuth({
     auth: auth,
   });
 
-// logger(DATE, 'passed');
 //ROUTER:
 admindata.get("/", async (req, res) => {
 
@@ -40,7 +39,10 @@ admindata.get("/", async (req, res) => {
 const SP_ID='173A6E2LtQgSKSRPzSB_jappnMiLzlicK8ZVaCNrkNAc'
 const SHEET= 'data!'
 //Range    
-const GET_RANGE = 'A:O';
+const GET_RANGE = 'A3:V';
+let home = [];
+let music = [];
+let shows = [];
 
     try {
         await sheets.spreadsheets.values.get(
@@ -68,12 +70,40 @@ const GET_RANGE = 'A:O';
             */
            
             if (gres.status === 200) {
-                logger(DATE,`☑️  Data recieved, this is your data:`)
-                logger(DATE, gres.data.values[0][0])
-                console.log(gres);
-            return res.json({
-                data: gres.data.values,
-              });
+              //todo uncomment next 2 lines
+                // logger(DATE,`☑️  Data recieved, this is your data:`)
+                // logger(DATE, gres.data.values[0][0])
+                // console.log(gres);
+              console.log(gres.data.values);
+              gres.data.values.forEach((element, i, arr) => {
+                let homeArr = element.slice(0, 6);
+                let musicArr = element.slice(7, 14);
+                let showsArr = element.slice(15, 22);
+
+                if(homeArr.every(Boolean) && homeArr.length == 6){
+                  home.push(...homeArr);
+                }
+                if(musicArr.every(Boolean) && musicArr.length == 7){
+                  music.push(musicArr)
+                }
+                if(showsArr.every(Boolean) && showsArr.length == 7){
+                  console.log('SHOWS push: ', showsArr)
+                  shows.push(showsArr)
+                }
+               
+              })
+
+              shows.sort((a, b) => {
+                let date1 = a[0] + a[1]+ a[2];
+                let date2 = b[0] + b[1] + b[2];
+                return Number(date2) - Number(date1);
+            })
+            
+              // console.log('home array: ', home)
+              // console.log('music array: ', music)
+              // console.log('shows array: ', shows)
+            return res.json({home, music, shows});
+            // return res.json(gres.data.values)
             }
             logger(DATE,`Response status: ${gres.status} `)
 

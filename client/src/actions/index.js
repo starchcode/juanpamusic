@@ -23,7 +23,7 @@ export const getAdminData = () => async (dispatch) => {
   try {
     const response = await server.get("/admindata");
     // console.log('Response status',response.config.method.toUpperCase(), ':', response.status);
-    dispatch({ type: "adminData", payload: response.data });
+    dispatch({ type: "adminData", payload: response });
   } catch (e) {
     // console.log(e);
     // console.log('Server error', e.message, e.status);

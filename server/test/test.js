@@ -32,6 +32,39 @@ describe('/GET', () => {
             done();
           });
     });
+
+    it('/adminData should deliver an object that includes: home, music and shows with specific lengths', (done) => {
+      chai.request(server)
+            .get('/admindata')
+            .end((err, res) => {
+              res.should.have.status(200);
+              // console.log('response: ', res.body);
+              res.body.should.be.a('object')
+
+              //should include home, music and shows:
+              res.body.should.have.property('home')
+              res.body.should.have.property('music')
+              res.body.should.have.property('shows')
+
+              //home should have length of 
+              res.body.home.length.should.be.eql(6);
+              res.body.music.forEach(el => {
+                el.length.should.be.eql(7);
+              })
+              res.body.shows.forEach(el => {
+                el.length.should.be.eql(7);
+              })
+              done();
+            })
+    })
+
+    // it('Shows must be in order from latest to newes', (done) => {
+    //   chai.request(server)
+    //     .get('/admindata')
+    //     .end((err, res) => {
+    //       res.body.shows
+    //     })
+    // })
 });
 
 });
