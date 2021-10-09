@@ -3,6 +3,7 @@ process.env.NODE_ENV = 'test';
 
 //Require the dev-dependencies
 let chai = require('chai');
+let expect  = require('chai').expect;
 let chaiHttp = require('chai-http');
 let server = require('../index');
 let should = chai.should();
@@ -54,6 +55,12 @@ describe('/GET', () => {
               res.body.shows.forEach(el => {
                 el.length.should.be.eql(7);
               })
+
+              const ytURL = res.body.home[0]
+              const spotifyURL = res.body.home[1]
+              // console.log(/(https:\/\/youtu.be\/)(.+)/.test(ytURL))
+              expect(/(https:\/\/youtu.be\/)(.+)/.test(ytURL)).to.be.false;
+              expect(/(https:\/\/open.spotify.com\/playlist\/)(.+)[?](.*)/.test(spotifyURL)).to.be.false;
               done();
             })
     })

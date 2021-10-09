@@ -76,18 +76,19 @@ let shows = [];
                 // console.log(gres);
               console.log(gres.data.values);
               gres.data.values.forEach((element, i, arr) => {
-                let homeArr = element.slice(0, 6);
+                let homeArr = i === 0 ? element.slice(0, 6) : [null];
                 let musicArr = element.slice(7, 14);
                 let showsArr = element.slice(15, 22);
 
                 if(homeArr.every(Boolean) && homeArr.length == 6){
                   home.push(...homeArr);
+                  home[0] = home[0].match(/(https:\/\/youtu.be\/)(.+)/)[2]
+                  home[1] = home[1].match(/(https:\/\/open.spotify.com\/playlist\/)(.+)[?](.*)/)[2]
                 }
                 if(musicArr.every(Boolean) && musicArr.length == 7){
                   music.push(musicArr)
                 }
                 if(showsArr.every(Boolean) && showsArr.length == 7){
-                  console.log('SHOWS push: ', showsArr)
                   shows.push(showsArr)
                 }
                
@@ -98,7 +99,7 @@ let shows = [];
                 let date2 = b[0] + b[1] + b[2];
                 return Number(date2) - Number(date1);
             })
-            
+            console.log({home, music, shows});
               // console.log('home array: ', home)
               // console.log('music array: ', music)
               // console.log('shows array: ', shows)
@@ -130,3 +131,8 @@ module.exports = admindata;
 
 
 //https://drive.google.com/uc?id=
+
+
+//regex for youtube: /(https:\/\/youtu.be\/)(.+)/
+//regex for spotify: /(https:\/\/open.spotify.com\/playlist\/)(.+)[?](.*)/
+
