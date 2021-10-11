@@ -41,7 +41,7 @@ var corsOptions = {
 app.use(cors(corsOptions));
 
 const limiter1 = rateLimit({
-  windowMs: 3 * 1000, // 1 seconds
+  windowMs: 3 * 1000, // 3 seconds
   max: 2, // limit each IP to 1 requests per windowMs
 });
 const limiter2 = rateLimit({
@@ -66,29 +66,32 @@ app.get("/", (req, res) => {
 const admindata = require("./admindata");
 app.use("/admindata", limiter1, admindata);
 
+const contact = require("./contact");
+app.use("/contact", contact);
+
+
 // const test = require("./test");
 // app.use("/test", limiter1, test);
 
 // Error handler route:
-/*
   app.use((err, req, res, next) => {
     const status = err.status || 500;
   
-  const DATA = `-------------------
-  'we recieved an error @ ${new Date().toUTCString()} ${status}
-  here is your error:
-  ${err}
-  -------------------
-  `
-  console.log(DATA)
-    fs.appendFile('error.txt', DATA, function (err) {
-      if (err) throw err;
-      console.log('Saved!');
-    });
-  
+  // const DATA = `-------------------
+  // 'we recieved an error @ ${new Date().toUTCString()} ${status}
+  // here is your error:
+  // ${err}
+  // -------------------
+  // `
+  // console.log(DATA)
+    // fs.appendFile('error.txt', DATA, function (err) {
+    //   if (err) throw err;
+    //   console.log('Saved!');
+    // });
+  console.log('EROOR: ', err.status, err.message);
     res.status(status).send(err.message);
   });
-*/
+
 app.listen(PORT, () => {
   console.log("App started... on 4000");
 });

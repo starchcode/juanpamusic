@@ -76,14 +76,14 @@ let shows = [];
                 // console.log(gres);
               console.log(gres.data.values);
               gres.data.values.forEach((element, i, arr) => {
-                let homeArr = i === 0 ? element.slice(0, 6) : [null];
+                let homeArr = element.slice(0, 6)
                 let musicArr = element.slice(7, 14);
                 let showsArr = element.slice(15, 22);
 
-                if(homeArr.every(Boolean) && homeArr.length == 6){
+                if(i === 0 && homeArr.every(Boolean) && homeArr.length == 6){
                   home.push(...homeArr);
-                  home[0] = home[0].match(/(https:\/\/youtu.be\/)(.+)/)[2]
-                  home[1] = home[1].match(/(https:\/\/open.spotify.com\/playlist\/)(.+)[?](.*)/)[2]
+                  home[0] = home[0].match(/(https:\/\/youtu.be\/)(.+)/)[2]; //YouTube media ID
+                  home[1] = home[1].match(/(https:\/\/open.spotify.com\/playlist\/)(.+)[?](.*)/)[2] //Spotify playlist ID
                 }
                 if(musicArr.every(Boolean) && musicArr.length == 7){
                   music.push(musicArr)
