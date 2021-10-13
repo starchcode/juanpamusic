@@ -10,14 +10,14 @@ class LanguageSelect extends React.Component {
     this.vidRef = React.createRef();
   }
 componentDidMount() {
-  this.vidRef.current.addEventListener('load', this.videoHandle())
+  this.vidRef.current.addEventListener('load', this.videoHandler())
 }
-videoHandle = () => {
+videoHandler = () => {
   this.vidRef.current.volume = 0.05;
+  this.vidRef.current.play();
 }
   render() {
     return (
-
       <div id="languageSelect">
         <h1>Welcome to Juanpa Music!</h1>
         <h3>Please select your preferred language</h3>
@@ -31,7 +31,6 @@ videoHandle = () => {
         </div>
         <video 
         ref={this.vidRef}
-        autoPlay
         loop
 
         >

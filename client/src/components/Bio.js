@@ -28,6 +28,7 @@ establishedhimselfasauniquetalentinthemusicc`
 class Bio extends React.Component {
 
     render(){
+        console.log(this.props)
         return(
             <div id="bio">
                 <div className="bioImage">
@@ -36,13 +37,14 @@ class Bio extends React.Component {
                 <div className="bioText">
                     <h2>Biography</h2>
                     <br />
-                    <p>{bioTextEn}</p>
+                    <p>{this.props.lan === 'en' ? this.props.data[2]: this.props.data[4]}</p>
                     <br />
-                    <p>{bioTextEn_2}</p>
+                    <p>{this.props.lan === 'en' ? this.props.data[3]: this.props.data[5]}</p>
                 </div>
             </div>
         )
     }
 }
+
 
 export default Bio;

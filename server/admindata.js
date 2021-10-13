@@ -56,8 +56,8 @@ admindata.get("/", async (req, res) => {
                 /(https:\/\/open.spotify.com\/playlist\/)(.+)[?](.*)/
               );
               console.log('ytID: ', ytID);
-              home[0] = ytID ? ytID[2] : "";
-              home[1] = spotifyID ? spotifyID[2] : "";
+              home[0] = ytID ? ytID[2] : "cUCko5nDLVI";
+              home[1] = spotifyID ? spotifyID[2] : "7t7eU85sSDHaw0ZAj9SXro";
             }
             if (musicArr.every(Boolean) && musicArr.length == 7) {
               const imgID = musicArr[0].match(
