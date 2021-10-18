@@ -18,7 +18,7 @@ google.options({
 admindata.get("/", async (req, res) => {
   const SP_ID = "173A6E2LtQgSKSRPzSB_jappnMiLzlicK8ZVaCNrkNAc";
   const SHEET = "data!";
-  const GET_RANGE = "A3:V";
+  const GET_RANGE = "A3:W";
   let home = [];
   let music = [];
   let shows = [];
@@ -47,15 +47,13 @@ admindata.get("/", async (req, res) => {
           gres.data.values.forEach((element, i, arr) => {
             let homeArr = element.slice(0, 6);
             let musicArr = element.slice(7, 14);
-            let showsArr = element.slice(15, 22);
-
+            let showsArr = element.slice(15, 23);
             if (i === 0 && homeArr.every(Boolean) && homeArr.length == 6) {
               home.push(...homeArr);
               const ytID = home[0].match(/(https:\/\/youtu.be\/)(.+)/);
               const spotifyID = home[1].match(
                 /(https:\/\/open.spotify.com\/playlist\/)(.+)[?](.*)/
               );
-              console.log('ytID: ', ytID);
               home[0] = ytID ? ytID[2] : "cUCko5nDLVI";
               home[1] = spotifyID ? spotifyID[2] : "7t7eU85sSDHaw0ZAj9SXro";
             }
@@ -68,11 +66,10 @@ admindata.get("/", async (req, res) => {
                 music.push(musicArr);
               }
             }
-            if (showsArr.every(Boolean) && showsArr.length == 7) {
+            if (showsArr.every(Boolean) && showsArr.length == 8) {
               shows.push(showsArr);
             }
           });
-          console.log(music);
           shows.sort((a, b) => {
             let date1 = a[0] + a[1] + a[2];
             let date2 = b[0] + b[1] + b[2];

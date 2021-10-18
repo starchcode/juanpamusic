@@ -10,6 +10,7 @@ import Language from "./Language";
 import LanguageSelect from "./LanguageSelect";
 import Welcome from "./Welcome";
 import Home from "./Home";
+import Music from "./Music";
 import NotFound from "./NotFound";
 import Footer from "./Footer";
 
@@ -106,6 +107,7 @@ class App extends React.Component {
           /> */}
           <Switch>
             <Route path="/:lan/home" exact component={Home} />
+            <Route path="/:lan/Music" exact ><Music data={this.props.adminData.response}/></Route>
             <Route component={NotFound} />
           </Switch>
           <Footer />
