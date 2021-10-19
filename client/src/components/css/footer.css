@@ -2,6 +2,10 @@
     display: flex;
     justify-content: center;
     padding: 10px;
+    background-color: #4B4540;
+    position: relative;
+    height: 10vh;
+    /* z-index: ; */
 }
 #footer #social_links{
     width: 250px;

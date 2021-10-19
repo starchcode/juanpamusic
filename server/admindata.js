@@ -63,7 +63,7 @@ admindata.get("/", async (req, res) => {
               );
               if (imgID) {
                 musicArr[0] = "https://drive.google.com/uc?id="+imgID[1];
-                music.push(musicArr);
+                music.unshift(musicArr);
               }
             }
             if (showsArr.every(Boolean) && showsArr.length == 8) {

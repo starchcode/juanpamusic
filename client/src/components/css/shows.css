@@ -1,0 +1,77 @@
+#shows{
+    display: flex;
+    flex-direction: column;
+    padding-top: 170px;
+    background-color: #4B4540;
+    min-height: 90vh;
+    align-items: center;
+    gap: 15px
+}
+
+.showsBox{
+    display: flex;
+    min-width: 600px;
+    /* max-height: 200px; */
+    /* max-width: 600px; */
+    overflow: hidden;
+    border-radius: 8px;
+}
+.showsLeft{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #283D50;
+    flex: 1 0 33%;
+}
+
+.showsLeft p:nth-child(2){
+    font-weight: 700;
+    line-height: 110%;
+    font-size: 4rem;
+}
+.showsLeft p:nth-child(3){
+    font-size: smaller;
+}
+.showsLeft p:nth-child(4){
+    color: #A3872A;
+}   
+
+.showsLeft > *, .showsRight > * {
+    color: #dddbdb;
+}
+.showsRight{
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    background-color: #404040;
+    position: relative;
+    flex: 2 1 66%;
+}
+
+.showsRight > *{
+    z-index: 10;
+    position: relative;
+}
+
+.showsRight p { /* Title */
+    background-color: #404040;
+    margin-top: 7%;
+    padding: 8px 0;
+    width: 90%;
+}
+.showsRight div{ /* info/tickets */
+    margin-top: 10%;
+    color: #333333;
+    background-color: #F8CA45;
+    padding: 0 4px;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+.showsRight img{
+    /* opacity: 0.7; */
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+}

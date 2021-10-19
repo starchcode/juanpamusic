@@ -1,29 +1,55 @@
 #Music{
-    padding-top: 200px;
+    padding-top: 120px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    gap: 15px;
+    background-color: #4B4540;
+    /* min-height: 100vh; */
 }
 
 .musicBox{
     display: flex;
     flex-direction: row;
-    max-width: 700px;
-    margin-top: 7px;
+    max-width: 600px;
+    max-height: 300px;
+    /* margin-top: 7px; */
     overflow:hidden;
+    position: relative;
 }
 
 .musicBox div:nth-child(1){
-    width: 50%;
-
+    flex: 1 0 50%;
+    position: relative;
+    overflow: hidden;
 }
 
-.musicBox div:nth-child(1) img{
+.musicimg, .loader{
     width: 100%;
     height: 100%;
+}
+.musicimg{
+    opacity: 0;
+    position: relative;
+    z-index: 10;
+    transition: opacity 1s;
+}
+.loader {
+    position: relative;
+    top: -100%;
+    transform: scale(1.2);
+    opacity: 0.3;
+    z-index: 1;
+}
+
+.loaded {
+    opacity: 1;
 }
 .musicBox div:nth-child(2){
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 50%;
+    flex: 1 0 50%;
     background-color: #262626;
 
 }
@@ -47,5 +73,27 @@
 
 .musiclinks > *{
     flex: 1 50%;
+    display: flex;
+    padding: 4px;
 }
+
+.musiclinks div:nth-child(1){
+    align-items: center;
+    justify-content: flex-end;
+
+}
+.musiclinks div:nth-child(1) a {
+    height: 70%;
+}
+.musiclinks div:nth-child(1) img {
+    height: 100%;
+}
+.musiclinks div:nth-child(2){
+    align-items: flex-start;
+}
+
+.musiclinks div:nth-child(2) a{
+    height: 30%;
+}
+
 

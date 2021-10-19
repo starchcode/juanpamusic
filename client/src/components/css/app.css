@@ -11,6 +11,7 @@
 
 body {
   background-color: #5a4839;
+
 }
 #root {
   overflow: hidden;
@@ -20,11 +21,9 @@ body {
   display: absolute;
 }
 .main {
-  /* display: flex; */
   justify-content: center;
   text-align: center;
-  /* overflow: hidden; */
-
+  min-height: 100vh;
 }
 @media (hover: hover) {
   #home_linkBox h1:hover {
