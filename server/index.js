@@ -50,7 +50,7 @@ const limiter2 = rateLimit({
 });
 const limiter3 = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 6, // limit each IP to 1 requests per windowMs
+  max: 2, // limit each IP to 1 requests per windowMs
 });
 
 app.use(morgan("dev"));
@@ -65,9 +65,11 @@ app.get("/", (req, res) => {
 
 const admindata = require("./admindata");
 app.use("/admindata", limiter1, admindata);
+// app.use("/admindata", limiter3, admindata);
 
 const contact = require("./contact");
-app.use("/contact", contact);
+app.use("/contact", limiter2, limiter3, contact);
+// app.use("/contact", contact);
 
 
 // const test = require("./test");
@@ -88,7 +90,8 @@ app.use("/contact", contact);
     //   if (err) throw err;
     //   console.log('Saved!');
     // });
-  console.log('EROOR: ', err.status, err.message);
+    // err.statusText = err.statusText + ' ' + err.message
+  console.log('EROOR: ', err.status, err.statusText);
     res.status(status).send(err.message);
   });
 

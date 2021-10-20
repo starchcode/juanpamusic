@@ -1,12 +1,11 @@
 import { combineReducers } from 'redux';
-import contactServer from './contactServer';
+import sendEmail from './sendEmail';
 import adminData from './adminData';
 
 import languageChangeReducer from './languageChangeReducer';
 
 export default combineReducers({
-    noReducer: ()=> 'This is data from reducer',
-    serverResponse: contactServer,
+    contact: sendEmail,
     adminData: adminData,
     selectedLanguage: languageChangeReducer
 })

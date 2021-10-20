@@ -18,7 +18,7 @@ google.options({
 admindata.get("/", async (req, res) => {
   const SP_ID = "173A6E2LtQgSKSRPzSB_jappnMiLzlicK8ZVaCNrkNAc";
   const SHEET = "data!";
-  const GET_RANGE = "A3:W";
+  const GET_RANGE = "A3:Y";
   let home = [];
   let music = [];
   let shows = [];
@@ -46,8 +46,8 @@ admindata.get("/", async (req, res) => {
           // console.log(gres.data.values);
           gres.data.values.forEach((element, i, arr) => {
             let homeArr = element.slice(0, 6);
-            let musicArr = element.slice(7, 14);
-            let showsArr = element.slice(15, 23);
+            let musicArr = element.slice(7, 16);
+            let showsArr = element.slice(17, 25);
             if (i === 0 && homeArr.every(Boolean) && homeArr.length == 6) {
               home.push(...homeArr);
               const ytID = home[0].match(/(https:\/\/youtu.be\/)(.+)/);
@@ -57,7 +57,7 @@ admindata.get("/", async (req, res) => {
               home[0] = ytID ? ytID[2] : "cUCko5nDLVI";
               home[1] = spotifyID ? spotifyID[2] : "7t7eU85sSDHaw0ZAj9SXro";
             }
-            if (musicArr.every(Boolean) && musicArr.length == 7) {
+            if (musicArr.every(Boolean) && musicArr.length == 9) {
               const imgID = musicArr[0].match(
                 /https:\/\/drive.google.com\/file\/d\/(.+)\/view/
               );

@@ -1,34 +1,43 @@
 // import history from "../history";
 import server from "../apis/server";
 
-export const contactServer = () => async (dispatch) => {
+export const sendEmail = (formValues) => async (dispatch, getState) => {
   try {
-    const response = await server.get("/");
+    // console.log('action creator getState', getState())
+    const response = await server.post("/contact", { ...formValues });
     // console.log('Response status',response.config.method.toUpperCase(), ':', response.status);
-    dispatch({ type: "contactServer", payload: response.data });
+    dispatch({ type: "sendEmail", payload: response.data });
   } catch (e) {
-    // console.log(e);
-    // console.log('Server error', e.message, e.status);
+    // console.log("response: ", e.response.data);
+    // console.log("Server error: ", e.response.statusText, e.response.status);
+
     dispatch({
-      type: "contactServer",
+      type: "sendEmail",
       payload:
-        "We encountered an error with the message: " +
-        e.message +
-        " and response status of: " +
-        e.status,
+        e.response.status +
+        " " +
+        e.response.statusText +
+        " - We encountered an error with the message: " +
+        e.response.data,
     });
   }
 };
+export const cleanContact = () => {
+  try{
+    return { type: 'cleanContact' }
+  }catch (e){
+    console.log('could not clean contact')
+  }
+}
 export const getAdminData = () => async (dispatch) => {
   try {
     const response = await server.get("/admindata");
-    // console.log('Response status',response.config.method.toUpperCase(), ':', response.status);
     dispatch({ type: "adminData", payload: response });
   } catch (e) {
-    // console.log(e);
+    console.log(e.response.data);
     // console.log('Server error', e.message, e.status);
     dispatch({
-      type: "adminData",
+      type: "error",
       payload:
         "We encountered an error with the message: " +
         e.message +
@@ -40,9 +49,9 @@ export const getAdminData = () => async (dispatch) => {
 
 export const languageChange = (lan) => {
   const storage = window.localStorage;
-  if(lan === 'en' || lan === 'es'){
-    storage.setItem('lan', lan)
+  if (lan === "en" || lan === "es") {
+    storage.setItem("lan", lan);
     return { type: "languageChange", payload: lan };
-  } 
-  return { type: "languageChange", payload: null};
+  }
+  return { type: "languageChange", payload: null };
 };

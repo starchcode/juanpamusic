@@ -1,50 +1,30 @@
 import React from "react";
 
 import "./css/shows.css";
+import { languageData } from "./languageFile/languageFile";
 
 import showsjuanpa from "../media/showsjuanpa.jpg";
 
 const Shows = (props) => {
+  console.log('shows lan: ', props.lan)
   const renderShows = () => {
-    const days = [
-      "Sunday",
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday",
-    ];
-    const months = [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December",
-    ];
+    const infoText = languageData[props.lan].shows[0];
 
-    console.log(days[new Date("10/23/2021").getDay()]);
-
-    console.log(props.data.shows);
     return props.data.shows.map((show, i) => {
+      const month = languageData[props.lan].dates.months[new Date(`${show[1]}/${show[2]}/${show[0]}`).getMonth()]
+      const day = languageData[props.lan].dates.days[new Date(`${show[1]}/${show[2]}/${show[0]}`).getDay()]
+      const title = props.lan === 'en' ? show[4] : show[5];
       return (
         <div className="showsBox" key={i}>
           <div className="showsLeft">
-            <p>{months[new Date(`${show[1]}/${show[2]}/${show[0]}`).getMonth()]} - {show[0]}</p>
+            <p>{month} - {show[0]}</p>
             <p>{show[2]}</p>
-            <p>{days[new Date(`${show[1]}/${show[2]}/${show[0]}`).getDay()]}</p>
+            <p>{day}</p>
             <p>19:00</p>
           </div>
           <div className="showsRight">
-            <p>{show[4]}</p> 
-            <div>Info / Tickets</div>
+            <p>{title}</p> 
+            <div><a href={show[7]} target="_blank">{infoText}</a></div>
             <img src={showsjuanpa} />
           </div>
         </div>

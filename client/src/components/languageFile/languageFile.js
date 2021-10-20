@@ -10,6 +10,33 @@ export const languageData = {
       button: 'Submit',
       errors: ['Please enter your name', 'Please enter your Email', 'Email address must be valid!','Phone number must be valid!', 'Please enter your enquiry', 'Your enquiry is too long!']
     },
+    dates:{
+      days: [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+      ],
+      months: [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+      ]
+    },
+    music: ['Released on '],
+    shows: ['Info / Tickets']
   },
   es: {
     menu: ['Hogar', 'Biografía', 'Música', 'Espectáculos', 'Contacto'],
@@ -20,5 +47,32 @@ export const languageData = {
       button: 'Enviar',
       errors: ['por favor, escriba su nombre', 'Por favor introduzca su correo electrónico', 'La dirección de correo electrónico debe ser válida.','¡El número de teléfono debe ser válido!', 'Por favor ingrese su consulta', '¡Tu consulta es demasiado larga!']
     },
+    dates:{
+      days: [
+        "Domingo",
+        "Lunes",
+        "Martes",
+        "Miércoles",
+        "Jueves",
+        "Viernes",
+        "Sábado",
+      ],
+      months: [
+        "Enero",
+        "Febrero",
+        "Marzo",
+        "Abril",
+        "Mayo",
+        "Junio",
+        "Julio",
+        "Agosto",
+        "Septiembre",
+        "Octubre",
+        "Noviembre",
+        "Diciembre",
+      ]
+    },
+    music: ['Lanzado el ', 'de '],
+    shows: ['Información / Entradas']
   },
 };

@@ -2,11 +2,15 @@ import React from "react";
 
 import { Form, Field } from "react-final-form";
 import { connect } from "react-redux";
+import { sendEmail, cleanContact } from "../actions";
 
 import "./css/contactForm.css";
 import { languageData } from "./languageFile/languageFile";
 
 class ContactForm extends React.Component {
+componentDidMount() {
+  this.props.cleanContact();
+}
 
   renderError = ({ error, touched }) => {
     if (touched && error) {
@@ -43,12 +47,16 @@ class ContactForm extends React.Component {
       </div>
     );
   };
-
-  onSubmit(formValues) {
-    console.log("submit", formValues);
+  onSubmit = (formValues) => {
+    this.props.sendEmail(formValues);
   }
 
   render() {
+    // console.log('contact prop: ', this.props.contact);
+    const response = this.props.contact && this.props.contact.message ? this.props.contact.message : null;
+    const error = typeof this.props.contact === 'string' ? this.props.contact : null;
+    // console.log('error? : ', this.props.contact);
+    // console.log('error variable is: ', error);
     const labels = languageData[this.props.selectedLanguage].contact.labels;
     const buttonText = languageData[this.props.selectedLanguage].contact.button;
     return (
@@ -62,6 +70,7 @@ class ContactForm extends React.Component {
               Enquiry: "hi...",
             }}
             validate={(formValues) => {
+    
               const validEmailRegex = RegExp(
                 /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
               );
@@ -90,6 +99,7 @@ class ContactForm extends React.Component {
                 errors.Enquiry = errorMessages[5]
               }
               return errors;
+              
             }}
             onSubmit={this.onSubmit}
             render={({ handleSubmit }) => (
@@ -115,6 +125,8 @@ class ContactForm extends React.Component {
                   label={labels[3]}
                 />
                 <button className="">{buttonText}</button>
+                <p class="success">{ response }</p>
+                <p class="error">{ error }</p>
               </form>
             )}
           />
@@ -124,9 +136,10 @@ class ContactForm extends React.Component {
   }
 }
 
-const mapStateToProps = ({ selectedLanguage }) => {
+const mapStateToProps = ({ selectedLanguage, contact }) => {
   return {
     selectedLanguage: selectedLanguage.lan,
+    contact: contact.response
   };
 };
-export default connect(mapStateToProps, null)(ContactForm);
+export default connect(mapStateToProps, { sendEmail, cleanContact })(ContactForm);

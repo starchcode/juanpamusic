@@ -25,6 +25,19 @@ body {
   text-align: center;
   min-height: 100vh;
 }
+
+.success {
+  color: rgb(44, 207, 44);
+  opacity: 1;
+}
+.error {
+  color: tomato;
+  opacity: 1;
+}
+/* @keyframes dissappear {
+  from {opacity : 1;}
+  to {opacity : 0;}
+} */
 @media (hover: hover) {
   #home_linkBox h1:hover {
     color: saddlebrown;

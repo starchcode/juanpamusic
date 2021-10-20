@@ -28,7 +28,6 @@ establishedhimselfasauniquetalentinthemusicc`
 class Bio extends React.Component {
 
     render(){
-        console.log(this.props)
         return(
             <div id="bio">
                 <div className="bioImage">

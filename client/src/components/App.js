@@ -1,7 +1,7 @@
 import React from "react";
 import { Router, Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
-import { contactServer, languageChange, getAdminData } from "../actions";
+import { languageChange, getAdminData } from "../actions";
 import history from "../history";
 import "./css/app.css";
 
@@ -72,8 +72,7 @@ class App extends React.Component {
     }
   }
   componentDidMount() {
-    this.props.getAdminData();
-    this.props.contactServer(); // get data from backend
+    this.props.getAdminData(); // get data from backend
     //if language is typed as en or es in URL add it to Redux state on initial render
     this.urlLanguageCheck(
       this.props.selectedLanguage,
@@ -85,7 +84,8 @@ class App extends React.Component {
   }
 
   render() {
-    if (!this.props.state || !this.props.serverResponse) return "Loading...";
+    if (!this.props.adminData) return "Loading...";
+    if (this.props.adminData.error) return this.props.adminData.error
     // if (window.localStorage.getItem('lan')){
     //   this.props.languageChange(window.localStorage.getItem('lan'))
     // }
@@ -108,8 +108,8 @@ class App extends React.Component {
           /> */}
           <Switch>
             <Route path="/:lan/home" exact component={Home} />
-            <Route path="/:lan/music" exact ><Music data={this.props.adminData.response}/></Route>
-            <Route path="/:lan/shows" exact ><Shows data={this.props.adminData.response}/></Route>
+            <Route path="/:lan/music" exact ><Music data={this.props.adminData.response} lan={this.props.selectedLanguage}/></Route>
+            <Route path="/:lan/shows" exact ><Shows data={this.props.adminData.response} lan={this.props.selectedLanguage}/></Route>
             <Route component={NotFound} />
           </Switch>
           <Footer />
@@ -122,14 +122,13 @@ class App extends React.Component {
 const mapStateToProps = (state) => {
   return {
     state: state.noReducer,
-    serverResponse: state.serverResponse.response,
+    contact: state.contact.response,
     selectedLanguage: state.selectedLanguage.lan,
     adminData: state.adminData,
   };
 };
 
 export default connect(mapStateToProps, {
-  contactServer,
   languageChange,
   getAdminData,
 })(App);

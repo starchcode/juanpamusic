@@ -9,7 +9,7 @@ class Music extends React.Component {
 
   renderMusic() {
     return this.props.data.music.map((data, i) => {
-      return <MusicBox key={i} data={data} i={i}/>
+      return <MusicBox key={i} data={data} i={i} lan={this.props.lan}/>
     });
   }
   render() {

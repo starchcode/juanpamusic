@@ -3,20 +3,24 @@ const nodemailer = require("nodemailer");
 const { EMAIL_TO, EMAIL_FROM } = require("./urls");
 
 contact.post("/", (req, res, next) => {
+  console.log('request body: ', req.body)
   const validEmailRegex = RegExp(
     /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
   );
-  const validPhoneRegex = RegExp(/^[+]*[0-9]+$/);
+  // const validPhoneRegex = RegExp(/^[+]*[0-9]+$/);
 
   if (req.body.Name && req.body.Email && req.body.Enquiry) {
     if (!validEmailRegex.test(req.body.Email)) {
+      console.log('invalid email');
       const error = new Error("Email is invalid!");
       error.status = 400;
       next(error);
     }
     next();
   } else {
-    res.sendStatus(400);
+    const error = new Error("Bad request!");
+    error.status = 400;
+    next(error);
   }
 });
 
@@ -39,6 +43,8 @@ contact.post("/", async (req, res, next) => {
       pass: process.env.PASS, // generated ethereal password
     },
   });
+        // res.status(200).json({ message: "Message sent!" });
+
   let info = transporter.sendMail(
     {
       from: EMAIL_FROM, // sender address
