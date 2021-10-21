@@ -1,5 +1,5 @@
 
-export default (state = {}, action) => {
+export const adminData = (state = {}, action) => {
     switch (action.type) {
         case 'adminData':
             return {...state, response: action.payload.data }

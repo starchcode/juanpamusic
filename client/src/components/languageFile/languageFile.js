@@ -1,5 +1,3 @@
-import React from 'react';
-
 export const languageData = {
   en: {
     menu: ['Home', 'Biography', 'Music', 'Shows', 'Contact'],

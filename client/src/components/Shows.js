@@ -6,7 +6,6 @@ import { languageData } from "./languageFile/languageFile";
 import showsjuanpa from "../media/showsjuanpa.jpg";
 
 const Shows = (props) => {
-  console.log('shows lan: ', props.lan)
   const renderShows = () => {
     const infoText = languageData[props.lan].shows[0];
 
@@ -24,8 +23,8 @@ const Shows = (props) => {
           </div>
           <div className="showsRight">
             <p>{title}</p> 
-            <div><a href={show[7]} target="_blank">{infoText}</a></div>
-            <img src={showsjuanpa} />
+            <div><a href={show[7]} target="_blank" rel="noreferrer">{infoText}</a></div>
+            <img src={showsjuanpa} alt="juanpa playing guitar" />
           </div>
         </div>
       );

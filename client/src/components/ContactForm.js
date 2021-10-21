@@ -30,7 +30,7 @@ componentDidMount() {
     return (
       <div className={className}>
         <label>{label}</label>
-        {input.name == "Enquiry" ? (
+        {input.name === "Enquiry" ? (
           <textarea
             {...input}
             id=""
@@ -72,7 +72,8 @@ componentDidMount() {
             validate={(formValues) => {
     
               const validEmailRegex = RegExp(
-                /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
+                // /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
+                /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i
               );
               const validPhoneRegex = RegExp(/^[+]*[0-9]+$/);
               const errorMessages =
@@ -125,8 +126,8 @@ componentDidMount() {
                   label={labels[3]}
                 />
                 <button className="">{buttonText}</button>
-                <p class="success">{ response }</p>
-                <p class="error">{ error }</p>
+                <p className="success">{ response }</p>
+                <p className="error">{ error }</p>
               </form>
             )}
           />

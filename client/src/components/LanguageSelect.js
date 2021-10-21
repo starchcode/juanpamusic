@@ -5,17 +5,20 @@ import "./css/languageSelect.css";
 import juanpavideo from '../media/juanpavideo.mp4';
 
 class LanguageSelect extends React.Component {
+  // if cdm not needed remove all these
   constructor(props){
     super(props);
     this.vidRef = React.createRef();
   }
 componentDidMount() {
-  this.vidRef.current.addEventListener('load', this.videoHandler())
+  // this.vidRef.current.addEventListener('load', this.videoHandler())
 }
-videoHandler = () => {
-  this.vidRef.current.volume = 0.05;
-  this.vidRef.current.play();
-}
+// videoHandler = () => {
+//   setInterval(() => {
+//     this.vidRef.current.volume = 0.05;
+
+//   }, 1000);
+// }
   render() {
     return (
       <div id="languageSelect">
@@ -32,7 +35,8 @@ videoHandler = () => {
         <video 
         ref={this.vidRef}
         loop
-
+        autoPlay
+        muted
         >
           <source src={juanpavideo} type="video/mp4"/>
         </video>

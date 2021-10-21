@@ -1,4 +1,4 @@
-export default (state = {}, action) => {
+export const sendEmail = (state = {}, action) => {
     switch (action.type) {
         case 'sendEmail':
             return {...state, response: action.payload }

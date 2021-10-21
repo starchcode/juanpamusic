@@ -71,6 +71,9 @@ class App extends React.Component {
       history.push(newHistory);
     }
   }
+  loadHandle() {
+    console.log('loaded!');
+  }
   componentDidMount() {
     this.props.getAdminData(); // get data from backend
     //if language is typed as en or es in URL add it to Redux state on initial render
@@ -78,13 +81,14 @@ class App extends React.Component {
       this.props.selectedLanguage,
       this.props.languageChange
     );
+    window.addEventListener('load', this.loadHandle);
   }
   componentDidUpdate() {
     this.languageCheck(this.props.selectedLanguage); //ensuring that on every update ensure URL and selected language are a match.
   }
 
   render() {
-    if (!this.props.adminData) return "Loading...";
+    if (!this.props.adminData) return "Please wait...";
     if (this.props.adminData.error) return this.props.adminData.error
     // if (window.localStorage.getItem('lan')){
     //   this.props.languageChange(window.localStorage.getItem('lan'))

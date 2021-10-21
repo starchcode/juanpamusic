@@ -34,7 +34,6 @@ componentWillUnmount() {
       ];
       let date;
     if (this.props.lan === "en") {
-        console.log('if passed');
       date = languageData[this.props.lan].music[0] + month + " " + day + ", " + this.props.data[3];
     } else if (this.props.lan === "es") {
         const firstWord = languageData[this.props.lan].music[0];
@@ -50,24 +49,25 @@ componentWillUnmount() {
             src={this.props.data[0]}
             loading="lazy"
             className="musicimg"
+            alt="artwork"
           />
-          <img src={loader} loading="lazy" className="loader" />
+          <img src={loader} loading="lazy" className="loader" alt="default artwork"/>
         </div>
         <div>
           <h3>{this.props.data[1]}</h3>
           <p>{date}</p>
           <div className="musiclinks">
             <div>
-              <a href={this.props.data[6]} target="_blank">
-                <img src={bandcamplogo} />
+              <a href={this.props.data[6]} target="_blank"rel="noreferrer">
+                <img src={bandcamplogo} alt="bandcamp logo" />
               </a>
             </div>
             <div>
-              <a href={this.props.data[7]} target="_blank">
-                <img src={applelogo} />
+              <a href={this.props.data[7]} target="_blank"rel="noreferrer">
+                <img src={applelogo} alt="apple music logo" />
               </a>
-              <a href={this.props.data[8]} target="_blank">
-                <img src={spotifylogo} />
+              <a href={this.props.data[8]} target="_blank"rel="noreferrer">
+                <img src={spotifylogo} alt="spotify logo" />
               </a>
             </div>
           </div>

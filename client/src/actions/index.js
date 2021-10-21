@@ -23,19 +23,13 @@ export const sendEmail = (formValues) => async (dispatch, getState) => {
   }
 };
 export const cleanContact = () => {
-  try{
     return { type: 'cleanContact' }
-  }catch (e){
-    console.log('could not clean contact')
-  }
 }
 export const getAdminData = () => async (dispatch) => {
   try {
     const response = await server.get("/admindata");
     dispatch({ type: "adminData", payload: response });
   } catch (e) {
-    console.log(e.response.data);
-    // console.log('Server error', e.message, e.status);
     dispatch({
       type: "error",
       payload:

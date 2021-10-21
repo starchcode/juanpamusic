@@ -14,7 +14,7 @@ menuButtons () {
     <ul>
       {languageData[this.props.selectedLanguage].menu.map((menuButton, i) => {
         return(
-          <li>
+          <li key={i}>
           <Link to={`/${this.props.selectedLanguage}/${languageData['en'].menu[i]}`}>{menuButton}</Link>
         </li>
         )
