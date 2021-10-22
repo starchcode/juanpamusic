@@ -16,31 +16,31 @@ class Home extends React.Component {
     this.homeRef = React.createRef();
   }
 
-  historyPush = () => {
-    history.push(`/${this.props.selectedLanguage}/music`);
-  };
   componentDidMount() {
-    if (this.homeRef.current) { 
-      //when navigating event listener needs to be added ass well as when updating
+    if (this.homeRef.current) {
       setTimeout(() => {
         this.homeRef.current.classList.add("fadein");
       }, 0);
-      this.homeRef.current.addEventListener("animationend", this.historyPush);
     }
   }
   componentDidUpdate() {
+    console.log(
+      "if exists fadein",
+      this.homeRef.current.classList.contains("fadein")
+    );
     setTimeout(() => {
       this.homeRef.current.classList.add("fadein");
     }, 0);
-    this.homeRef.current.addEventListener("animationend", this.historyPush);
   }
   componentWillUnmount() {
     this.homeRef.current.removeEventListener("animationend", this.historyPush);
   }
+
   handleNavigation = () => {
-    console.log("handleNavigation");
+    const historyPush = () =>
+      history.push(`/${this.props.selectedLanguage}/music`);
+    this.homeRef.current.addEventListener("animationend", historyPush);
     this.homeRef.current.classList.toggle("fadeout");
-    console.log(this.homeRef.current.classList);
   };
 
   render() {
