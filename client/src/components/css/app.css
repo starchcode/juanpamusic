@@ -35,6 +35,12 @@ body {
   opacity: 1;
 }
 
+.beforeEntry {
+  opacity: 0;
+
+  transform: scale(0.9) skewX(2deg);
+  transition: all .5s;
+}
 .fadein {
   transform: revert !important;
   opacity: 1 !important;

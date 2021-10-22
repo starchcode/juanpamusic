@@ -15,26 +15,17 @@ import Shows from "./Shows";
 import NotFound from "./NotFound";
 import Footer from "./Footer";
 
-// const Temp = (props) => {
-//   console.log(props.adminData)
-//   if(!props.adminData.response) return <div>Loading...</div>
-//   return (
-//     <div className="overlay">
-//       <div>Welcome to Juanpa Music</div>
-//       <div>Language: {props.lan}</div>
-//       <br />
-//       <div>{props.state}</div>
-//       <div>
-//         {'This is response from backend server "' + props.serverResponse + '"'}
-//       </div>
-//       <div>
-//         {`admin data: ${props.adminData.response.data[0][0]}`}
-//       </div>
-//     </div>
-//   );
-// };
 
 class App extends React.Component {
+  constructor(props){
+    super(props)
+    this.homeRef = React.createRef();
+    this.musicRef = React.createRef();
+    // this.homeComponent = React.forwardRef((props, ref) => <Home refer={ref}/>)
+    this.homeComponent = React.forwardRef((props, ref) => <Home reference={ref}/>)
+    this.musicComponent = React.forwardRef((props, ref) => <Music reference={ref} data={this.props.adminData.response} lan={this.props.selectedLanguage}/>)
+  }
+
   urlLanguageCheck(selectedLanguage, languageChange) {
     const urlPathname = window.location.pathname;
     const browserStorage = window.localStorage.getItem("lan");
@@ -101,7 +92,7 @@ class App extends React.Component {
     return (
       <Router history={history}>
         <div className="main">
-          <Header />
+          <Header components={[this.homeRef, this.musicRef]}/>
           <Language />
           <Welcome />
           {/* <Temp
@@ -111,8 +102,9 @@ class App extends React.Component {
             lan={this.props.selectedLanguage}
           /> */}
           <Switch>
-            <Route path="/:lan/home" exact component={Home} />
-            <Route path="/:lan/music" exact ><Music data={this.props.adminData.response} lan={this.props.selectedLanguage}/></Route>
+            <Route path="/:lan/home" exact ><this.homeComponent ref={this.homeRef} /></Route>
+            {/* <Route path="/:lan/home" exact ><Home ref={this.homeRef} /></Route> */}
+            <Route path="/:lan/music" exact ><this.musicComponent ref={this.musicRef} /></Route>
             <Route path="/:lan/shows" exact ><Shows data={this.props.adminData.response} lan={this.props.selectedLanguage}/></Route>
             <Route component={NotFound} />
           </Switch>

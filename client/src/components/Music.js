@@ -3,20 +3,22 @@ import React from "react";
 import "./css/music.css";
 
 import MusicBox from './MusicBox';
+import { FadeInHandler } from "../hooks/AnimationNavigation";
 
 
-class Music extends React.Component {
+const Music = (props) => {
+  const fadeInHandler = FadeInHandler(props.reference) 
 
-  renderMusic() {
-    return this.props.data.music.map((data, i) => {
-      return <MusicBox key={i} data={data} i={i} lan={this.props.lan}/>
+  const renderMusic = () => {
+    return props.data.music.map((data, i) => {
+      return <MusicBox key={i} data={data} i={i} lan={props.lan}/>
     });
   }
-  render() {
-    if (!this.props.data) return "Loading...";
+  
+    if (!props.data) return "loading: music not ready...";
 
-    return <div id="Music">{this.renderMusic()}</div>;
-  }
+    return <div id="Music" className="beforeEntry" ref={props.reference}>{renderMusic()}</div>;
+  
 }
 
 export default Music;

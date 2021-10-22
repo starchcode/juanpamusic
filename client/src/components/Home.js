@@ -9,11 +9,12 @@ import ContactForm from "./ContactForm";
 
 import juanpapic1 from "../media/juanpapic1.jpg";
 
-import NavigationAnimation from "../hooks/NavigationAnimation";
-
-const Home = () => {
-  const homeRef = React.useRef(null);
-  const [handleNavigation] = NavigationAnimation(homeRef) 
+// import NavigationAnimation from "../hooks/NavigationAnimation";
+import { FadeInHandler } from "../hooks/AnimationNavigation";
+const Home = (props) => {
+  // const homeRef = React.useRef(null);
+  // const [handleNavigation] = NavigationAnimation(homeRef) 
+  const fadeInHandler = FadeInHandler(props.reference) 
 
   const selectedLanguage = useSelector((state) => state.selectedLanguage.lan);
   const adminData = useSelector((state) => state.adminData);
@@ -28,7 +29,8 @@ const Home = () => {
   const spotifyID = adminData.response.home[1];
 
   return (
-    <div id="home" ref={homeRef}>
+    // <div id="home" ref={homeRef}>
+    <div id="home" className="beforeEntry" ref={props.reference}>
       <div id="homeBG"></div>
       <div id="juanpapic1">
         <img src={juanpapic1} alt="juanpa playing guitar" />
@@ -54,10 +56,12 @@ const Home = () => {
           allowFullScreen
         ></iframe>
         <div id="home_linkBox">
-          <h1 onClick={()=>handleNavigation('music')} className="whiteBG">
+          {/* <h1 onClick={()=>handleNavigation(`${selectedLanguage}/music`)} className="whiteBG"> */}
+          <h1  className="whiteBG">
             {callToActionText[2]}
           </h1>
-          <h1 className="whiteBG">{callToActionText[3]}</h1>
+          {/* <h1 onClick={()=>handleNavigation(`${selectedLanguage}/shows`)} className="whiteBG">{callToActionText[3]}</h1> */}
+          <h1  className="whiteBG">{callToActionText[3]}</h1>
           <SocialLinks />
         </div>
       </div>

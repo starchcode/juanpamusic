@@ -1,12 +1,11 @@
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
 import history from "../history";
 
 const NavigationAnimation = (element) => {
-    const selectedLanguage = useSelector((state) => state.selectedLanguage.lan);
 
     useEffect(() => {
         if (element.current && !element.current.classList.contains("fadein")) {
+          console.log('fade in is being added!');
           setTimeout(() => {
             element.current.classList.add("fadein");
           }, 0);
@@ -17,7 +16,7 @@ const NavigationAnimation = (element) => {
       console.log('handleNav fired!');
     const historyPush = () => {
       element.current.removeEventListener("animationend", this);
-      history.push(`/${selectedLanguage}/${newLocation}`);
+      history.push(`/${newLocation}`);
     };
     //   console.log(element)
     element.current.addEventListener("animationend", historyPush);
