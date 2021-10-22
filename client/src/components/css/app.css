@@ -40,7 +40,7 @@ body {
   opacity: 1 !important;
 }
 .fadeout{
-  animation: goaway .5s forwards;
+  animation: goaway .2s forwards;
 }
 
 @keyframes fadein {
@@ -54,10 +54,11 @@ body {
 @keyframes goaway{
   from{
     transform: translate(0, 0);
+    opacity: 1;
   }
   to{
-    transform:translate(500px, 500px);
-
+    transform:translate(200px, 200px);
+    opacity: 0;
   }
 }
 
