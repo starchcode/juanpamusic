@@ -4,6 +4,7 @@ import { languageChange } from "../actions";
 
 class Notfound extends React.Component {
   componentDidMount() {
+    console.log('NOT FOUND MOUNTED');
     if (!this.props.selectedLanguage && !window.localStorage.getItem("lan")) {
       this.props.languageChange("en");
     } else if (!this.props.selectedLanguage) {
@@ -13,7 +14,8 @@ class Notfound extends React.Component {
 
   render() {
     return (
-      <div>
+      // <div ref={this.props.reference}>
+      <div ref={this.props.reference}>
         <div style={{ color: "red" }}>Not Found</div>
         <div>{this.props.selectedLanguage}</div>
       </div>

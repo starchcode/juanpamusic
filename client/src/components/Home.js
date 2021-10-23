@@ -23,6 +23,14 @@ const Home = (props) => {
   const callToActionText = languageData[selectedLanguage].menu;
   const contactText = languageData[selectedLanguage].contact.text;
 
+//TODO: remove this useEffect:
+
+
+useEffect(() => {
+  console.log('Home DID MOUNT')
+
+}, [])
+
   if (!adminData.response) return "Loading...";
 
   const ytID = adminData.response.home[0];

@@ -14,40 +14,53 @@ import { languageData } from "./languageFile/languageFile";
 const Header = (props) => {
   const selectedLanguage = useSelector((state) => state.selectedLanguage.lan);
 
-  const [handleNav] =  NavigationHandler(props.components);
+  const [handleNav] = NavigationHandler(props.components);
 
   const menuButtons = () => {
+
     return (
       <ul>
         {languageData[selectedLanguage].menu.map((menuButton, i) => {
-          const pathToGo = languageData['en'].menu[i];
+          const pathToGo = languageData["en"].menu[i];
 
-          if(pathToGo === 'Biography' || pathToGo === 'Contact'){
-            console.log('current button: ', menuButton);
+          if (pathToGo === "Biography" || pathToGo === "Contact") {
             return (
               <li key={i}>
-              {/* onClick={()=>handleNavigation(`${selectedLanguage}/shows`)} */}
-              <div onClick={()=> {
-                handleNav(`/${selectedLanguage}/home`)
-                setTimeout(() => {
-                  // console.log('navigated!', props.components[0].current.children.bio.scrollIntoView({behavior: 'smooth', block: 'start'}))
-                  if(menuButton === 'Biography' && props.components[0].current){
-                    props.components[0].current.children.bio.scrollIntoView({behavior: 'smooth', block: 'end'})
-                  }else{
-                    props.components[0].current.children.contactSection.scrollIntoView({behavior: 'smooth', block: 'end'})
-                  }
-                }, 300);
-              }}>
-                {menuButton}
-              </div>
-            </li>
-            )
+                {/* onClick={()=>handleNavigation(`${selectedLanguage}/shows`)} */}
+                <div
+                  onClick={() => {
+                    handleNav(`/${selectedLanguage}/home`);
+                    setTimeout(() => {
+                      if (
+                        pathToGo === "Biography" &&
+                        props.components[0].current
+                      ) {
+                        props.components[0].current.children.bio.scrollIntoView(
+                          { behavior: "smooth", block: "end" }
+                        );
+                      } else if(
+                        pathToGo === "Contact" &&
+                        props.components[0].current
+                      ) {
+                        props.components[0].current.children.contactSection.scrollIntoView(
+                          { behavior: "smooth", block: "end" }
+                        );
+                      }
+                    }, 300);
+                  }}
+                >
+                  {menuButton}
+                </div>
+              </li>
+            );
           }
 
           return (
             <li key={i}>
               {/* onClick={()=>handleNavigation(`${selectedLanguage}/shows`)} */}
-              <div onClick={()=> handleNav(`/${selectedLanguage}/${pathToGo}`)}>
+              <div
+                onClick={() => handleNav(`/${selectedLanguage}/${pathToGo}`)}
+              >
                 {menuButton}
               </div>
             </li>
@@ -56,7 +69,7 @@ const Header = (props) => {
       </ul>
     );
   };
-  // console.log('header prop components: ', props.components);
+
   return (
     <div id="header">
       <img src={logo} alt="logo of juanpa music" />

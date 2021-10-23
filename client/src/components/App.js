@@ -23,48 +23,70 @@ class App extends React.Component {
     this.homeRef = React.createRef();
     this.musicRef = React.createRef();
     this.showsRef = React.createRef();
-    // this.homeComponent = React.forwardRef((props, ref) => <Home refer={ref}/>)
+    this.notFoundRef = React.createRef();
+
     this.homeComponent = React.forwardRef((props, ref) => <Home reference={ref}/>)
     this.musicComponent = React.forwardRef((props, ref) => <Music reference={ref} data={this.props.adminData.response} lan={this.props.selectedLanguage}/>)
     this.showsComponent = React.forwardRef((props, ref) => <Shows reference={ref} data={this.props.adminData.response} lan={this.props.selectedLanguage}/>)
+    this.NotFoundComponent = React.forwardRef((props, ref) => <NotFound reference={ref} />)
+
   }
 
   urlLanguageCheck(selectedLanguage, languageChange) {
+    console.log("URL language after first mount called");
     const urlPathname = window.location.pathname;
     const browserStorage = window.localStorage.getItem("lan");
+
+    const doesItInclude = urlPathname.match(/e[ns]/);
+    const doesItStartWith = urlPathname.match(/^\/e[ns]/);
     if (urlPathname === "/" && browserStorage) {
       languageChange(browserStorage);
+      return;
     }
 
-    if (urlPathname.length > 1 && !/^(\/en|\/es)/.test(urlPathname))
-      history.push("/notfound");
+    if (!doesItInclude && browserStorage) {
+      console.log("SEE?");
+      languageChange(browserStorage);
+      history.push(`/${browserStorage}/notfound`);
+      return;
+    }
 
-    if (!urlPathname.match(/e[ns]/)) return;
-    const urlLanguage = urlPathname.match(/e[ns]/)[0];
+    //if localstorage is empty
+    if (urlPathname.length > 1 && !doesItInclude) {
+      languageChange("en");
+      history.push("/en/notfound");
+    }
 
-    if (/^(\/en|\/es)/.test(urlPathname) && selectedLanguage !== urlLanguage)
+    if (!doesItInclude) return;
+
+    const urlLanguage = doesItInclude[0];
+
+    if (doesItStartWith && selectedLanguage !== urlLanguage)
       languageChange(urlLanguage);
   }
 
   languageCheck(selectedLanguage) {
     const urlPathname = window.location.pathname;
-    if (
-      selectedLanguage &&
-      !urlPathname.match(/^e[ns]$/) &&
-      urlPathname.length < 5
-    )
+    const doesItInclude = urlPathname.match(/e[ns]/);
+
+    // if (selectedLanguage && !doesItStartWith && urlPathname.length < 5) {
+    if (selectedLanguage && urlPathname === '/') {
+      console.log("languageCheck 1st condition");
       history.push(`/${selectedLanguage}/home`);
+    }
 
     if (
       selectedLanguage &&
-      urlPathname.match(/e[ns]/) &&
-      urlPathname.match(/e[ns]/)[0] !== selectedLanguage
+      doesItInclude &&
+      doesItInclude[0] !== selectedLanguage
     ) {
-      const regex = new RegExp(urlPathname.match(/e[ns]/)[0]);
+      // console.log('languageCheck 2nd condition')
+      const regex = new RegExp(doesItInclude[0]);
       const newHistory = urlPathname.replace(regex, selectedLanguage);
       history.push(newHistory);
     }
   }
+
   loadHandle() {
     console.log('loaded!');
   }
@@ -83,34 +105,26 @@ class App extends React.Component {
   }
 
   render() {
-    if (!this.props.adminData) return "Please wait...";
     if (this.props.adminData.error) return this.props.adminData.error
+    if (!this.props.adminData.response) return "Please wait...";
     // if (window.localStorage.getItem('lan')){
     //   this.props.languageChange(window.localStorage.getItem('lan'))
     // }
-    if (
-      !this.props.selectedLanguage &&
-      window.location.pathname !== "/notfound"
-    )
+    if (!this.props.selectedLanguage && !window.location.pathname.includes("notfound")){
       return <LanguageSelect />;
+    }
     return (
-      <Router history={history}>
-        <div className="main">
-          <Header components={[this.homeRef, this.musicRef, this.showsRef]}/>
+      <Router history={history}> 
+      <div className="main">
+          <Header components={[this.homeRef, this.musicRef, this.showsRef, this.notFoundRef]}/>
           <Language />
-          <Welcome />
-          {/* <Temp
-            state={this.props.state}
-            serverResponse={this.props.serverResponse}
-            adminData={this.props.adminData}
-            lan={this.props.selectedLanguage}
-          /> */}
           <Switch>
             <Route path="/:lan/home" exact ><this.homeComponent ref={this.homeRef} /></Route>
             {/* <Route path="/:lan/home" exact ><Home ref={this.homeRef} /></Route> */}
             <Route path="/:lan/music" exact ><this.musicComponent ref={this.musicRef} /></Route>
             <Route path="/:lan/shows" exact ><this.showsComponent ref={this.showsRef} /></Route>
-            <Route component={NotFound} />
+            <Route ><this.NotFoundComponent ref={this.notFoundRef} /></Route>
+            {/* <Route component={NotFound} /> */}
           </Switch>
           <Footer />
         </div>

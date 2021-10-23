@@ -42,9 +42,7 @@ export const getAdminData = () => async (dispatch) => {
 };
 
 export const languageChange = (lan) => {
-  const storage = window.localStorage;
   if (lan === "en" || lan === "es") {
-    storage.setItem("lan", lan);
     return { type: "languageChange", payload: lan };
   }
   return { type: "languageChange", payload: null };
