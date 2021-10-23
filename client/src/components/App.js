@@ -16,14 +16,17 @@ import NotFound from "./NotFound";
 import Footer from "./Footer";
 
 
+
 class App extends React.Component {
   constructor(props){
     super(props)
     this.homeRef = React.createRef();
     this.musicRef = React.createRef();
+    this.showsRef = React.createRef();
     // this.homeComponent = React.forwardRef((props, ref) => <Home refer={ref}/>)
     this.homeComponent = React.forwardRef((props, ref) => <Home reference={ref}/>)
     this.musicComponent = React.forwardRef((props, ref) => <Music reference={ref} data={this.props.adminData.response} lan={this.props.selectedLanguage}/>)
+    this.showsComponent = React.forwardRef((props, ref) => <Shows reference={ref} data={this.props.adminData.response} lan={this.props.selectedLanguage}/>)
   }
 
   urlLanguageCheck(selectedLanguage, languageChange) {
@@ -73,6 +76,7 @@ class App extends React.Component {
       this.props.languageChange
     );
     window.addEventListener('load', this.loadHandle);
+
   }
   componentDidUpdate() {
     this.languageCheck(this.props.selectedLanguage); //ensuring that on every update ensure URL and selected language are a match.
@@ -92,7 +96,7 @@ class App extends React.Component {
     return (
       <Router history={history}>
         <div className="main">
-          <Header components={[this.homeRef, this.musicRef]}/>
+          <Header components={[this.homeRef, this.musicRef, this.showsRef]}/>
           <Language />
           <Welcome />
           {/* <Temp
@@ -105,7 +109,7 @@ class App extends React.Component {
             <Route path="/:lan/home" exact ><this.homeComponent ref={this.homeRef} /></Route>
             {/* <Route path="/:lan/home" exact ><Home ref={this.homeRef} /></Route> */}
             <Route path="/:lan/music" exact ><this.musicComponent ref={this.musicRef} /></Route>
-            <Route path="/:lan/shows" exact ><Shows data={this.props.adminData.response} lan={this.props.selectedLanguage}/></Route>
+            <Route path="/:lan/shows" exact ><this.showsComponent ref={this.showsRef} /></Route>
             <Route component={NotFound} />
           </Switch>
           <Footer />

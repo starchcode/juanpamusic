@@ -9,12 +9,12 @@ import ContactForm from "./ContactForm";
 
 import juanpapic1 from "../media/juanpapic1.jpg";
 
-// import NavigationAnimation from "../hooks/NavigationAnimation";
-import { FadeInHandler } from "../hooks/AnimationNavigation";
+
+import { NavigationHandler, FadeInHandler } from "../hooks/AnimationNavigation";
 const Home = (props) => {
-  // const homeRef = React.useRef(null);
-  // const [handleNavigation] = NavigationAnimation(homeRef) 
-  const fadeInHandler = FadeInHandler(props.reference) 
+  // const fadeInHandler = FadeInHandler(props.reference) 
+  FadeInHandler(props.reference) 
+  const [handleNav] =  NavigationHandler([props.reference]);
 
   const selectedLanguage = useSelector((state) => state.selectedLanguage.lan);
   const adminData = useSelector((state) => state.adminData);
@@ -49,19 +49,19 @@ const Home = (props) => {
         <iframe
           width="560"
           height="315"
-          src={`https://www.youtube.com/embed/${ytID}`}
+          src={`https://www.youtube-nocookie.com/embed/${ytID}`}
           title="YouTube video player"
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
         ></iframe>
         <div id="home_linkBox">
-          {/* <h1 onClick={()=>handleNavigation(`${selectedLanguage}/music`)} className="whiteBG"> */}
-          <h1  className="whiteBG">
+          <h1 onClick={()=>handleNav(`/${selectedLanguage}/music`)} className="whiteBG">
+          {/* <h1  className="whiteBG"> */}
             {callToActionText[2]}
           </h1>
-          {/* <h1 onClick={()=>handleNavigation(`${selectedLanguage}/shows`)} className="whiteBG">{callToActionText[3]}</h1> */}
-          <h1  className="whiteBG">{callToActionText[3]}</h1>
+          <h1 onClick={()=>handleNav(`/${selectedLanguage}/shows`)} className="whiteBG">{callToActionText[3]}</h1>
+          {/* <h1  className="whiteBG">{callToActionText[3]}</h1> */}
           <SocialLinks />
         </div>
       </div>

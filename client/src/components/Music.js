@@ -7,7 +7,7 @@ import { FadeInHandler } from "../hooks/AnimationNavigation";
 
 
 const Music = (props) => {
-  const fadeInHandler = FadeInHandler(props.reference) 
+  FadeInHandler(props.reference) 
 
   const renderMusic = () => {
     return props.data.music.map((data, i) => {

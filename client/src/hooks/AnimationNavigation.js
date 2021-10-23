@@ -1,46 +1,34 @@
 import { useEffect } from "react";
 import history from "../history";
 
-
-export const FadeInHandler = (element) => {
-    
-  
+export const FadeInHandler = (element, classToAdd = "fadein") => {
   useEffect(() => {
-        console.log('rendering');
-        if (element.current && !element.current.classList.contains("fadein")) {
-            //add fadein when component loads
-          setTimeout(() => {
-            element.current.classList.add("fadein");
-          }, 0);
-        }
-      });
-  return true;
+    if (element.current && !element.current.classList.contains(classToAdd)) {
+      //add fadein when component loads
+      setTimeout(() => {
+        element.current.classList.add(classToAdd);
+      }, 0);
+    }
+  });
 };
 
-
-export const MenuSmoothAnimation = (elements) => {
-
+export const NavigationHandler = (elements, classToAdd = "fadeout") => {
   const handleNavigation = (newLocation) => {
-      let toRemoveElement = elements.find((el) => el.current);
-      console.log('current element to be Removed: ', toRemoveElement);
+    newLocation = newLocation.toLowerCase();
+    let toRemoveElement = elements.find((el) => el.current);
 
-      if(!toRemoveElement) return; //to avoid proceeding in case element is undefined(loading)
+    if (!toRemoveElement) return; //to avoid proceeding in case element is undefined(loading)
 
-    if(newLocation.toLowerCase().includes(toRemoveElement.current.id.toLowerCase())){
-        //if we are at target component and path DO NOT PROCEED
-        return;
+    if (window.location.pathname.toLowerCase() === newLocation) {
+      //DO NOT PROCEED, if we are at target location
+      return;
     }
 
-    const historyPush = () => {
-    if(!toRemoveElement.current) return; //when new menu double clicked DO NOT PROCEED
-      toRemoveElement.current.removeEventListener("animationend", this);
-      history.push(`/${newLocation}`);
-    };
+    const historyPush = () => history.push(`${newLocation}`);
 
     toRemoveElement.current.addEventListener("animationend", historyPush);
-    toRemoveElement.current.classList.add("fadeout");
+    toRemoveElement.current.classList.add(classToAdd);
   };
 
   return [handleNavigation];
 };
-

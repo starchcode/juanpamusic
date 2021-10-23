@@ -4,10 +4,12 @@ import "./css/shows.css";
 import { languageData } from "./languageFile/languageFile";
 
 import showsjuanpa from "../media/showsjuanpa.jpg";
+import { FadeInHandler } from "../hooks/AnimationNavigation";
 
 const Shows = (props) => {
   const renderShows = () => {
     const infoText = languageData[props.lan].shows[0];
+    FadeInHandler(props.reference) 
 
     return props.data.shows.map((show, i) => {
       const month = languageData[props.lan].dates.months[new Date(`${show[1]}/${show[2]}/${show[0]}`).getMonth()]
@@ -31,7 +33,7 @@ const Shows = (props) => {
     });
   };
   if (!props.data) return "Loading...";
-  return <div id="shows">{renderShows()}</div>;
+  return <div id="shows" ref={props.reference} className="beforeEntry">{renderShows()}</div>;
 };
 
 export default Shows;
