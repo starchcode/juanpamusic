@@ -1,11 +1,13 @@
 import React from "react";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
+import { NavigationHandler } from "../hooks/AnimationNavigation";
 import "./css/music.css";
 import MusicBox from './MusicBox';
 
 
 const Music = (props) => {
+  NavigationHandler([props.reference]); //to fadein
   const selectedLanguage = useSelector(state => state.selectedLanguage.lan);
   const disography = useSelector(state => state.adminData.response.music);
 

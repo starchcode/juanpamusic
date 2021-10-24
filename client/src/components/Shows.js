@@ -1,11 +1,13 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { NavigationHandler } from "../hooks/AnimationNavigation";
 import { languageData } from "./languageFile/languageFile";
 import "./css/shows.css";
 import showsjuanpa from "../media/showsjuanpa.jpg";
 
 
 const Shows = (props) => {
+  NavigationHandler([props.reference]); //to make component fade
   const selectedLanguage = useSelector(state => state.selectedLanguage.lan);
   const upcomingShows = useSelector(state => state.adminData.response.shows.upcoming)
   const pastShows = useSelector(state => state.adminData.response.shows.pastshows)

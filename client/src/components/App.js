@@ -86,6 +86,10 @@ class App extends React.Component {
       const newHistory = urlPathname.replace(regex, selectedLanguage);
       history.push(newHistory);
     }
+    if(!selectedLanguage && doesItInclude && doesItInclude[0]){
+      //if popstate make sure to make the update the selectedLanguage with URL
+      this.props.languageChange(doesItInclude[0])
+    }
   }
 
   loadHandle() {
@@ -99,6 +103,7 @@ class App extends React.Component {
       this.props.languageChange
     );
     window.addEventListener('load', this.loadHandle);
+    window.addEventListener('popstate',()=> this.languageCheck());
   }
   componentDidUpdate() {
     console.log('App.js DID UPDATE');

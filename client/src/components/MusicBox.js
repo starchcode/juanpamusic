@@ -54,7 +54,7 @@ componentWillUnmount() {
           <img src={loader} loading="lazy" className="loader" alt="default artwork"/>
         </div>
         <div>
-          <h3>{this.props.data[1]}</h3>
+          <h3>{this.props.lan === 'en' ? this.props.data[1] : this.props.data[2]}</h3>
           <p>{date}</p>
           <div className="musiclinks">
             <div>

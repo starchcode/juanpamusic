@@ -17,10 +17,10 @@ export const NavigationHandler = (
     }, 0);
   };
 
-  // useEffect(() => {
-  //   console.log("AnimationNavigation DID MOUNT");
-  //   fadeinHandler();
-  // }, []);
+  useEffect(() => {
+    console.log("AnimationNavigation DID MOUNT");
+    fadeinHandler();
+  }, []);
 
 
 

@@ -10,9 +10,7 @@ import juanpapic1 from "../media/juanpapic1.jpg";
 
 
 const Home = (props) => {
-
   const [handleNav] =  NavigationHandler(props.components);
-
   const selectedLanguage = useSelector((state) => state.selectedLanguage.lan);
   const adminData = useSelector((state) => state.adminData);
 
