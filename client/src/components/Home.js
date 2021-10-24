@@ -1,20 +1,17 @@
 import React, { useEffect } from "react";
-import { languageData } from "./languageFile/languageFile";
 import { useSelector } from "react-redux";
-
+import { NavigationHandler } from "../hooks/AnimationNavigation";
 import "./css/home.css";
+import { languageData } from "./languageFile/languageFile";
 import SocialLinks from "./SocialLinks";
 import Bio from "./Bio";
 import ContactForm from "./ContactForm";
-
 import juanpapic1 from "../media/juanpapic1.jpg";
 
 
-import { NavigationHandler, FadeInHandler } from "../hooks/AnimationNavigation";
 const Home = (props) => {
-  // const fadeInHandler = FadeInHandler(props.reference) 
-  FadeInHandler(props.reference) 
-  const [handleNav] =  NavigationHandler([props.reference]);
+
+  const [handleNav] =  NavigationHandler(props.components);
 
   const selectedLanguage = useSelector((state) => state.selectedLanguage.lan);
   const adminData = useSelector((state) => state.adminData);

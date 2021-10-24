@@ -1,14 +1,15 @@
 import React from "react";
 import { Router, Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
-import { languageChange, getAdminData } from "../actions";
 import history from "../history";
+
+import { languageChange, getAdminData } from "../actions";
 import "./css/app.css";
 
+import Loading from "./Loading";
 import Header from "./Header";
 import Language from "./Language";
 import LanguageSelect from "./LanguageSelect";
-import Welcome from "./Welcome";
 import Home from "./Home";
 import Music from "./Music";
 import Shows from "./Shows";
@@ -16,65 +17,65 @@ import NotFound from "./NotFound";
 import Footer from "./Footer";
 
 
-
 class App extends React.Component {
   constructor(props){
     super(props)
+    this.languages = ['en', 'es']
     this.homeRef = React.createRef();
     this.musicRef = React.createRef();
     this.showsRef = React.createRef();
     this.notFoundRef = React.createRef();
-
-    this.homeComponent = React.forwardRef((props, ref) => <Home reference={ref}/>)
-    this.musicComponent = React.forwardRef((props, ref) => <Music reference={ref} data={this.props.adminData.response} lan={this.props.selectedLanguage}/>)
-    this.showsComponent = React.forwardRef((props, ref) => <Shows reference={ref} data={this.props.adminData.response} lan={this.props.selectedLanguage}/>)
+    this.loaded = false;
+    this.homeComponent = React.forwardRef((props, ref) => <Home reference={ref} components={[this.homeRef, this.musicRef, this.showsRef, this.notFoundRef]}/>)
+    this.musicComponent = React.forwardRef((props, ref) => <Music reference={ref} />)
+    this.showsComponent = React.forwardRef((props, ref) => <Shows reference={ref} />)
     this.NotFoundComponent = React.forwardRef((props, ref) => <NotFound reference={ref} />)
 
   }
 
+  pathsToMatch = (path) => {    
+    return this.languages.map(lan => {
+        return '/' + lan + '/' + path
+    })
+  }
+
   urlLanguageCheck(selectedLanguage, languageChange) {
-    console.log("URL language after first mount called");
+    console.log("URL language after first mount called", selectedLanguage);
     const urlPathname = window.location.pathname;
     const browserStorage = window.localStorage.getItem("lan");
-
     const doesItInclude = urlPathname.match(/e[ns]/);
     const doesItStartWith = urlPathname.match(/^\/e[ns]/);
+
     if (urlPathname === "/" && browserStorage) {
       languageChange(browserStorage);
+      history.push(`/${browserStorage}/home`);
       return;
+    }else if(urlPathname === "/" && !browserStorage){
+      return; //So it will go to languageSelect page
     }
 
-    if (!doesItInclude && browserStorage) {
-      console.log("SEE?");
-      languageChange(browserStorage);
-      history.push(`/${browserStorage}/notfound`);
+    if (!doesItStartWith) {
+    // if (!doesItInclude && browserStorage) {
+      languageChange(browserStorage || 'en');
+      // history.push(`/${browserStorage || 'en'}/notfound`);
       return;
-    }
-
-    //if localstorage is empty
-    if (urlPathname.length > 1 && !doesItInclude) {
-      languageChange("en");
-      history.push("/en/notfound");
-    }
-
-    if (!doesItInclude) return;
-
-    const urlLanguage = doesItInclude[0];
-
-    if (doesItStartWith && selectedLanguage !== urlLanguage)
+    }else if(doesItStartWith){
+      const urlLanguage = doesItInclude[0];
       languageChange(urlLanguage);
+    }
+
   }
 
   languageCheck(selectedLanguage) {
     const urlPathname = window.location.pathname;
     const doesItInclude = urlPathname.match(/e[ns]/);
+    
+    console.log('languageCheck called', selectedLanguage, urlPathname);
 
-    // if (selectedLanguage && !doesItStartWith && urlPathname.length < 5) {
     if (selectedLanguage && urlPathname === '/') {
       console.log("languageCheck 1st condition");
       history.push(`/${selectedLanguage}/home`);
     }
-
     if (
       selectedLanguage &&
       doesItInclude &&
@@ -98,18 +99,16 @@ class App extends React.Component {
       this.props.languageChange
     );
     window.addEventListener('load', this.loadHandle);
-
   }
   componentDidUpdate() {
+    console.log('App.js DID UPDATE');
     this.languageCheck(this.props.selectedLanguage); //ensuring that on every update ensure URL and selected language are a match.
   }
 
   render() {
+    // return<div><NotFound /></div>
     if (this.props.adminData.error) return this.props.adminData.error
-    if (!this.props.adminData.response) return "Please wait...";
-    // if (window.localStorage.getItem('lan')){
-    //   this.props.languageChange(window.localStorage.getItem('lan'))
-    // }
+    if (!this.props.adminData.response) return <Loading />;
     if (!this.props.selectedLanguage && !window.location.pathname.includes("notfound")){
       return <LanguageSelect />;
     }
@@ -119,12 +118,10 @@ class App extends React.Component {
           <Header components={[this.homeRef, this.musicRef, this.showsRef, this.notFoundRef]}/>
           <Language />
           <Switch>
-            <Route path="/:lan/home" exact ><this.homeComponent ref={this.homeRef} /></Route>
-            {/* <Route path="/:lan/home" exact ><Home ref={this.homeRef} /></Route> */}
-            <Route path="/:lan/music" exact ><this.musicComponent ref={this.musicRef} /></Route>
-            <Route path="/:lan/shows" exact ><this.showsComponent ref={this.showsRef} /></Route>
+            <Route path={this.pathsToMatch('home')} exact ><this.homeComponent ref={this.homeRef} /></Route>
+            <Route path={this.pathsToMatch('music')} exact ><this.musicComponent ref={this.musicRef} /></Route>
+            <Route path={this.pathsToMatch('shows')} exact ><this.showsComponent ref={this.showsRef} /></Route>
             <Route ><this.NotFoundComponent ref={this.notFoundRef} /></Route>
-            {/* <Route component={NotFound} /> */}
           </Switch>
           <Footer />
         </div>
@@ -135,8 +132,6 @@ class App extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    state: state.noReducer,
-    contact: state.contact.response,
     selectedLanguage: state.selectedLanguage.lan,
     adminData: state.adminData,
   };

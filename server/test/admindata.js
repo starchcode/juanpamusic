@@ -49,14 +49,30 @@ describe("Testing the Server /adminData:", () => {
           res.body.should.have.property("music");
           res.body.should.have.property("shows");
 
+          //shows should be an object with two keys upcoming and archive shows
+          res.body.shows.should.be.a("object");
+          res.body.shows.should.have.property("upcoming");
+          res.body.shows.should.have.property("pastshows");
+          res.body.shows.upcoming.should.be.a('array')
+          res.body.shows.pastshows.should.be.a('array')
+
           //home should have length of
           res.body.home.length.should.be.eql(6);
           res.body.music.forEach((el) => {
-            el.length.should.be.eql(7);
+            el.length.should.be.eql(9);
           });
-          res.body.shows.forEach((el) => {
-            el.length.should.be.eql(7);
+
+          //if event exists it should be 8
+          if(res.body.shows.upcoming.length){
+          res.body.shows.upcoming.forEach((el) => {
+            el.length.should.be.eql(8);
           });
+          }
+          if(res.body.shows.pastshows.length){
+            res.body.shows.pastshows.forEach((el) => {
+              el.length.should.be.eql(8);
+            });
+          }
 
           const ytURL = res.body.home[0];
           const spotifyURL = res.body.home[1];

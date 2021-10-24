@@ -1,6 +1,7 @@
 export const languageData = {
   en: {
     menu: ['Home', 'Biography', 'Music', 'Shows', 'Contact'],
+    notfound: ['This location does not exist!', 'Please choose from the top menu!'],
     contact: {
       text: ['Get in touch', 'Feel free to contact me for all your enquires including lessons and collabroationsor just say hi.', 'You can also reach me via this email:'],
       labels: ['Name', 'Email', 'Phone (optional)', 'Enquiry'],
@@ -34,10 +35,11 @@ export const languageData = {
       ]
     },
     music: ['Released on '],
-    shows: ['Info / Tickets']
+    shows: ['Info / Tickets', 'Upcoming Shows', 'Past Shows']
   },
   es: {
     menu: ['Hogar', 'Biografía', 'Música', 'Espectáculos', 'Contacto'],
+    notfound: ['¡Esta ubicación no existe!', '¡Elija del menú superior!'],
     contact: {
       text: ['Ponerse en contacto', 'No dude en ponerse en contacto conmigo para todas sus consultas, incluidas lecciones y colaboraciones, o simplemente decir hola.', 'También puede comunicarse conmigo a través de este correo electrónico:'],
       labels: ['Nombre', 'Correo electrónico', 'Teléfono (opcional)', 'Consulta'],
@@ -71,6 +73,6 @@ export const languageData = {
       ]
     },
     music: ['Lanzado el ', 'de '],
-    shows: ['Información / Entradas']
+    shows: ['Información / Entradas', 'Próximos conciertos', 'Conciertos pasados']
   },
 };

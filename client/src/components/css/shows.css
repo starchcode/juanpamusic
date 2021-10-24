@@ -78,3 +78,28 @@
     z-index: 1;
     width: 100%;
 }
+
+/* .showsBox.pastShows .showsRight p, .showsBox.pastShows .showsLeft p{ */
+
+.pastShows .showsLeft{
+    background-color: #3a3939;
+}
+
+.showsBox.pastShows .showsLeft > *,.showsBox.pastShows .showsRight > * {
+    color: #dddbdb9d;
+    font-size: 0.7rem;
+}
+
+.showsBox.pastShows .showsRight{
+    flex: 1 0 ;
+
+}
+.showsBox.pastShows .showsLeft{
+    flex: 1 0 ;
+}
+
+#shows h2{
+    color: #c7c3c3;
+    font-weight: 500;
+    font-style: italic;
+}

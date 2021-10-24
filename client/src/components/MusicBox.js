@@ -1,11 +1,11 @@
 import React from "react";
+import { languageData } from "./languageFile/languageFile";
 import applelogo from "../media/applelogo.png";
 import spotifylogo from "../media/spotifylogo.png";
 import bandcamplogo from "../media/bandcamplogo.png";
-
 import "./css/music.css";
-import { languageData } from "./languageFile/languageFile";
 import loader from "../media/loader.jpg";
+
 
 class MusicBox extends React.Component {
   constructor(props) {

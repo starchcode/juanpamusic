@@ -1,11 +1,9 @@
 import React from "react";
-
 import { Form, Field } from "react-final-form";
 import { connect } from "react-redux";
 import { sendEmail, cleanContact } from "../actions";
-
-import "./css/contactForm.css";
 import { languageData } from "./languageFile/languageFile";
+import "./css/contactForm.css";
 
 class ContactForm extends React.Component {
 componentDidMount() {

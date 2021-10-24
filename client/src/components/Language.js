@@ -2,9 +2,9 @@ import React from "react";
 import { connect } from "react-redux";
 import { languageChange } from "../actions";
 import "./css/language.css"
-
 import ukus from '../media/ukus.png';
 import es from '../media/es.png';
+
 
 class Language extends React.Component {
     languageHandler(lan) {

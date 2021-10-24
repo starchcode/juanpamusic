@@ -1,23 +1,28 @@
 import React from "react";
 import { connect } from "react-redux";
 import { languageChange } from "../actions";
+import history from "../history";
+import { languageData } from "./languageFile/languageFile";
+import "./css/notfound.css";
 
 class Notfound extends React.Component {
-  componentDidMount() {
-    console.log('NOT FOUND MOUNTED');
-    if (!this.props.selectedLanguage && !window.localStorage.getItem("lan")) {
-      this.props.languageChange("en");
-    } else if (!this.props.selectedLanguage) {
-      this.props.languageChange(window.localStorage.getItem("lan"));
-    }
-  }
+
+componentDidMount() {
+  // history.push('/' + this.props.selectedLanguage + '/notfound')
+}
 
   render() {
+    const notFoundURL = window.location.href
+    // console.log('not fount render')
+    // if(!this.props.selectedLanguage) return <div id="notfound" className="beforeEntry page">Please wait</div>
     return (
-      // <div ref={this.props.reference}>
-      <div ref={this.props.reference}>
-        <div style={{ color: "red" }}>Not Found</div>
-        <div>{this.props.selectedLanguage}</div>
+      <div id="notfound" className="beforeEntry page" ref={this.props.reference}>
+        <div>
+          <h1>{languageData[this.props.selectedLanguage].notfound[0]}</h1>
+          <p>{notFoundURL}</p>
+          <br />
+          <h2>{languageData[this.props.selectedLanguage].notfound[1]}</h2>
+        </div>
       </div>
     );
   }

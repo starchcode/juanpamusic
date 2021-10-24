@@ -21,7 +21,8 @@ admindata.get("/", async (req, res) => {
   const GET_RANGE = "A3:Y";
   let home = [];
   let music = [];
-  let shows = [];
+  let shows = {upcoming: [], pastshows: []};
+  let allShows = []
 
   try {
     await sheets.spreadsheets.values.get(
@@ -62,20 +63,34 @@ admindata.get("/", async (req, res) => {
                 /https:\/\/drive.google.com\/file\/d\/(.+)\/view/
               );
               if (imgID) {
-                musicArr[0] = "https://drive.google.com/uc?id="+imgID[1];
+                musicArr[0] = "https://drive.google.com/uc?id=" + imgID[1];
                 music.unshift(musicArr);
               }
             }
+
+            
             if (showsArr.every(Boolean) && showsArr.length == 8) {
-              shows.push(showsArr);
+              allShows.push(showsArr);
             }
-          });
-          shows.sort((a, b) => {
-            let date1 = a[0] + a[1] + a[2];
-            let date2 = b[0] + b[1] + b[2];
-            return Number(date2) - Number(date1);
+
           });
 
+
+          allShows.sort((a, b) => {
+            let date1 = new Date(a[0], Number(a[1]) - 1, a[2]);
+            let date2 = new Date(b[0], Number(b[1]) - 1, b[2]);
+  
+            return date2 - date1;
+            });
+            allShows.forEach(show => {
+
+              if(new Date(show[0], Number(show[1])-1, show[2]) - new Date(Date()) > 0){
+                  shows.upcoming.push(show)
+              }else{
+                  shows.pastshows.push(show)
+              }
+          })
+          
           return res.json({ home, music, shows });
         }
       }

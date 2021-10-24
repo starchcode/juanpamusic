@@ -1,0 +1,47 @@
+
+   
+#loader{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+      position: fixed;
+      /* center the div */
+      top:0;
+      right: 0;
+      left: 0;
+      margin-right: auto;
+      margin-left: auto;
+      /* give it dimensions */
+      min-height: 10em;
+      width: 100vw;
+      height: 100vh;
+      z-index: 20;
+      /* just for example presentation */
+      /* top: 12em; */
+      text-align: center;
+      cursor: wait;
+  }
+  
+  #headingLoader{
+      font-family: arial;
+      font-size: 2em;
+      text-transform: uppercase;
+      letter-spacing: 6px;
+      color: rgba(255, 255, 255, 0.692);
+      text-shadow: 0 1px 0 #3f3f3f,
+                   0 2px 0 #3f3f3f,
+                   0 3px 0 #3f3f3f,
+                   0 4px 0 #3f3f3f,
+                   0 5px 0 #3f3f3f,
+                   0px 20px 8px rgba(0, 0, 0, 0.1);
+      animation: myanim 3s both alternate infinite linear;
+    }
+    
+    @keyframes myanim {
+      0% {
+        transform: rotateY(-25deg);
+      }
+      100% {
+        transform: rotateY(25deg);
+      }
+    }

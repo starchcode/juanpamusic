@@ -1,10 +1,10 @@
 import React from "react";
 import './css/socialLinks.css';
-
 import spotify from "../media/spotify.svg";
 import ig from "../media/ig.svg";
 import fb from "../media/fb.svg";
 import yt from "../media/yt.svg";
+
 
 const SocialLinks = (props) => {
   const links = {

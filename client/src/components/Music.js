@@ -1,25 +1,24 @@
 import React from "react";
-
-import "./css/music.css";
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
+import "./css/music.css";
 import MusicBox from './MusicBox';
-import { FadeInHandler } from "../hooks/AnimationNavigation";
 
 
 const Music = (props) => {
   const selectedLanguage = useSelector(state => state.selectedLanguage.lan);
+  const disography = useSelector(state => state.adminData.response.music);
 
-  FadeInHandler(props.reference) 
+useEffect(() => {
+  console.log('Music DID Mount')
+}, [])
 
-  const renderMusic = () => {
-    return props.data.music.map((data, i) => {
+ const renderMusic = () => {
+    return disography.map((data, i) => {
       return <MusicBox key={i} data={data} i={i} lan={selectedLanguage}/>
     });
   }
-  
-    if (!props.data) return "loading: music not ready...";
-
-    return <div id="Music" className="beforeEntry" ref={props.reference}>{renderMusic()}</div>;
+    return <div id="music" className="beforeEntry" ref={props.reference}>{renderMusic()}</div>;
   
 }
 

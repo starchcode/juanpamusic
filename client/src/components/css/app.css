@@ -11,7 +11,12 @@
 
 body {
   background-color: #5a4839;
-
+}
+h1{
+  font-size: 2rem;
+}
+h2{
+  font-size: 1rem;
 }
 #root {
   overflow: hidden;
@@ -26,6 +31,11 @@ body {
   min-height: 100vh;
 }
 
+.page{
+  width: 100vw;
+  min-height: 90vh;
+}
+
 .success {
   color: rgb(44, 207, 44);
   opacity: 1;
@@ -36,7 +46,7 @@ body {
 }
 
 .beforeEntry {
-  opacity: 0.2;
+  opacity: 0;
 
   transform: scale(0.9) skewX(2deg);
   transition: all .5s;
@@ -73,15 +83,21 @@ body {
     color: saddlebrown;
     cursor: pointer;
   }
+  #header li div:hover {
+    color: saddlebrown;
+    cursor: pointer;
+  }
   #social_links img:hover {
     filter: invert(28%) sepia(88%) saturate(518%) hue-rotate(343deg)
       brightness(93%) contrast(96%);
     cursor: pointer;
     transform: scale(1.2);
   }
-  #header a:hover {
+#header li div:hover  {
     opacity: 0.8;
     transition: all 0.1s;
     color: rgb(189, 167, 46);
+    transform: scale(1.05);
+
   }
 }

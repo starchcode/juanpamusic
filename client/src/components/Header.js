@@ -1,23 +1,23 @@
 import React from "react";
-import { Link } from "react-router-dom";
-// import { connect } from "react-redux";
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
-
-// import NavigationAnimation from "../hooks/NavigationAnimation";
 import { NavigationHandler } from "../hooks/AnimationNavigation";
-
-import "./css/header.css";
-
-import logo from "../media/logo.png";
 import { languageData } from "./languageFile/languageFile";
+import "./css/header.css";
+import logo from "../media/logo.png";
 
 const Header = (props) => {
   const selectedLanguage = useSelector((state) => state.selectedLanguage.lan);
+  const [handleNav] = NavigationHandler(props.components, props.components[1]);
 
-  const [handleNav] = NavigationHandler(props.components);
+  // useEffect(() => {
+  //   console.log("Header.js DID UPDATE");
+  //   console.log(props.components[1].current)
+  // }, [props.components[1].current]);
+
+
 
   const menuButtons = () => {
-
     return (
       <ul>
         {languageData[selectedLanguage].menu.map((menuButton, i) => {
