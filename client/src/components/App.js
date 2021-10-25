@@ -7,6 +7,7 @@ import { languageChange, getAdminData } from "../actions";
 import "./css/app.css";
 
 import Loading from "./Loading";
+import Error from "./Error";
 import Header from "./Header";
 import Language from "./Language";
 import LanguageSelect from "./LanguageSelect";
@@ -20,6 +21,7 @@ import Footer from "./Footer";
 class App extends React.Component {
   constructor(props){
     super(props)
+    this.state = { isLoaded: false }
     this.languages = ['en', 'es']
     this.homeRef = React.createRef();
     this.musicRef = React.createRef();
@@ -40,11 +42,14 @@ class App extends React.Component {
   }
 
   urlLanguageCheck(selectedLanguage, languageChange) {
-    console.log("URL language after first mount called", selectedLanguage);
+    // console.log("URL language after first mount called", selectedLanguage);
     const urlPathname = window.location.pathname;
     const browserStorage = window.localStorage.getItem("lan");
     const doesItInclude = urlPathname.match(/e[ns]/);
     const doesItStartWith = urlPathname.match(/^\/e[ns]/);
+
+    const isItOnlyLanguage = urlPathname.match(/^\/e[ns]\/?$/);
+    // console.log("isItOnlyLanguage ",isItOnlyLanguage)
 
     if (urlPathname === "/" && browserStorage) {
       languageChange(browserStorage);
@@ -58,10 +63,10 @@ class App extends React.Component {
     // if (!doesItInclude && browserStorage) {
       languageChange(browserStorage || 'en');
       // history.push(`/${browserStorage || 'en'}/notfound`);
-      return;
-    }else if(doesItStartWith){
+    }else if(isItOnlyLanguage){
       const urlLanguage = doesItInclude[0];
       languageChange(urlLanguage);
+      history.push(`/${urlLanguage}/home`);
     }
 
   }
@@ -70,10 +75,10 @@ class App extends React.Component {
     const urlPathname = window.location.pathname;
     const doesItInclude = urlPathname.match(/e[ns]/);
     
-    console.log('languageCheck called', selectedLanguage, urlPathname);
+    // console.log('languageCheck called', selectedLanguage, urlPathname);
 
     if (selectedLanguage && urlPathname === '/') {
-      console.log("languageCheck 1st condition");
+      // console.log("languageCheck 1st condition");
       history.push(`/${selectedLanguage}/home`);
     }
     if (
@@ -92,8 +97,10 @@ class App extends React.Component {
     }
   }
 
-  loadHandle() {
-    console.log('loaded!');
+  loadHandle = () => {
+    console.log('isLoaded? ', this.state.isLoaded);
+    this.setState({isLoaded: true})
+    console.log('isLoaded? ', this.state.isLoaded);
   }
   componentDidMount() {
     this.props.getAdminData(); // get data from backend
@@ -103,18 +110,18 @@ class App extends React.Component {
       this.props.languageChange
     );
     window.addEventListener('load', this.loadHandle);
+    // this.homeRef.current.addEventListener('load', this.loadHandle);
     window.addEventListener('popstate',()=> this.languageCheck());
   }
   componentDidUpdate() {
-    console.log('App.js DID UPDATE');
     this.languageCheck(this.props.selectedLanguage); //ensuring that on every update ensure URL and selected language are a match.
   }
 
   render() {
     // return<div><NotFound /></div>
-    if (this.props.adminData.error) return this.props.adminData.error
-    if (!this.props.adminData.response) return <Loading />;
-    if (!this.props.selectedLanguage && !window.location.pathname.includes("notfound")){
+    if (this.props.adminData.error) return <Error message={this.props.adminData.error}/>
+    if (!this.state.isLoaded || !this.props.adminData.response) return <Loading />;
+    if (!this.props.selectedLanguage){
       return <LanguageSelect />;
     }
     return (

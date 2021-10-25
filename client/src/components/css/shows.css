@@ -21,7 +21,8 @@
     flex-direction: column;
     justify-content: center;
     background-color: #283D50;
-    flex: 1 0 33%;
+    flex: 1 0 15%;
+    padding: 10px 0;
 }
 
 .showsLeft p:nth-child(2){
@@ -29,10 +30,11 @@
     line-height: 110%;
     font-size: 4rem;
 }
-.showsLeft p:nth-child(3){
+.showsLeft p:nth-child(3), .showsLeft p:nth-child(4){
     font-size: smaller;
 }
-.showsLeft p:nth-child(4){
+
+.showsLeft p:nth-child(5){
     color: #A3872A;
 }   
 
@@ -102,4 +104,25 @@
     color: #c7c3c3;
     font-weight: 500;
     font-style: italic;
+    padding-top: 40px;
+}
+
+@media only screen and (max-width: 600px){
+    .showsBox{
+        min-width: initial;
+        width: 100%;
+    }
+    #shows h1{
+        font-size: 1.5rem;
+    }
+}
+
+@media only screen and (max-width: 413px){
+    #shows h1{
+        font-size: 1rem;
+    }
+    .showsRight img{
+        width: initial;
+        height: 100%;
+    }
 }

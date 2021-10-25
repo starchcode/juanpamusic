@@ -97,4 +97,30 @@
     height: 30%;
 }
 
+@media only screen and (max-width: 800px){
+    #music{
+        padding-top: 170px;
+    }
+}
+@media only screen and (max-width: 600px){
+    .musicBox{
+        flex-direction: column;
+        max-height: none;
+    }
+    .musicBox div:nth-child(1){
 
+    }
+    .musicBox div:nth-child(2){
+        /* flex-direction: row; */
+        /* flex-basis:initial; */
+        flex: initial;
+        padding-top: 10px;
+
+    }
+    .loader{
+        display: none;
+    }
+    .musiclinks div:nth-child(2){
+        flex: 1 0 50%;
+    }
+}

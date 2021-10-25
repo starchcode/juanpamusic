@@ -1,13 +1,6 @@
-
-#contactComponent {
-    padding: 15px;
-    padding-right: 30px;
-    flex: 1;
-}
 #contactForm input, textarea {
     color: #262626;
     font-size: 0.9rem;
-
 }
 
 .form label{

@@ -72,7 +72,7 @@ const Header = (props) => {
 
   return (
     <div id="header">
-      <img src={logo} alt="logo of juanpa music" />
+      <img src={logo} onClick={() => handleNav(`/${selectedLanguage}/home`)} alt="logo of juanpa music" />
       {menuButtons()}
     </div>
   );

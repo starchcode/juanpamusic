@@ -7,24 +7,20 @@ import SocialLinks from "./SocialLinks";
 import Bio from "./Bio";
 import ContactForm from "./ContactForm";
 import juanpapic1 from "../media/juanpapic1.jpg";
-
+import Image from "./Image.js";
 
 const Home = (props) => {
-  const [handleNav] =  NavigationHandler(props.components);
+  const [handleNav] = NavigationHandler(props.components);
   const selectedLanguage = useSelector((state) => state.selectedLanguage.lan);
   const adminData = useSelector((state) => state.adminData);
-
 
   const callToActionText = languageData[selectedLanguage].menu;
   const contactText = languageData[selectedLanguage].contact.text;
 
-//TODO: remove this useEffect:
-
-
-useEffect(() => {
-  console.log('Home DID MOUNT')
-
-}, [])
+  //TODO: remove this :
+  useEffect(() => {
+    console.log("Home DID MOUNT");
+  }, []);
 
   if (!adminData.response) return "Loading...";
 
@@ -36,7 +32,12 @@ useEffect(() => {
     <div id="home" className="beforeEntry" ref={props.reference}>
       <div id="homeBG"></div>
       <div id="juanpapic1">
-        <img src={juanpapic1} alt="juanpa playing guitar" />
+        <Image
+          src={juanpapic1}
+          alt="juanpa playing guitar"
+          initClasses="beforeEntry"
+          classesToAdd="fadein"
+        />
       </div>
       <div id="home_main">
         <iframe
@@ -49,21 +50,31 @@ useEffect(() => {
           allowFullScreen=""
           allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
         ></iframe>
-        <iframe
-          width="560"
-          height="315"
-          src={`https://www.youtube-nocookie.com/embed/${ytID}`}
-          title="YouTube video player"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        ></iframe>
+          <iframe
+          id="youtube"
+            width="560"
+            height="315"
+            src={`https://www.youtube-nocookie.com/embed/${ytID}`}
+            title="YouTube video player"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            className=""
+          ></iframe>
         <div id="home_linkBox">
-          <h1 onClick={()=>handleNav(`/${selectedLanguage}/music`)} className="whiteBG">
-          {/* <h1  className="whiteBG"> */}
+          <h1
+            onClick={() => handleNav(`/${selectedLanguage}/music`)}
+            className="whiteBG"
+          >
+            {/* <h1  className="whiteBG"> */}
             {callToActionText[2]}
           </h1>
-          <h1 onClick={()=>handleNav(`/${selectedLanguage}/shows`)} className="whiteBG">{callToActionText[3]}</h1>
+          <h1
+            onClick={() => handleNav(`/${selectedLanguage}/shows`)}
+            className="whiteBG"
+          >
+            {callToActionText[3]}
+          </h1>
           {/* <h1  className="whiteBG">{callToActionText[3]}</h1> */}
           <SocialLinks />
         </div>

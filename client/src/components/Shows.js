@@ -23,8 +23,9 @@ const Shows = (props) => {
       return (
         <div className="showsBox" key={i}>
           <div className="showsLeft">
-            <p>{month} - {show[0]}</p>
+            <p>{month}</p>
             <p>{show[2]}</p>
+            <p>{show[0]}</p>
             <p>{day}</p>
             <p>{show[3]}</p>
           </div>

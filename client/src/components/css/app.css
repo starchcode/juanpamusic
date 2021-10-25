@@ -31,6 +31,14 @@ h2{
   min-height: 100vh;
 }
 
+.message{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
 .page{
   width: 100vw;
   min-height: 90vh;
@@ -47,7 +55,6 @@ h2{
 
 .beforeEntry {
   opacity: 0;
-
   transform: scale(0.9) skewX(2deg);
   transition: all .5s;
 }
@@ -86,6 +93,10 @@ h2{
   #header li div:hover {
     color: saddlebrown;
     cursor: pointer;
+    opacity: 0.8;
+    transition: all 0.1s;
+    color: rgb(189, 167, 46);
+    transform: scale(1.05);
   }
   #social_links img:hover {
     filter: invert(28%) sepia(88%) saturate(518%) hue-rotate(343deg)
@@ -93,11 +104,8 @@ h2{
     cursor: pointer;
     transform: scale(1.2);
   }
-#header li div:hover  {
-    opacity: 0.8;
-    transition: all 0.1s;
-    color: rgb(189, 167, 46);
+  #header img:hover {
     transform: scale(1.05);
-
+    cursor: pointer;
   }
 }
