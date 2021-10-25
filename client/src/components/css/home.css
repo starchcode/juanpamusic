@@ -6,7 +6,11 @@
   position: absolute;
   height: 100vh;
   width: 100%;
-  background: linear-gradient(90deg, rgba(59,29,0,0.35) 0%, rgba(0,0,0,0) 71%);
+  background: linear-gradient(
+    90deg,
+    rgba(59, 29, 0, 0.35) 0%,
+    rgba(0, 0, 0, 0) 71%
+  );
   z-index: -11;
   left: 0;
 }
@@ -16,7 +20,7 @@
   position: absolute;
   padding-top: 2%;
   z-index: -10;
-  opacity: .3;
+  opacity: 0.3;
   right: 0;
 }
 #juanpapic1 img {
@@ -31,34 +35,35 @@
   align-items: center;
 }
 
-#spotify, #youtube {
+#spotify,
+#youtube {
   margin-right: 10px;
   margin-left: 10px;
 }
 
-#home_linkBox{
+#home_linkBox {
   display: flex;
   flex-direction: column;
   padding-left: 10px;
   text-align: left;
   max-width: 200px;
 }
-.whiteBG{
+.whiteBG {
   font-size: 2rem;
-  position: relative; 
+  position: relative;
   overflow: hidden;
   border-radius: 10px;
   transition: all 0.2s;
 }
 
-.whiteBG:before{
+.whiteBG:before {
   content: "";
   position: absolute;
   left: -10px;
-  top: -10px;  
+  top: -10px;
   background-color: #ffffff50;
   height: 90%;
-  width:  65%;
+  width: 65%;
   z-index: -1;
   border-radius: 10px;
 }
@@ -72,22 +77,22 @@
   align-items: center;
 }
 
-#contactText{
+#contactText {
   flex: 2 1 200px;
 }
 #contactText h2 {
   font-size: larger;
   font-weight: 300;
 }
-#contactText p{
+#contactText p {
   font-size: smaller;
   font-weight: 200;
 }
 
-#contactText p b{
+#contactText p b {
   font-weight: bolder;
 }
-#contactText a{
+#contactText a {
   font-style: italic;
   font-weight: 100;
 }
@@ -98,30 +103,28 @@
   flex: 1;
 }
 
-@media only screen and (max-width: 1260px){
-  #contactText{
+@media only screen and (max-width: 1260px) {
+  #contactText {
     flex: 1 1;
   }
-  #contactComponent{
-    flex: 1 1;  
+  #contactComponent {
+    flex: 1 1;
   }
 }
 
-@media only screen and (max-width: 1050px){
-  #home_main{
+@media only screen and (max-width: 1050px) {
+  #home_main {
     align-items: flex-end;
   }
-  #youtube{
-
+  #youtube {
   }
-  #home_linkBox{
+  #home_linkBox {
     align-self: flex-start;
     padding-top: 20px;
   }
-
 }
 
-@media only screen and (max-width: 849px){
+@media only screen and (max-width: 849px) {
   #youtube {
     order: 1;
   }
@@ -130,36 +133,83 @@
     margin-top: 10px;
     order: 2;
   }
-  #home_linkBox{
-    order: 3
+  #home_linkBox {
+    order: 3;
   }
-
 }
 
-@media only screen and (max-width: 666px){
-  #contactSection{
+@media only screen and (max-width: 666px) {
+  #contactSection {
     flex-direction: column;
   }
-  #contactText{
+  #contactText {
     padding-top: 20px;
   }
-  #contactComponent{
+  #contactComponent {
     padding-top: 40px;
     padding-bottom: 30px;
     width: 90%;
   }
 }
 
-@media only screen and (max-width: 550px){
-  #contactComponent{
+@media only screen and (max-width: 550px) {
+  #contactComponent {
     width: 95%;
   }
 }
-@media only screen and (max-width: 469px){
+@media only screen and (max-width: 469px) {
   #youtube {
     margin: 150px 10px 0 10px;
   }
   #spotify {
     height: 300px;
+  }
+}
+
+@media only screen and (max-height: 666px) {
+  #home_main {
+    padding-top: 150px;
+  }
+  #spotify {
+    height: 300px;
+  }
+  #home_linkBox {
+    flex-direction: row;
+    /* max-width: 70%; */
+    gap: 15px;
+  }
+  #social_links {
+    flex: 1 0 25%;
+  }
+}
+
+@media only screen and (max-height: 724px) {
+  #home_main {
+    height: auto;
+  }
+  #spotify {
+    padding-bottom: 20px;
+  }
+}
+@media only screen and (max-height: 666px) {
+  #home_linkBox {
+    padding-bottom: 20px;
+  }
+  #home_linkBox {
+    max-width: 95%;
+  }
+}
+
+@media only screen and (max-height: 536px) {
+  #home_main {
+    flex-direction: column;
+    align-items: center;
+  }
+  #spotify {
+    align-self: initial;
+  }
+  #home_linkBox {
+    align-self: initial;
+    padding-bottom: 20px;
   }
 }

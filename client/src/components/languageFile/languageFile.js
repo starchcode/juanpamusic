@@ -7,7 +7,7 @@ export const languageData = {
       labels: ['Name', 'Email', 'Phone (optional)', 'Enquiry'],
       placeholder: 'Please write your message...',
       button: 'Submit',
-      errors: ['Please enter your name', 'Please enter your Email', 'Email address must be valid!','Phone number must be valid!', 'Please enter your enquiry', 'Your enquiry is too long!']
+      errors: ['Please enter your name', 'Please enter your e-mail', 'Email address must be valid!','Phone number must be valid!', 'Please enter your enquiry', 'Your enquiry is too long!']
     },
     dates:{
       days: [
@@ -35,7 +35,8 @@ export const languageData = {
       ]
     },
     music: ['Released on '],
-    shows: ['Info / Tickets', 'Upcoming Shows', 'Past Shows']
+    shows: ['Info / Tickets', 'Upcoming Shows', 'Past Shows'],
+    footer: ['Designed and developed starchCode.com']
   },
   es: {
     menu: ['Hogar', 'Biografía', 'Música', 'Espectáculos', 'Contacto'],
@@ -73,6 +74,7 @@ export const languageData = {
       ]
     },
     music: ['Lanzado el ', 'de '],
-    shows: ['Información / Entradas', 'Próximos conciertos', 'Conciertos pasados']
+    shows: ['Información / Entradas', 'Próximos conciertos', 'Conciertos pasados'],
+    footer: ['Diseñada y desarrollada por starchCode.com']
   },
 };

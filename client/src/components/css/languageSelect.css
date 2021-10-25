@@ -7,13 +7,21 @@
   background-color: #4b4540;
   position: relative;
 }
+#languageSelect > *{
+  text-align: center;
+}
+.buttons {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
 
 #languageSelect button {
   border: none;
   color: #262626;
   background-color: #d8d6d6;
   padding: 5px 40px;
-  margin: 0 40px;
+  margin: 15px 40px;
   position: relative;
   z-index: 10;
   transform: scale(1.4);
@@ -57,5 +65,11 @@
     }
     100% {
       opacity: 0.2;
+    }
+  }
+
+  @media only screen and (max-height: 490px){
+    #languageSelect video {
+      height: auto;
     }
   }

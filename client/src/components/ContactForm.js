@@ -61,12 +61,12 @@ componentDidMount() {
       <div id="contactComponent">
         <div id="contactForm">
           <Form
-            initialValues={{
-              Name: "Dave",
-              Email: "a@a.com",
-              Phone: 0,
-              Enquiry: "hi...",
-            }}
+            // initialValues={{
+            //   Name: "Dave",
+            //   Email: "starch@code.com",
+            //   Phone: +666,
+            //   Enquiry: "hi...",
+            // }}
             validate={(formValues) => {
     
               const validEmailRegex = RegExp(
