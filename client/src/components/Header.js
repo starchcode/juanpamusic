@@ -10,13 +10,6 @@ const Header = (props) => {
   const selectedLanguage = useSelector((state) => state.selectedLanguage.lan);
   const [handleNav] = NavigationHandler(props.components, props.components[1]);
 
-  // useEffect(() => {
-  //   console.log("Header.js DID UPDATE");
-  //   console.log(props.components[1].current)
-  // }, [props.components[1].current]);
-
-
-
   const menuButtons = () => {
     return (
       <ul>
@@ -26,7 +19,6 @@ const Header = (props) => {
           if (pathToGo === "Biography" || pathToGo === "Contact") {
             return (
               <li key={i}>
-                {/* onClick={()=>handleNavigation(`${selectedLanguage}/shows`)} */}
                 <div
                   onClick={() => {
                     handleNav(`/${selectedLanguage}/home`);
@@ -57,7 +49,6 @@ const Header = (props) => {
 
           return (
             <li key={i}>
-              {/* onClick={()=>handleNavigation(`${selectedLanguage}/shows`)} */}
               <div
                 onClick={() => handleNav(`/${selectedLanguage}/${pathToGo}`)}
               >
@@ -78,9 +69,4 @@ const Header = (props) => {
   );
 };
 
-// const mapStateToProps = state => {
-//   return {
-//     selectedLanguage: state.selectedLanguage.lan
-//   }
-// }
 export default Header;

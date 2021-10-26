@@ -17,18 +17,12 @@ const Home = (props) => {
   const callToActionText = languageData[selectedLanguage].menu;
   const contactText = languageData[selectedLanguage].contact.text;
 
-  //TODO: remove this :
-  useEffect(() => {
-    console.log("Home DID MOUNT");
-  }, []);
-
   if (!adminData.response) return "Loading...";
 
   const ytID = adminData.response.home[0];
   const spotifyID = adminData.response.home[1];
 
   return (
-    // <div id="home" ref={homeRef}>
     <div id="home" className="beforeEntry" ref={props.reference}>
       <div id="homeBG"></div>
       <div id="juanpapic1">
@@ -56,7 +50,6 @@ const Home = (props) => {
             onClick={() => handleNav(`/${selectedLanguage}/music`)}
             className="whiteBG"
           >
-            {/* <h1  className="whiteBG"> */}
             {callToActionText[2]}
           </h1>
           <h1
@@ -65,7 +58,6 @@ const Home = (props) => {
           >
             {callToActionText[3]}
           </h1>
-          {/* <h1  className="whiteBG">{callToActionText[3]}</h1> */}
           <SocialLinks />
         </div>
       </div>

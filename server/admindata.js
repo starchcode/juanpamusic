@@ -47,7 +47,6 @@ admindata.get("/", async (req, res, next) => {
 
         if (gres.status === 200) {
           logger(`☑️  Data recieved, this is your data:` + gres.data.values);
-          // console.log(gres.data.values);
           gres.data.values.forEach((element, i, arr) => {
             let homeArr = element.slice(0, 6);
             let musicArr = element.slice(7, 16);

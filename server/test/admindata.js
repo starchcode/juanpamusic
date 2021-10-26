@@ -12,14 +12,6 @@ chai.use(chaiHttp);
 
 //Our parent block
 describe("Testing the Server /adminData:", () => {
-  // beforeEach((done) => { //Before each test we empty the database
-  //     Book.remove({}, (err) => {
-  //        done();
-  //     });
-  // });
-  /*
-   * Test the /GET route
-   */
 
   describe("/GET", () => {
     it("Server should be running", (done) => {
@@ -88,14 +80,6 @@ describe("Testing the Server /adminData:", () => {
           done();
         });
     });
-
-    // it('Shows must be in order from latest to newes', (done) => {
-    //   chai.request(server)
-    //     .get('/admindata')
-    //     .end((err, res) => {
-    //       res.body.shows
-    //     })
-    // })
   });
 
 });

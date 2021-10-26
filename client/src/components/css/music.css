@@ -7,7 +7,6 @@
     gap: 15px;
     min-height: 90vh;
     background-color: #4B4540;
-    /* min-height: 100vh; */
 }
 
 .musicBox{
@@ -15,7 +14,6 @@
     flex-direction: row;
     max-width: 600px;
     max-height: 300px;
-    /* margin-top: 7px; */
     overflow:hidden;
     padding-top: 15px;
     position: relative;
@@ -117,8 +115,6 @@
 
     }
     .musicBox div:nth-child(2){
-        /* flex-direction: row; */
-        /* flex-basis:initial; */
         flex: initial;
         padding-top: 10px;
 

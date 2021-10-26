@@ -8,20 +8,6 @@ import loader from "../media/loader.jpg";
 import Image from "./Image";
 
 class MusicBox extends React.Component {
-  constructor(props) {
-    super(props);
-    this.imgRef = React.createRef();
-  }
-
-  showImage = () => {
-    // this.imgRef.current.className = this.imgRef.current.className + " loaded";
-  };
-  componentDidMount() {
-    // this.imgRef.current.addEventListener("load", this.showImage);
-  }
-componentWillUnmount() {
-  // this.imgRef.current.removeEventListener("load", this.showImage);
-}
 
   render() {
     const day = this.props.data[5];

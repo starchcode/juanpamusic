@@ -50,13 +50,11 @@ componentDidMount() {
   }
 
   render() {
-    // console.log('contact prop: ', this.props.contact);
     const response = this.props.contact && this.props.contact.message ? this.props.contact.message : null;
     const error = typeof this.props.contact === 'string' ? this.props.contact : null;
-    // console.log('error? : ', this.props.contact);
-    // console.log('error variable is: ', error);
     const labels = languageData[this.props.selectedLanguage].contact.labels;
     const buttonText = languageData[this.props.selectedLanguage].contact.button;
+    
     return (
       <div id="contactComponent">
         <div id="contactForm">

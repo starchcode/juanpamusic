@@ -31,11 +31,10 @@
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
-  height: 100vh;
+  min-height: 100vh;
   align-items: center;
 }
 
-/* #spotify, */
 #youtube {
   margin-right: 10px;
   margin-left: 10px;
@@ -44,7 +43,7 @@
 #home_linkBox {
   display: flex;
   flex-direction: column;
-  padding-left: 10px;
+  /* padding-left: 10px; */
   text-align: left;
   max-width: 200px;
 }
@@ -71,7 +70,6 @@
 #contactSection {
   display: flex;
   position: relative;
-  /* z-index: 20; */
   background-color: rgba(40, 80, 79, 0.5);
   justify-content: center;
   align-items: center;
@@ -113,14 +111,7 @@
 }
 
 @media only screen and (max-width: 1050px) {
-  #home_main {
-    /* padding-top: 120px; */
-    /* align-items: flex-end; */
-  }
-  #youtube {
-  }
   #home_linkBox {
-    /* align-self: flex-start; */
     padding-top: 20px;
   }
 }
@@ -129,17 +120,6 @@
   #home_main{
     height: auto;
     padding: 150px 0 150px 0;
-  }
-  #youtube {
-
-  }
-  /* #spotify {
-    align-self: flex-start;
-    margin-top: 10px;
-    order: 2;
-  } */
-  #home_linkBox {
-    /* align-self: flex-start; */
   }
 }
 
@@ -150,10 +130,7 @@
 }
 
 @media only screen and (max-width: 666px) {
-  /* #home_main{
-    height: auto;
-    padding: 150px 0 20px 0;
-  } */
+
   #contactSection {
     flex-direction: column;
   }
@@ -179,22 +156,17 @@
   #youtube {
     margin: 150px 10px 0 10px;
   }
-  /* #spotify {
-    height: 300px;
-  } */
 }
 
 @media only screen and (max-height: 666px) {
   #home_main {
     padding-top: 150px;
   }
-  /* #spotify {
-    height: 300px;
-  } */
+
   #home_linkBox {
-    flex-direction: row;
-    /* max-width: 70%; */
-    gap: 15px;
+
+    /* flex-direction: row; */
+    /* gap: 15px; */
   }
   #social_links {
     flex: 1 0 25%;
@@ -205,16 +177,15 @@
   #home_main {
     height: auto;
   }
-  /* #spotify {
-    padding-bottom: 20px;
-  } */
 }
+
 @media only screen and (max-height: 666px) {
   #home_linkBox {
     padding-bottom: 20px;
   }
   #home_linkBox {
-    max-width: 95%;
+    padding-top: 15px;
+    /* max-width: 95%; */
   }
 }
 
@@ -223,9 +194,6 @@
     flex-direction: column;
     align-items: center;
   }
-  /* #spotify {
-    align-self: initial;
-  } */
   #home_linkBox {
     align-self: initial;
     padding-bottom: 20px;

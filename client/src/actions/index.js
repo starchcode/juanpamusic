@@ -1,15 +1,11 @@
-// import history from "../history";
 import server from "../apis/server";
+
 
 export const sendEmail = (formValues) => async (dispatch, getState) => {
   try {
-    // console.log('action creator getState', getState())
     const response = await server.post("/contact", { ...formValues });
-    // console.log('Response status',response.config.method.toUpperCase(), ':', response.status);
     dispatch({ type: "sendEmail", payload: response.data });
   } catch (e) {
-    // console.log("response: ", e.response.data);
-    // console.log("Server error: ", e.response.statusText, e.response.status);
     dispatch({
       type: "sendEmail",
       payload:
@@ -21,17 +17,25 @@ export const sendEmail = (formValues) => async (dispatch, getState) => {
     });
   }
 };
+
 export const cleanContact = () => {
     return { type: 'cleanContact' }
 }
+
 export const getAdminData = () => async (dispatch) => {
   try {
     const response = await server.get("/admindata");
     dispatch({ type: "adminData", payload: response });
   } catch (e) {
-    console.log(e.response.status)
-    const status = e.response.status || null;
-    const message = e.response.data || null;
+    let message, status;
+    console.log(e.message)
+    if(e.response){
+      status = e.response.status || null;
+      message = e.response.data || null;
+    }else if(e.message){
+      status = null;
+      message = e.message || null;
+    }
 
     dispatch({
       type: "error",

@@ -5,14 +5,10 @@ import { languageData } from "./languageFile/languageFile";
 
 class Notfound extends React.Component {
 
-componentDidMount() {
-  // history.push('/' + this.props.selectedLanguage + '/notfound')
-}
 
   render() {
     const notFoundURL = window.location.href
-    // console.log('not fount render')
-    // if(!this.props.selectedLanguage) return <div id="notfound" className="beforeEntry page">Please wait</div>
+    
     return (
       <div id="notfound" className="beforeEntry message page" ref={this.props.reference}>
         <div>

@@ -6,20 +6,7 @@ import juanpavideo from '../media/juanpavideo.mp4';
 
 
 class LanguageSelect extends React.Component {
-  // if cdm not needed remove all these
-  constructor(props){
-    super(props);
-    this.vidRef = React.createRef();
-  }
-componentDidMount() {
-  // this.vidRef.current.addEventListener('load', this.videoHandler())
-}
-// videoHandler = () => {
-//   setInterval(() => {
-//     this.vidRef.current.volume = 0.05;
 
-//   }, 1000);
-// }
   render() {
     return (
       <div id="languageSelect">
@@ -34,7 +21,6 @@ componentDidMount() {
           <button onClick={() => this.props.languageChange("es")}>Español</button>
         </div>
         <video 
-        ref={this.vidRef}
         loop
         autoPlay
         muted

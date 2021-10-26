@@ -53,8 +53,6 @@ const Shows = (props) => {
           </div>
           <div className="showsRight">
             <p>{title} @{show[6]}</p> 
-            {/* <div><a href={show[7]} target="_blank" rel="noreferrer">{infoText}</a></div> */}
-            {/* <img src={showsjuanpa} alt="juanpa playing guitar" /> */}
           </div>
         </div>
       );

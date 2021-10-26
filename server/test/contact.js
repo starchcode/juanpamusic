@@ -24,7 +24,6 @@ chai.use(chaiHttp);
         .post("/contact")
         .send(body)
         .end((err, res) => {
-          // console.log('status: ', res.status)
           res.should.have.status(400);
           done();
         });
@@ -40,7 +39,6 @@ chai.use(chaiHttp);
         .post("/contact")
         .send(body)
         .end((err, res) => {
-          // console.log('status: ', res.status)
           res.should.have.status(400);
           done();
         });
@@ -56,7 +54,6 @@ chai.use(chaiHttp);
         .post("/contact")
         .send(body)
         .end((err, res) => {
-          // console.log('status: ', res.status)
           res.should.have.status(400);
           done();
         });

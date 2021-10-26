@@ -43,7 +43,6 @@ contact.post("/", async (req, res, next) => {
       pass: process.env.PASS, // generated ethereal password
     },
   });
-        // res.status(200).json({ message: "Message sent!" });
 
   let info = transporter.sendMail(
     {
@@ -59,8 +58,6 @@ contact.post("/", async (req, res, next) => {
       } else {
         console.log("email sent!");
         res.status(200).json({ message: "Message sent!" });
-        //   res.send({ result: "Message sent!",
-        //   type: 'contact' });
       }
     }
   );

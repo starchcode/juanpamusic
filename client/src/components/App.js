@@ -42,14 +42,12 @@ class App extends React.Component {
   }
 
   urlLanguageCheck(selectedLanguage, languageChange) {
-    // console.log("URL language after first mount called", selectedLanguage);
     const urlPathname = window.location.pathname;
     const browserStorage = window.localStorage.getItem("lan");
     const doesItInclude = urlPathname.match(/e[ns]/);
     const doesItStartWith = urlPathname.match(/^\/e[ns]/);
 
     const isItOnlyLanguage = urlPathname.match(/^\/e[ns]\/?$/);
-    // console.log("isItOnlyLanguage ",isItOnlyLanguage)
 
     if (urlPathname === "/" && browserStorage) {
       languageChange(browserStorage);
@@ -60,9 +58,7 @@ class App extends React.Component {
     }
 
     if (!doesItStartWith) {
-    // if (!doesItInclude && browserStorage) {
       languageChange(browserStorage || 'en');
-      // history.push(`/${browserStorage || 'en'}/notfound`);
     }else if(isItOnlyLanguage){
       const urlLanguage = doesItInclude[0];
       languageChange(urlLanguage);
@@ -74,11 +70,8 @@ class App extends React.Component {
   languageCheck(selectedLanguage) {
     const urlPathname = window.location.pathname;
     const doesItInclude = urlPathname.match(/e[ns]/);
-    
-    // console.log('languageCheck called', selectedLanguage, urlPathname);
 
     if (selectedLanguage && urlPathname === '/') {
-      // console.log("languageCheck 1st condition");
       history.push(`/${selectedLanguage}/home`);
     }
     if (
@@ -86,7 +79,6 @@ class App extends React.Component {
       doesItInclude &&
       doesItInclude[0] !== selectedLanguage
     ) {
-      // console.log('languageCheck 2nd condition')
       const regex = new RegExp(doesItInclude[0]);
       const newHistory = urlPathname.replace(regex, selectedLanguage);
       history.push(newHistory);
@@ -106,21 +98,18 @@ class App extends React.Component {
   }
   componentDidMount() {
     this.props.getAdminData(); // get data from backend
-    //if language is typed as en or es in URL add it to Redux state on initial render
     this.urlLanguageCheck(
       this.props.selectedLanguage,
       this.props.languageChange
     );
     window.addEventListener('load', this.loadHandle);
-    // this.homeRef.current.addEventListener('load', this.loadHandle);
-    window.addEventListener('popstate',()=> this.languageCheck());
+    window.addEventListener('popstate',()=> this.languageCheck()); //when user clicks back and forward button we want to check language!
   }
   componentDidUpdate() {
     this.languageCheck(this.props.selectedLanguage); //ensuring that on every update ensure URL and selected language are a match.
   }
 
   render() {
-    // return<div><NotFound /></div>
     if (this.props.adminData.error) return <Error message={this.props.adminData.error}/>
     if (!this.state.isLoaded || !this.props.adminData.response) return <Loading />;
     if (!this.props.selectedLanguage){
