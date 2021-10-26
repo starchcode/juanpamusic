@@ -35,7 +35,7 @@ export const languageData = {
       ]
     },
     music: ['Released on '],
-    shows: ['Info / Tickets', 'Upcoming Shows', 'Past Shows'],
+    shows: ['Info / Tickets', 'Upcoming Shows', 'Past Shows', 'No upcoming shows yet. But please visit this page soon!', 'Today\'s shows'],
     footer: ['Designed and developed starchCode.com']
   },
   es: {
@@ -74,7 +74,7 @@ export const languageData = {
       ]
     },
     music: ['Lanzado el ', 'de '],
-    shows: ['Información / Entradas', 'Próximos conciertos', 'Conciertos pasados'],
+    shows: ['Información / Entradas', 'Próximos conciertos', 'Conciertos pasados', 'Aún no hay programas próximos. ¡Pero visite esta página pronto!', 'Conciertos de hoy'],
     footer: ['Diseñada y desarrollada por starchCode.com']
   },
 };

@@ -36,7 +36,7 @@
     }
 }
 
-@media only screen and (max-width: 450px){
+@media only screen and (max-width: 550px){
     #header ul{
         flex-wrap: wrap;
         justify-content: center;

@@ -7,7 +7,9 @@
     align-items: center;
     gap: 15px
 }
-
+#shows h1:nth-child(3){
+    font-size: 1.7rem;
+}
 .showsBox{
     display: flex;
     min-width: 600px;

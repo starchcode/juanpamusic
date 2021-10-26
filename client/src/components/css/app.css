@@ -21,14 +21,7 @@ h2{
 #root {
   overflow: hidden;
 }
-.buttons {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-}
-.buttons > *{
-  padding-top: 50px;
-}
+
 .overlay {
   display: absolute;
 }

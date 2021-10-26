@@ -10,10 +10,11 @@ const Shows = (props) => {
   NavigationHandler([props.reference]); //to make component fade
   const selectedLanguage = useSelector(state => state.selectedLanguage.lan);
   const upcomingShows = useSelector(state => state.adminData.response.shows.upcoming)
+  const todayShows = useSelector(state => state.adminData.response.shows.today)
   const pastShows = useSelector(state => state.adminData.response.shows.pastshows)
 
 
-  const renderUpcomingShows = () => {
+  const renderUpcomingShows = (upcomingShows) => {
     const infoText = languageData[selectedLanguage].shows[0];
 
     return upcomingShows.map((show, i) => {
@@ -61,8 +62,11 @@ const Shows = (props) => {
   };
 
   return <div id="shows" ref={props.reference} className="beforeEntry">
+    <h1>{todayShows.length? languageData[selectedLanguage].shows[4]: ''}</h1>
+    {renderUpcomingShows(todayShows)}
     <h1>{languageData[selectedLanguage].shows[1]}</h1>
-    {renderUpcomingShows()}
+    <p>{!upcomingShows.length ? languageData[selectedLanguage].shows[3] : '' }</p>
+    {renderUpcomingShows(upcomingShows)}
     <h2>{languageData[selectedLanguage].shows[2]}</h2>
     {renderPastShows()}
     </div>;

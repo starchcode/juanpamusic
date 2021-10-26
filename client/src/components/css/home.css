@@ -114,6 +114,7 @@
 
 @media only screen and (max-width: 1050px) {
   #home_main {
+    padding-top: 120px;
     align-items: flex-end;
   }
   #youtube {
@@ -158,6 +159,9 @@
   }
 }
 @media only screen and (max-width: 469px) {
+  #home_main{
+    height: auto;
+  }
   #youtube {
     margin: 150px 10px 0 10px;
   }

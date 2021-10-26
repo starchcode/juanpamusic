@@ -21,7 +21,7 @@ admindata.get("/", async (req, res) => {
   const GET_RANGE = "A3:Y";
   let home = [];
   let music = [];
-  let shows = {upcoming: [], pastshows: []};
+  let shows = {upcoming: [],today: [], pastshows: []};
   let allShows = []
 
   try {
@@ -82,10 +82,17 @@ admindata.get("/", async (req, res) => {
   
             return date2 - date1;
             });
-            allShows.forEach(show => {
 
-              if(new Date(show[0], Number(show[1])-1, show[2]) - new Date(Date()) > 0){
+            const now = new Date(Date())
+            const todaysDate = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+
+            allShows.forEach(show => {
+            const whenIs = new Date(show[0], Number(show[1])-1, show[2]) - todaysDate;
+              if(whenIs > 0){
                   shows.upcoming.push(show)
+              }else if(whenIs == 0){
+                console.log('YES')
+                shows.today.push(show);
               }else{
                   shows.pastshows.push(show)
               }

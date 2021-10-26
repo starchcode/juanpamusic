@@ -52,7 +52,9 @@ describe("Testing the Server /adminData:", () => {
           //shows should be an object with two keys upcoming and archive shows
           res.body.shows.should.be.a("object");
           res.body.shows.should.have.property("upcoming");
+          res.body.shows.should.have.property("today");
           res.body.shows.should.have.property("pastshows");
+          res.body.shows.upcoming.should.be.a('array')
           res.body.shows.upcoming.should.be.a('array')
           res.body.shows.pastshows.should.be.a('array')
 
