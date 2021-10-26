@@ -12,10 +12,10 @@
 body {
   background-color: #5a4839;
 }
-h1{
+h1 {
   font-size: 2rem;
 }
-h2{
+h2 {
   font-size: 1rem;
 }
 #root {
@@ -31,7 +31,7 @@ h2{
   min-height: 100vh;
 }
 
-.message{
+.message {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -39,7 +39,7 @@ h2{
   text-align: center;
 }
 
-.page{
+.page {
   width: 100vw;
   min-height: 90vh;
 }
@@ -56,31 +56,31 @@ h2{
 .beforeEntry {
   opacity: 0;
   transform: scale(0.9) skewX(2deg);
-  transition: all .5s;
+  transition: all 0.5s;
 }
 .fadein {
   transform: revert !important;
   opacity: 1 !important;
 }
-.fadeout{
-  animation: goaway .2s forwards;
+.fadeout {
+  animation: goaway 0.2s forwards;
 }
 
 @keyframes fadein {
-  from{
+  from {
     opacity: 0;
   }
-  to{
+  to {
     opacity: 1;
   }
 }
-@keyframes goaway{
-  from{
+@keyframes goaway {
+  from {
     transform: translate(0, 0);
     opacity: 1;
   }
-  to{
-    transform:translate(200px, 200px);
+  to {
+    transform: translate(200px, 200px);
     opacity: 0;
   }
 }
@@ -112,6 +112,31 @@ h2{
     font-size: 0.7rem;
     color: khaki;
   }
+
+  /*Music*/
+  .musicBox:hover .musicimg{
+    transform: scale(1.05);
+  }
+  .musicBox div:nth-child(2):hover .musiclinks div a{
+    opacity: 0.65;
+  }
+  .musiclinks div a:hover{
+    opacity: 1 !important;
+  }
+
+
+  /*Shows*/
+  #shows .showsBox {
+    transform: scale(0.95);
+  }
+  #shows .showsBox:hover {
+    transform: scale(1);
+  }
+  .showsRight div:hover a {
+    /* info/tickets */
+    padding-right: 20px;
+    color: black;
+  }
 }
 
 /*Firefox issue */
@@ -119,4 +144,4 @@ h2{
   .buttons {
     margin-top: 30px;
   }
-  }
+}

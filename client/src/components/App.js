@@ -101,6 +101,8 @@ class App extends React.Component {
     console.log('isLoaded? ', this.state.isLoaded);
     this.setState({isLoaded: true})
     console.log('isLoaded? ', this.state.isLoaded);
+
+    console.log(document.cookie.split(';'))
   }
   componentDidMount() {
     this.props.getAdminData(); // get data from backend

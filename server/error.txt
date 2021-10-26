@@ -1,0 +1,228 @@
+-------------------
+  'we recieved an error @ Tue, 26 Oct 2021 10:59:38 GMT 404
+  here is your error:
+  Error: Email is invalid!
+  -------------------
+  -------------------
+  'we recieved an error @ Tue, 26 Oct 2021 11:01:08 GMT 404
+  here is your error:
+  Error: Google API 
+Requested entity was not found.
+  -------------------
+  -------------------
+  'we recieved an error @ Tue, 26 Oct 2021 11:04:00 GMT 404
+  here is your error:
+  Error: Google API Error 
+Requested entity was not found.
+  -------------------
+  -------------------
+  'we recieved an error @ Tue, 26 Oct 2021 11:04:42 GMT 404
+  here is your error:
+  Error: Google API Error 
+Requested entity was not found.
+  -------------------
+  -------------------
+  'we recieved an error @ Tue, 26 Oct 2021 11:05:17 GMT 404
+  here is your error:
+  Error: Google API Error 
+Requested entity was not found.
+  -------------------
+  -------------------
+  'we recieved an error @ Tue, 26 Oct 2021 11:05:27 GMT 404
+  here is your error:
+  Error: Google API Error 
+Requested entity was not found.
+  -------------------
+  -------------------
+  'we recieved an error @ Tue, 26 Oct 2021 11:06:03 GMT 404
+  here is your error:
+  Error: Google API Error 
+Requested entity was not found.
+  -------------------
+  -------------------
+  'we recieved an error @ Tue, 26 Oct 2021 11:06:08 GMT 404
+  here is your error:
+  Error: Google API Error 
+Requested entity was not found.
+  -------------------
+  -------------------
+  'we recieved an error @ Tue, 26 Oct 2021 11:06:36 GMT 404
+  here is your error:
+  Error: Google API Error 
+Requested entity was not found.
+  -------------------
+  -------------------
+  'we recieved an error @ Tue, 26 Oct 2021 11:06:37 GMT 404
+  here is your error:
+  Error: Google API Error 
+Requested entity was not found.
+  -------------------
+  -------------------
+  'we recieved an error @ Tue, 26 Oct 2021 11:07:01 GMT 404
+  here is your error:
+  Error: Google API Error 
+Requested entity was not found.
+  -------------------
+  -------------------
+  'we recieved an error @ Tue, 26 Oct 2021 11:07:18 GMT 404
+  here is your error:
+  Error: Google API Error 
+Requested entity was not found.
+  -------------------
+  -------------------
+  'we recieved an error @ Tue, 26 Oct 2021 11:07:19 GMT 404
+  here is your error:
+  Error: Google API Error 
+Requested entity was not found.
+  -------------------
+  -------------------
+  'we recieved an error @ Tue, 26 Oct 2021 11:07:29 GMT 404
+  here is your error:
+  Error: Google API Error 
+Requested entity was not found.
+  -------------------
+  -------------------
+  'we recieved an error @ Tue, 26 Oct 2021 11:07:30 GMT 404
+  here is your error:
+  Error: Google API Error 
+Requested entity was not found.
+  -------------------
+  -------------------
+  'we recieved an error @ Tue, 26 Oct 2021 11:07:57 GMT 404
+  here is your error:
+  Error: Google API Error 
+Requested entity was not found.
+  -------------------
+  -------------------
+  'we recieved an error @ Tue, 26 Oct 2021 11:08:19 GMT 404
+  here is your error:
+  Error: Google API Error 
+Requested entity was not found.
+  -------------------
+  -------------------
+  'we recieved an error @ Tue, 26 Oct 2021 11:08:34 GMT 404
+  here is your error:
+  Error: Google API Error 
+Requested entity was not found.
+  -------------------
+  -------------------
+  'we recieved an error @ Tue, 26 Oct 2021 11:09:04 GMT 404
+  here is your error:
+  Error: Google API Error 
+Requested entity was not found.
+  -------------------
+  -------------------
+  'we recieved an error @ Tue, 26 Oct 2021 11:09:05 GMT 404
+  here is your error:
+  Error: Google API Error 
+Requested entity was not found.
+  -------------------
+  -------------------
+  'we recieved an error @ Tue, 26 Oct 2021 11:09:17 GMT 404
+  here is your error:
+  Error: Google API Error 
+Requested entity was not found.
+  -------------------
+  -------------------
+  'we recieved an error @ Tue, 26 Oct 2021 11:09:17 GMT 404
+  here is your error:
+  Error: Google API Error 
+Requested entity was not found.
+  -------------------
+  -------------------
+  'we recieved an error @ Tue, 26 Oct 2021 11:09:47 GMT 404
+  here is your error:
+  Error: Google API Error 
+Requested entity was not found.
+  -------------------
+  -------------------
+  'we recieved an error @ Tue, 26 Oct 2021 11:09:50 GMT 404
+  here is your error:
+  Error: Google API Error 
+Requested entity was not found.
+  -------------------
+  -------------------
+  'we recieved an error @ Tue, 26 Oct 2021 11:09:51 GMT 404
+  here is your error:
+  Error: Google API Error 
+Requested entity was not found.
+  -------------------
+  -------------------
+  'we recieved an error @ Tue, 26 Oct 2021 11:10:08 GMT 404
+  here is your error:
+  Error: Google API Error 
+Requested entity was not found.
+  -------------------
+  -------------------
+  'we recieved an error @ Tue, 26 Oct 2021 11:10:10 GMT 404
+  here is your error:
+  Error: Google API Error 
+Requested entity was not found.
+  -------------------
+  -------------------
+  'we recieved an error @ Tue, 26 Oct 2021 11:10:10 GMT 404
+  here is your error:
+  Error: Google API Error 
+Requested entity was not found.
+  -------------------
+  -------------------
+  'we recieved an error @ Tue, 26 Oct 2021 11:10:21 GMT 404
+  here is your error:
+  Error: Google API Error 
+Requested entity was not found.
+  -------------------
+  -------------------
+  'we recieved an error @ Tue, 26 Oct 2021 11:10:22 GMT 404
+  here is your error:
+  Error: Google API Error 
+Requested entity was not found.
+  -------------------
+  -------------------
+  'we recieved an error @ Tue, 26 Oct 2021 11:10:29 GMT 404
+  here is your error:
+  Error: Google API Error 
+Requested entity was not found.
+  -------------------
+  -------------------
+  'we recieved an error @ Tue, 26 Oct 2021 11:10:31 GMT 404
+  here is your error:
+  Error: Google API Error 
+Requested entity was not found.
+  -------------------
+  -------------------
+  'we recieved an error @ Tue, 26 Oct 2021 11:12:29 GMT 404
+  here is your error:
+  Error: Google API Error 
+Requested entity was not found.
+  -------------------
+  -------------------
+  'we recieved an error @ Tue, 26 Oct 2021 11:12:30 GMT 404
+  here is your error:
+  Error: Google API Error 
+Requested entity was not found.
+  -------------------
+  -------------------
+  'we recieved an error @ Tue, 26 Oct 2021 11:12:38 GMT 404
+  here is your error:
+  Error: Google API Error 
+Requested entity was not found.
+  -------------------
+  -------------------
+  'we recieved an error @ Tue, 26 Oct 2021 11:12:43 GMT 404
+  here is your error:
+  Error: Google API Error 
+Requested entity was not found.
+  -------------------
+  -------------------
+  'we recieved an error @ Tue, 26 Oct 2021 11:12:43 GMT 404
+  here is your error:
+  Error: Google API Error 
+Requested entity was not found.
+  -------------------
+  -------------------
+  'we recieved an error @ Tue, 26 Oct 2021 11:12:55 GMT 404
+  here is your error:
+  Error: Google API Error 
+Requested entity was not found.
+  -------------------
+  

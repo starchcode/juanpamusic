@@ -35,7 +35,7 @@
     opacity: 0;
     position: relative;
     z-index: 10;
-    transition: opacity 1s;
+    transition: opacity 2s, transform 0.2s;
 }
 .loader {
     position: relative;
@@ -88,6 +88,7 @@
 }
 .musiclinks div:nth-child(1) a {
     height: 70%;
+    transition: all 0.2s;
 }
 .musiclinks div:nth-child(1) img {
     height: 100%;
@@ -98,6 +99,8 @@
 
 .musiclinks div:nth-child(2) a{
     height: 30%;
+    transition: all 0.2s;
+
 }
 
 @media only screen and (max-width: 800px){

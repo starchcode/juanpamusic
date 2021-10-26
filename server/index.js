@@ -9,7 +9,6 @@ const cors = require("cors");
 require("dotenv").config();
 
 //SETUP:
-
 app = express();
 const PORT = process.env.PORT || 4000;
 
@@ -65,32 +64,26 @@ app.get("/", (req, res) => {
 
 const admindata = require("./admindata");
 app.use("/admindata", limiter1, admindata);
-// app.use("/admindata", limiter3, admindata);
 
 const contact = require("./contact");
 app.use("/contact", limiter2, limiter3, contact);
-// app.use("/contact", contact);
-
-
-// const test = require("./test");
-// app.use("/test", limiter1, test);
 
 // Error handler route:
   app.use((err, req, res, next) => {
     const status = err.status || 500;
   
-  // const DATA = `-------------------
-  // 'we recieved an error @ ${new Date().toUTCString()} ${status}
-  // here is your error:
-  // ${err}
-  // -------------------
-  // `
-  // console.log(DATA)
-    // fs.appendFile('error.txt', DATA, function (err) {
-    //   if (err) throw err;
-    //   console.log('Saved!');
-    // });
-    // err.statusText = err.statusText + ' ' + err.message
+  const DATA = `-------------------
+  'we recieved an error @ ${new Date().toUTCString()} ${status}
+  here is your error:
+  ${err}
+  -------------------
+  `
+  console.log(DATA)
+    fs.appendFile('error.txt', DATA, function (err) {
+      if (err) throw err;
+      console.log('Saved!');
+    });
+    err.statusText = err.statusText + ' ' + err.message
   console.log('EROOR: ', err.status, err.statusText);
     res.status(status).send(err.message);
   });

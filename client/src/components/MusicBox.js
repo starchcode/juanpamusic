@@ -5,7 +5,7 @@ import spotifylogo from "../media/spotifylogo.png";
 import bandcamplogo from "../media/bandcamplogo.png";
 import "./css/music.css";
 import loader from "../media/loader.jpg";
-
+import Image from "./Image";
 
 class MusicBox extends React.Component {
   constructor(props) {
@@ -14,13 +14,13 @@ class MusicBox extends React.Component {
   }
 
   showImage = () => {
-    this.imgRef.current.className = this.imgRef.current.className + " loaded";
+    // this.imgRef.current.className = this.imgRef.current.className + " loaded";
   };
   componentDidMount() {
-    this.imgRef.current.addEventListener("load", this.showImage);
+    // this.imgRef.current.addEventListener("load", this.showImage);
   }
 componentWillUnmount() {
-  this.imgRef.current.removeEventListener("load", this.showImage);
+  // this.imgRef.current.removeEventListener("load", this.showImage);
 }
 
   render() {
@@ -44,12 +44,11 @@ componentWillUnmount() {
     return (
       <div className="musicBox" key={this.props.i}>
         <div>
-          <img
-            ref={this.imgRef}
-            src={this.props.data[0]}
-            loading="lazy"
-            className="musicimg"
-            alt="artwork"
+          <Image 
+          src={this.props.data[0]}
+          alt="artwork"
+          initClasses="musicimg"
+          classesToAdd="loaded"
           />
           <img src={loader} loading="lazy" className="loader" alt="default artwork"/>
         </div>

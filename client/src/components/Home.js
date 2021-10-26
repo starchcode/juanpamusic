@@ -40,16 +40,6 @@ const Home = (props) => {
         />
       </div>
       <div id="home_main">
-        <iframe
-          title="spotify playlist"
-          id="spotify"
-          src={`https://open.spotify.com/embed/playlist/${spotifyID}`}
-          width="250"
-          height="380"
-          frameBorder="0"
-          allowFullScreen=""
-          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-        ></iframe>
           <iframe
           id="youtube"
             width="560"

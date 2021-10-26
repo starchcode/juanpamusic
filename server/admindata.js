@@ -15,7 +15,7 @@ google.options({
 });
 
 //ROUTER:
-admindata.get("/", async (req, res) => {
+admindata.get("/", async (req, res, next) => {
   const SP_ID = "173A6E2LtQgSKSRPzSB_jappnMiLzlicK8ZVaCNrkNAc";
   const SHEET = "data!";
   const GET_RANGE = "A3:Y";
@@ -34,12 +34,15 @@ admindata.get("/", async (req, res) => {
       (err, gres) => {
         if (err) {
           logger(
+            "API returned an error: \n" +
             err.response.data.error.code +
               "\n" +
               err.response.data.error.message
           );
           console.log("API returned an error");
-          throw err;
+          const error = new Error( "Google API Error \n" + err.response.data.error.message);
+          error.status = err.response.data.error.code;
+          next(error);
         }
 
         if (gres.status === 200) {
@@ -52,11 +55,12 @@ admindata.get("/", async (req, res) => {
             if (i === 0 && homeArr.every(Boolean) && homeArr.length == 6) {
               home.push(...homeArr);
               const ytID = home[0].match(/(https:\/\/youtu.be\/)(.+)/);
-              const spotifyID = home[1].match(
-                /(https:\/\/open.spotify.com\/playlist\/)(.+)[?](.*)/
-              );
+              // const spotifyID = home[1].match(
+              //   /(https:\/\/open.spotify.com\/playlist\/)(.+)[?](.*)/
+              // );
               home[0] = ytID ? ytID[2] : "cUCko5nDLVI";
-              home[1] = spotifyID ? spotifyID[2] : "7t7eU85sSDHaw0ZAj9SXro";
+              home[1] = "NoSpotify";
+              // home[1] = spotifyID ? spotifyID[2] : "7t7eU85sSDHaw0ZAj9SXro";
             }
             if (musicArr.every(Boolean) && musicArr.length == 9) {
               const imgID = musicArr[0].match(

@@ -10,7 +10,6 @@ export const sendEmail = (formValues) => async (dispatch, getState) => {
   } catch (e) {
     // console.log("response: ", e.response.data);
     // console.log("Server error: ", e.response.statusText, e.response.status);
-
     dispatch({
       type: "sendEmail",
       payload:
@@ -30,13 +29,15 @@ export const getAdminData = () => async (dispatch) => {
     const response = await server.get("/admindata");
     dispatch({ type: "adminData", payload: response });
   } catch (e) {
+    console.log(e.response.status)
+    const status = e.response.status || null;
+    const message = e.response.data || null;
+
     dispatch({
       type: "error",
       payload:
         "We encountered an error with the message: " +
-        e.message +
-        " and response status of: " +
-        e.status,
+       message + " and response status of: " + status
     });
   }
 };
