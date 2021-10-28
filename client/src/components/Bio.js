@@ -7,6 +7,7 @@ import { languageData } from "./languageFile/languageFile";
 
 class Bio extends React.Component {
   render() {
+    console.log(this.props.lan)
     return (
       <div id="bio">
         <div className="bioImage">
@@ -18,7 +19,7 @@ class Bio extends React.Component {
           />
         </div>
         <div className="bioText">
-          <h2>{languageData["en"].menu[2]}</h2>
+          <h2>{languageData[this.props.lan].menu[1]}</h2>
           <br />
           <p>
             {this.props.lan === "en" ? this.props.data[2] : this.props.data[4]}
