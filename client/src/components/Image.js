@@ -5,7 +5,11 @@ const Image = ({ src, alt, initClasses, classesToAdd }) => {
 
   useEffect(() => {
     const fadeInHandler = ()=> ref.current? ref.current.classList.add(classesToAdd): null;
-    ref.current.addEventListener("load", fadeInHandler);
+    if(ref.current){
+      fadeInHandler()
+    }else{
+      ref.current.addEventListener("load", fadeInHandler);
+    }
   }, []);
 
   return <img src={src} ref={ref} alt={alt} className={initClasses} />;

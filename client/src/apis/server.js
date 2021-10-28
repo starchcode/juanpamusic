@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // export default axios.create({
-//     baseURL:'http://localhost:4000'
+//     baseURL:'http://192.168.0.31:4000'
 // })
 export default axios.create({
     baseURL:'https://nodejs.juanpamusic.com'

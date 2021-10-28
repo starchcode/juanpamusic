@@ -62,13 +62,13 @@ admindata.get("/", async (req, res, next) => {
               // home[1] = spotifyID ? spotifyID[2] : "7t7eU85sSDHaw0ZAj9SXro";
             }
             if (musicArr.every(Boolean) && musicArr.length == 9) {
-              const imgID = musicArr[0].match(
-                /https:\/\/drive.google.com\/file\/d\/(.+)\/view/
-              );
-              if (imgID) {
-                musicArr[0] = "https://drive.google.com/uc?id=" + imgID[1];
+              // const imgID = musicArr[0].match(
+              //   /https:\/\/drive.google.com\/file\/d\/(.+)\/view/
+              // );
+              // if (imgID) {
+                // musicArr[0] = "https://drive.google.com/uc?id=" + imgID[1];
                 music.unshift(musicArr);
-              }
+              // }
             }
 
             

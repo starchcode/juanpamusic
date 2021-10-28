@@ -24,7 +24,7 @@ class MusicBox extends React.Component {
     } else if (this.props.lan === "es") {
         const firstWord = languageData[this.props.lan].music[0];
         const prep = languageData[this.props.lan].music[1];
-      date = firstWord + day + ' ' + prep + month + prep + year;
+      date = firstWord + day + ' ' + prep + month + ' ' + prep + year;
     }
 
     return (
@@ -36,6 +36,8 @@ class MusicBox extends React.Component {
           initClasses="musicimg"
           classesToAdd="loaded"
           />
+          {/* <img src="https://i.ibb.co/1rXCVHf/OLYMPUS-DIGITAL-CAMERA.jpg" loading="lazy" className="loader" alt="default artwork"/> */}
+          {/* <img src={require('../media/loader.jpg').default} loading="lazy" className="loader" alt="default artwork"/> */}
           <img src={loader} loading="lazy" className="loader" alt="default artwork"/>
         </div>
         <div>

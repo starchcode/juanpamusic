@@ -2,6 +2,8 @@ import React from "react";
 import "./css/bio.css";
 import juanpapic2 from "../media/juanpapic2.jpg";
 import Image from "./Image";
+import { languageData } from "./languageFile/languageFile";
+
 
 class Bio extends React.Component {
   render() {
@@ -16,7 +18,7 @@ class Bio extends React.Component {
           />
         </div>
         <div className="bioText">
-          <h2>Biography</h2>
+          <h2>{languageData["en"].menu[2]}</h2>
           <br />
           <p>
             {this.props.lan === "en" ? this.props.data[2] : this.props.data[4]}

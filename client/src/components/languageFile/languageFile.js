@@ -46,7 +46,7 @@ export const languageData = {
       labels: ['Nombre', 'Correo electrónico', 'Teléfono (opcional)', 'Consulta'],
       placeholder: 'Por favor escriba su mensaje ...',
       button: 'Enviar',
-      errors: ['por favor, escriba su nombre', 'Por favor introduzca su correo electrónico', 'La dirección de correo electrónico debe ser válida.','¡El número de teléfono debe ser válido!', 'Por favor ingrese su consulta', '¡Tu consulta es demasiado larga!']
+      errors: ['Por favor, escriba su nombre', 'Por favor introduzca su correo electrónico', 'La dirección de correo electrónico debe ser válida.','¡El número de teléfono debe ser válido!', 'Por favor ingrese su consulta', '¡Tu consulta es demasiado larga!']
     },
     dates:{
       days: [
@@ -74,7 +74,7 @@ export const languageData = {
       ]
     },
     music: ['Lanzado el ', 'de '],
-    shows: ['Información / Entradas', 'Próximos conciertos', 'Conciertos pasados', 'Aún no hay programas próximos. ¡Pero visite esta página pronto!', 'Conciertos de hoy'],
+    shows: ['Información / Entradas', 'Próximos conciertos', 'Conciertos pasados', 'Todavía no hay próximos conciertos confirmados. ¡Visite la página pronto para más noticias!', 'Conciertos de hoy'],
     footer: ['Diseñada y desarrollada por starchCode.com']
   },
 };

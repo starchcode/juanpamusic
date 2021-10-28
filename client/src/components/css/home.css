@@ -4,7 +4,7 @@
 
 #homeBG {
   position: absolute;
-  height: 100vh;
+  height: 100%;
   width: 100%;
   background: linear-gradient(
     90deg,
@@ -147,6 +147,9 @@
 @media only screen and (max-width: 550px) {
   #contactComponent {
     width: 95%;
+  }
+  #juanpapic1{
+    right: auto;
   }
 }
 @media only screen and (max-width: 469px) {

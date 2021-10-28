@@ -12,8 +12,8 @@ app = express();
 const PORT = process.env.PORT || 4000;
 
 var whitelist = [
-  "http://localhost:3000",
-  "http://192.168.0.31:3000",
+  // "http://localhost:3000",
+  // "http://192.168.0.31:3000",
   "https://juanpamusic.com",
   "https://www.juanpamusic.com",
 ];

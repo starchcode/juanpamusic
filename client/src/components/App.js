@@ -89,13 +89,8 @@ class App extends React.Component {
     }
   }
 
-  loadHandle = () => {
-    console.log('isLoaded? ', this.state.isLoaded);
-    this.setState({isLoaded: true})
-    console.log('isLoaded? ', this.state.isLoaded);
-
-    console.log(document.cookie.split(';'))
-  }
+  loadHandle = () => this.setState({isLoaded: true})
+  
   componentDidMount() {
     this.props.getAdminData(); // get data from backend
     this.urlLanguageCheck(

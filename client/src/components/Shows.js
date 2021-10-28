@@ -2,25 +2,36 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { NavigationHandler } from "../hooks/AnimationNavigation";
 import { languageData } from "./languageFile/languageFile";
+import ScrollToTop from "./ScrollToTop";
 import "./css/shows.css";
 import showsjuanpa from "../media/showsjuanpa.jpg";
 
-
 const Shows = (props) => {
   NavigationHandler([props.reference]); //to make component fade
-  const selectedLanguage = useSelector(state => state.selectedLanguage.lan);
-  const upcomingShows = useSelector(state => state.adminData.response.shows.upcoming)
-  const todayShows = useSelector(state => state.adminData.response.shows.today)
-  const pastShows = useSelector(state => state.adminData.response.shows.pastshows)
-
+  const selectedLanguage = useSelector((state) => state.selectedLanguage.lan);
+  const upcomingShows = useSelector(
+    (state) => state.adminData.response.shows.upcoming
+  );
+  const todayShows = useSelector(
+    (state) => state.adminData.response.shows.today
+  );
+  const pastShows = useSelector(
+    (state) => state.adminData.response.shows.pastshows
+  );
 
   const renderUpcomingShows = (upcomingShows) => {
     const infoText = languageData[selectedLanguage].shows[0];
 
     return upcomingShows.map((show, i) => {
-      const month = languageData[selectedLanguage].dates.months[new Date(`${show[1]}/${show[2]}/${show[0]}`).getMonth()]
-      const day = languageData[selectedLanguage].dates.days[new Date(`${show[1]}/${show[2]}/${show[0]}`).getDay()]
-      const title = selectedLanguage === 'en' ? show[4] : show[5];
+      const month =
+        languageData[selectedLanguage].dates.months[
+          new Date(`${show[1]}/${show[2]}/${show[0]}`).getMonth()
+        ];
+      const day =
+        languageData[selectedLanguage].dates.days[
+          new Date(`${show[1]}/${show[2]}/${show[0]}`).getDay()
+        ];
+      const title = selectedLanguage === "en" ? show[4] : show[5];
       return (
         <div className="showsBox" key={i}>
           <div className="showsLeft">
@@ -31,8 +42,14 @@ const Shows = (props) => {
             <p>{show[3]}</p>
           </div>
           <div className="showsRight">
-            <p>{title} @{show[6]}</p> 
-            <div><a href={show[7]} target="_blank" rel="noreferrer">{infoText}</a></div>
+            <p>
+              {title} @{show[6]}
+            </p>
+            <div>
+              <a href={show[7]} target="_blank" rel="noreferrer">
+                {infoText}
+              </a>
+            </div>
             <img src={showsjuanpa} alt="juanpa playing guitar" />
           </div>
         </div>
@@ -43,31 +60,48 @@ const Shows = (props) => {
     const infoText = languageData[selectedLanguage].shows[0];
 
     return pastShows.map((show, i) => {
-      const month = languageData[selectedLanguage].dates.months[new Date(`${show[1]}/${show[2]}/${show[0]}`).getMonth()]
-      const day = languageData[selectedLanguage].dates.days[new Date(`${show[1]}/${show[2]}/${show[0]}`).getDay()]
-      const title = selectedLanguage === 'en' ? show[4] : show[5];
+      const month =
+        languageData[selectedLanguage].dates.months[
+          new Date(`${show[1]}/${show[2]}/${show[0]}`).getMonth()
+        ];
+      const day =
+        languageData[selectedLanguage].dates.days[
+          new Date(`${show[1]}/${show[2]}/${show[0]}`).getDay()
+        ];
+      const title = selectedLanguage === "en" ? show[4] : show[5];
       return (
         <div className="showsBox pastShows" key={i}>
           <div className="showsLeft">
-            <p>{show[0]} - {month} {show[2]} ({day}) at {show[3]}</p>
+            <p>
+              {show[0]} - {month} {show[2]} ({day}) at {show[3]}
+            </p>
           </div>
           <div className="showsRight">
-            <p>{title} @{show[6]}</p> 
+            <p>
+              {title} @{show[6]}
+            </p>
           </div>
         </div>
       );
     });
   };
 
-  return <div id="shows" ref={props.reference} className="beforeEntry">
-    <h1>{todayShows.length? languageData[selectedLanguage].shows[4]: ''}</h1>
-    {renderUpcomingShows(todayShows)}
-    <h1>{languageData[selectedLanguage].shows[1]}</h1>
-    <p>{!upcomingShows.length ? languageData[selectedLanguage].shows[3] : '' }</p>
-    {renderUpcomingShows(upcomingShows)}
-    <h2>{languageData[selectedLanguage].shows[2]}</h2>
-    {renderPastShows()}
-    </div>;
+  return (
+    <div id="shows" ref={props.reference} className="beforeEntry">
+      <ScrollToTop />
+      <h1>
+        {todayShows.length ? languageData[selectedLanguage].shows[4] : ""}
+      </h1>
+      {renderUpcomingShows(todayShows)}
+      <h1>{languageData[selectedLanguage].shows[1]}</h1>
+      <p>
+        {!upcomingShows.length ? languageData[selectedLanguage].shows[3] : ""}
+      </p>
+      {renderUpcomingShows(upcomingShows)}
+      <h2>{languageData[selectedLanguage].shows[2]}</h2>
+      {renderPastShows()}
+    </div>
+  );
 };
 
 export default Shows;

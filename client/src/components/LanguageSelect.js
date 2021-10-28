@@ -10,10 +10,10 @@ class LanguageSelect extends React.Component {
   render() {
     return (
       <div id="languageSelect">
-        <h1>Welcome to Juanpa Music!</h1>
+        <h1>Welcome to my website</h1>
         <h3>Please select your preferred language</h3>
         <br />
-        <h1>Bienvenido a Juanpa musica!</h1>
+        <h1>Bienvenido a mi página web</h1>
         <h3>Por favor seleccione su idioma preferido</h3>
         <br />
         <div className="buttons">

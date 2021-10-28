@@ -18,7 +18,6 @@ export const NavigationHandler = (
   };
 
   useEffect(() => {
-    console.log("AnimationNavigation DID MOUNT");
     fadeinHandler();
   }, []);
 
@@ -27,7 +26,6 @@ export const NavigationHandler = (
   const handleNavigation = (newLocation) => {
     newLocation = newLocation.toLowerCase();
     let toRemoveElement = elements.find((el) => el.current);
-    console.log("Will remove", toRemoveElement);
     if (!toRemoveElement) return; //to avoid proceeding in case element is undefined(loading)
     if (window.location.pathname.toLowerCase() === newLocation) {
       //DO NOT PROCEED, if we are at target location
