@@ -1,12 +1,13 @@
 #music{
     padding-top: 120px;
+    padding-bottom: 20px;
     display: flex;
     flex-flow: row wrap;
     justify-content: space-around;
     align-items: center;
     gap: 15px;
     min-height: 90vh;
-    background-color: #120224;
+    background-color: #481620;
 }
 
 .musicBox{

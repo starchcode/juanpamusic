@@ -3,10 +3,13 @@
     flex-direction: column;
     justify-content: center;
     padding: 10px;
-    background-color: #4B4540;
+    background-color: #01161e;
     position: relative;
     min-height: 10vh;
 }
+
+
+
 #footer #social_links{
     width: 250px;
     justify-content: center;

@@ -8,8 +8,8 @@
   width: 100%;
   background: linear-gradient(
     90deg,
-    rgba(59, 29, 0, 0.35) 0%,
-    rgba(0, 0, 0, 0) 71%
+    rgba(41, 41, 41, 0.35) 0%,
+    rgba(83, 83, 83, 0) 71%
   );
   z-index: -11;
   left: 0;
@@ -70,7 +70,7 @@
 #contactSection {
   display: flex;
   position: relative;
-  background-color: rgba(40, 80, 79, 0.5);
+  background-color: rgba(1, 22, 30, 0.3);
   justify-content: center;
   align-items: center;
 }

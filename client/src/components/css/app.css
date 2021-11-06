@@ -10,7 +10,7 @@
 }
 
 body {
-  background-color: #5a4839;
+  background-color: #01161e;
 }
 h1 {
   font-size: 2rem;
@@ -87,7 +87,7 @@ h2 {
 
 @media (hover: hover) {
   #home_linkBox h1:hover {
-    color: saddlebrown;
+    color: rgb(189, 167, 46);
     cursor: pointer;
   }
   #header li div:hover {
@@ -114,16 +114,15 @@ h2 {
   }
 
   /*Music*/
-  .musicBox:hover .musicimg{
+  .musicBox:hover .musicimg {
     transform: scale(1.05);
   }
-  .musicBox div:nth-child(2):hover .musiclinks div a{
+  .musicBox div:nth-child(2):hover .musiclinks div a {
     opacity: 0.65;
   }
-  .musiclinks div a:hover{
+  .musiclinks div a:hover {
     opacity: 1 !important;
   }
-
 
   /*Shows*/
   #shows .showsBox {
