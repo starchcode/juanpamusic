@@ -3,7 +3,7 @@ export const languageData = {
     menu: ['Home', 'Biography', 'Music', 'Shows', 'Contact'],
     notfound: ['This location does not exist!', 'Please choose from the top menu!'],
     contact: {
-      text: ['Get in touch', 'Feel free to contact me for all your enquires including lessons and collabroations or just say hi.', 'You can also reach me via this email:'],
+      text: ['Get in touch', 'Feel free to contact me for all your enquires, including lessons and collaborations or just say hi.', 'You can also reach me via this email:'],
       labels: ['Name', 'Email', 'Phone (optional)', 'Enquiry'],
       placeholder: 'Please write your message...',
       button: 'Submit',
