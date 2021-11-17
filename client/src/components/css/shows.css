@@ -2,7 +2,8 @@
     display: flex;
     flex-direction: column;
     padding-top: 170px;
-    background-color: #46423c;
+    padding-bottom: 30px;
+    background-color: #6096BA;
     min-height: 90vh;
     align-items: center;
     gap: 15px
@@ -25,7 +26,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: #283D50;
+    background-color: #274C77;
     flex: 1 0 15%;
     padding: 10px 0;
 }
@@ -37,14 +38,15 @@
 }
 .showsLeft p:nth-child(3), .showsLeft p:nth-child(4){
     font-size: smaller;
+    padding: 0 4px;
 }
 
 .showsLeft p:nth-child(5){
-    color: #A3872A;
+    color: #F49E4C;
 }   
 
 .showsLeft > *, .showsRight > * {
-    color: #dddbdb;
+    color: #E7ECEF;
 }
 .showsRight{
     display: flex;
@@ -68,10 +70,11 @@
 }
 .pastShows .showsRight p{
     margin-top: 0;
+    padding-right: 4px;
 }
 .showsRight div{ /* info/tickets */
     margin-top: 10%;
-    background-color: #F8CA45;
+    background-color: #F49E4C;
     padding: 0 4px;
     border-top-left-radius: 4px;
     border-bottom-left-radius: 4px;
@@ -113,20 +116,41 @@
     padding-top: 40px;
 }
 
-@media only screen and (max-width: 600px){
+@media only screen and (max-width: 608px){
     .showsBox{
         min-width: initial;
-        width: 100%;
+        width: 95%;
     }
     #shows h1{
         font-size: 1.5rem;
     }
+    p{
+        font-size: 0.7rem;
+    }
+    .showsLeft p:nth-child(2){
+        font-size: 3rem;
+    }
 }
 
+@media only screen and (max-width: 520px){
+    .showsRight p{
+        font-size: 0.9rem;
+    }
+    .showsRight div a{
+        font-size: 0.8rem;
+    }
+}
+@media only screen and (max-width: 466px){
+    #shows h1{
+        font-size: 1rem;
+    }
+}
 @media only screen and (max-width: 413px){
     #shows h1{
         font-size: 1rem;
     }
+}
+@media only screen and (max-width: 355px){
     .showsRight img{
         width: initial;
         height: 100%;
