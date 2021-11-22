@@ -52,6 +52,7 @@
     flex-direction: column;
     justify-content: center;
     flex: 1 0 50%;
+    max-width: 300px;
     background-color: rgb(1, 22, 30);
 }
 .musicBox div:nth-child(2) > *{
@@ -81,26 +82,27 @@
 
 .musiclinks div:nth-child(1){
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
 
 }
 .musiclinks div:nth-child(1) a {
     height: 50%;
-    padding: 0 5px;
+    padding: 0 10px;
     transition: all 0.2s;
 }
 .musiclinks div:nth-child(1) img {
-    height: 100%;
+    height: 58px;
+    width: 58px;
 }
 .musiclinks div:nth-child(2){
     align-items: flex-start;
 }
 
-.musiclinks div:nth-child(2) a{
+/* .musiclinks div:nth-child(2) a{
     height: 30%;
     transition: all 0.2s;
 
-}
+} */
 
 @media only screen and (max-width: 800px){
     #music{
@@ -111,22 +113,27 @@
     .musicBox{
         flex-direction: column;
         max-height: none;
+        width: 100%;
     }
-    .musicBox div:nth-child(1){
 
+    div.musicBox > div:nth-child(1){
+        height: 100vw;
+        width: 100vw;
     }
     .musicBox div:nth-child(2){
         flex: initial;
         padding-top: 10px;
-
+        width: 100%;
+        max-width: initial;
     }
     .loader{
         display: none;
     }
-    .musiclinks div:nth-child(2){
-        flex: 1 0 50%;
-    }
     .musiclinks{
 
     }
+
+    .musicBox .musicimg {
+        transform: scale(1.05);
+        }
 }
