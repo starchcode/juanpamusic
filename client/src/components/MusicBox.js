@@ -45,11 +45,9 @@ class MusicBox extends React.Component {
           <p>{date}</p>
           <div className="musiclinks">
             <div>
-              <a href={this.props.data[6]} target="_blank"rel="noreferrer">
+            <a href={this.props.data[6]} target="_blank"rel="noreferrer">
                 <img src={bandcamplogo} alt="bandcamp logo" />
               </a>
-            </div>
-            <div>
               <a href={this.props.data[7]} target="_blank"rel="noreferrer">
                 <img src={applelogo} alt="apple music logo" />
               </a>

@@ -39,7 +39,7 @@ export const languageData = {
     footer: ['Designed and developed starchCode.com']
   },
   es: {
-    menu: ['Hogar', 'Biografía', 'Música', 'Shows', 'Contacto'],
+    menu: ['Inicio', 'Biografía', 'Música', 'Shows', 'Contacto'],
     notfound: ['¡Esta ubicación no existe!', '¡Elija del menú superior!'],
     contact: {
       text: ['Ponerse en contacto', 'No dude en ponerse en contacto conmigo para todas sus consultas, incluidas lecciones y colaboraciones, o simplemente decir hola.', 'También puede comunicarse conmigo a través de este correo electrónico:'],

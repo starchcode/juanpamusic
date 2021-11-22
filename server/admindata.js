@@ -92,10 +92,10 @@ admindata.get("/", async (req, res, next) => {
             allShows.forEach(show => {
             const whenIs = new Date(show[0], Number(show[1])-1, show[2]) - todaysDate;
               if(whenIs > 0){
-                  shows.upcoming.push(show)
+                  shows.upcoming.unshift(show)
               }else if(whenIs == 0){
                 console.log('YES')
-                shows.today.push(show);
+                shows.today.unshift(show);
               }else{
                   shows.pastshows.push(show)
               }

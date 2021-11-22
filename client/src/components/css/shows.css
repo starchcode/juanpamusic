@@ -3,7 +3,7 @@
     flex-direction: column;
     padding-top: 170px;
     padding-bottom: 30px;
-    background-color: #6096BA;
+    background-color: rgb(134, 128, 115);
     min-height: 90vh;
     align-items: center;
     gap: 15px
@@ -26,7 +26,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: #274C77;
+    background-color: rgb(1, 22, 30);
     flex: 1 0 15%;
     padding: 10px 0;
 }
@@ -74,14 +74,14 @@
 }
 .showsRight div{ /* info/tickets */
     margin-top: 10%;
-    background-color: #F49E4C;
+    background-color: rgb(72, 22, 32);
     padding: 0 4px;
     border-top-left-radius: 4px;
     border-bottom-left-radius: 4px;
 }
 .showsRight div a{
     text-decoration: none;
-    color: #333333;
+    color: rgb(188, 184, 177);
     transition: all 0.2s;
 }
 .showsRight img{
