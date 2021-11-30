@@ -1,7 +1,8 @@
 #language{
     display: block;
     position: absolute;
-    right: 0;
+    right: 8px;
+    top: 8px;
     padding: 5px;
     z-index: 20;
 }

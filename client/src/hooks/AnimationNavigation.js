@@ -3,12 +3,14 @@ import { useHistory } from "react-router";
 
 export const NavigationHandler = (
   elements,
-  oneEl,
+  mainElement,
   fadein = "fadein",
-  fadeout = "fadeout"
+  fadeout = "fadeout",
+  noProceed = "shake"
 ) => {
 
   const history = useHistory();
+  let shouldProceed = false;
 
   const fadeinHandler = () => {
     setTimeout(() => {
@@ -26,9 +28,24 @@ export const NavigationHandler = (
   const handleNavigation = (newLocation) => {
     newLocation = newLocation.toLowerCase();
     let toRemoveElement = elements.find((el) => el.current);
-    if (!toRemoveElement) return; //to avoid proceeding in case element is undefined(loading)
+    if (!toRemoveElement) {
+      //to avoid proceeding in case element is undefined(loading)
+      return; 
+    }
     if (window.location.pathname.toLowerCase() === newLocation) {
       //DO NOT PROCEED, if we are at target location
+      //Also adding a class 
+      // !mainElement.current.classList.contains(noProceed)
+      if(!shouldProceed){
+        shouldProceed = true;
+        mainElement.current.classList.add(noProceed);
+        console.log('class added');
+        mainElement.current.addEventListener('animationend', ()=>{
+          mainElement.current.classList.remove(noProceed);
+          shouldProceed = false;
+          console.log('class removed');
+        })
+      }
       return;
     }
 

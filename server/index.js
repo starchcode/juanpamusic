@@ -26,7 +26,7 @@ var corsOptions = {
         console.log("CORS allowed!");
         callback(null, true);
       } else {
-        console.log("CORS NOT allowed!");
+        console.log("Not in white list!");
         callback(null, false);
         // callback(new Error('Not allowed by CORS'))
       }

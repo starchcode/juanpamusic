@@ -8,7 +8,7 @@ import logo from "../media/logo.png";
 
 const Header = (props) => {
   const selectedLanguage = useSelector((state) => state.selectedLanguage.lan);
-  const [handleNav] = NavigationHandler(props.components, props.components[1]);
+  const [handleNav] = NavigationHandler(props.components, props.mainComponent);
 
   const menuButtons = () => {
     return (

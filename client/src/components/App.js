@@ -23,6 +23,7 @@ class App extends React.Component {
     super(props)
     this.state = { isLoaded: false }
     this.languages = ['en', 'es']
+    this.mainRef = React.createRef();
     this.homeRef = React.createRef();
     this.musicRef = React.createRef();
     this.showsRef = React.createRef();
@@ -112,8 +113,8 @@ class App extends React.Component {
     }
     return (
       <Router history={history}> 
-      <div className="main">
-          <Header components={[this.homeRef, this.musicRef, this.showsRef, this.notFoundRef]}/>
+      <div className="main" ref={this.mainRef}>
+          <Header components={[this.homeRef, this.musicRef, this.showsRef, this.notFoundRef]} mainComponent={this.mainRef}/>
           <Language />
           <Switch>
             <Route path={this.pathsToMatch('home')} exact ><this.homeComponent ref={this.homeRef} /></Route>
