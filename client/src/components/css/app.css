@@ -29,7 +29,7 @@ h2 {
   justify-content: center;
   text-align: center;
   min-height: 100vh;
-  transition: all 0.4s;
+  transition: all 0.1s;
 }
 
 .message {
@@ -60,7 +60,7 @@ h2 {
   transition: all 0.5s;
 }
 .fadein {
-  transform: revert !important;
+  transform: scale(1) skewX(0deg) !important;
   opacity: 1 !important;
 }
 .fadeout {
@@ -72,6 +72,7 @@ h2 {
   transform: translate3d(0, 0, 0);
   backface-visibility: hidden;
   perspective: 1000px;
+  /* transform: scale(1.02); */
 }
 
 @keyframes fadein {
@@ -94,15 +95,15 @@ h2 {
 }
 @keyframes shakeIt {
   10%, 90% {
-    transform: translate3d(-1px, 0, 0);
+    transform: translate3d(-2px, 0, 0);
   }
-  
+
   20%, 80% {
-    transform: translate3d(2px, 0, 0);
+    transform: translate3d(4px, 0, 0);
   }
 
   30%, 50%, 70% {
-    transform: translate3d(-4px, 0, 0);
+    transform: translate3d(-8px, 0, 0);
   }
 
   40%, 60% {
@@ -110,7 +111,7 @@ h2 {
   }
 }
 
-@keyframes shakeIt_safari {
+/* @keyframes shakeIt_safari {
   10%, 90% {
     transform: translate3d(-2px, 0, 0);
   }
@@ -120,13 +121,13 @@ h2 {
   }
 
   30%, 50%, 70% {
-    transform: translate3d(-6px, 0, 0);
+    transform: translate3d(-60px, 0, 0);
   }
 
   40%, 60% {
     transform: translate3d(6px, 0, 0);
   }
-}
+} */
 @media (hover: hover) {
   #home_linkBox h1:hover {
     color: rgb(189, 167, 46);
@@ -187,7 +188,7 @@ h2 {
 }
 
 /*Safari issue */
-@media not all and (min-resolution:.001dpcm)
+/* @media not all and (min-resolution:.001dpcm)
 { @supports (-webkit-appearance:none) {
   .shake{
     animation: shakeIt_safari 0.5s cubic-bezier(.36,.07,.19,.97) both;
@@ -195,4 +196,4 @@ h2 {
     backface-visibility: hidden;
     perspective: 1000px;
   }
-}}
+}} */
