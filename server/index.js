@@ -67,6 +67,9 @@ app.use("/admindata", limiter1, admindata);
 const contact = require("./contact");
 app.use("/contact", limiter2, limiter3, contact);
 
+const iglinksdata = require("./iglinksdata");
+app.use("/iglinksdata", limiter1, iglinksdata);
+
 // Error handler route:
   app.use((err, req, res, next) => {
     const status = err.status || 500;

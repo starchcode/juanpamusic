@@ -1,0 +1,32 @@
+#linkBox{
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    overflow: hidden;
+    position: relative;
+}
+#linkBox :nth-child(1){
+    width: 100%;
+    position: relative;
+}
+.data{
+    background-color: rgb(72, 22, 32);
+    padding-bottom: 0.7rem;
+    height: 100px;
+}
+#linkBox p{
+    font-size: 0.7rem;
+}
+#linkBox a{
+    line-height: 2rem;
+    font-size: 0.7rem;
+}
+
+.linkImgLoader{
+    display: block;
+    width: 100%;
+    opacity: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+}

@@ -47,7 +47,7 @@ There are still a few features that I would like to add. You can see track of th
 - [x] Smooth transition once the page has retrieved data
 - [x] Smooth transition on page navigation
 - [x] A shake effect when user clicks on a page which he/she is already in, similar to facebook.
-- [ ] Create a link tree for client's instagram page, so there won't be a need for using paid services.
+- [x] Create a link tree for client's instagram page, so there won't be a need for using paid services.
 - [ ] Show a pop up message when there is an upcoming show in the next few days.
 - [ ] Send a gentle reminder for upcoming gigs(on chosen gig) or send a reminder for any upcoming gig. This would be as an email message where users can unsbuscribe from at anytime.
 

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import { NavigationHandler } from "../hooks/AnimationNavigation";
 import "./css/home.css";
@@ -20,7 +20,7 @@ const Home = (props) => {
   if (!adminData.response) return "Loading...";
 
   const ytID = adminData.response.home[0];
-  const spotifyID = adminData.response.home[1];
+  // const spotifyID = adminData.response.home[1];
 
   return (
     <div id="home" className="beforeEntry" ref={props.reference}>

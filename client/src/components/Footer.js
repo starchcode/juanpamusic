@@ -10,7 +10,7 @@ const selectedLanguage = useSelector(state => state.selectedLanguage.lan)
     return <div id="footer">
       <SocialLinks />
       <small className='copyright'>
-          <a href="https://starchcode.com" target="_blank">
+          <a href="https://starchcode.com" target="_blank" rel="noreferrer">
             {languageData[selectedLanguage].footer[0]}
           </a>
         </small>

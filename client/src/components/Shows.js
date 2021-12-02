@@ -57,7 +57,6 @@ const Shows = (props) => {
     });
   };
   const renderPastShows = () => {
-    const infoText = languageData[selectedLanguage].shows[0];
 
     return pastShows.map((show, i) => {
       const month =

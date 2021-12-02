@@ -45,6 +45,29 @@ export const getAdminData = () => async (dispatch) => {
     });
   }
 };
+export const getIglinksData = () => async (dispatch) => {
+  try {
+    const response = await server.get("/iglinksdata");
+    dispatch({ type: "iglinksdata", payload: response });
+  } catch (e) {
+    let message, status;
+    console.log(e.message)
+    if(e.response){
+      status = e.response.status || null;
+      message = e.response.data || null;
+    }else if(e.message){
+      status = null;
+      message = e.message || null;
+    }
+
+    dispatch({
+      type: "error",
+      payload:
+        "We encountered an error with the message: " +
+       message + " and response status of: " + status
+    });
+  }
+};
 
 export const languageChange = (lan) => {
   if (lan === "en" || lan === "es") {

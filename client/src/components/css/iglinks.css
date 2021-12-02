@@ -1,0 +1,17 @@
+/* .iglinks_parent{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+} */
+#iglinks{
+    min-height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding-top: 120px;
+    padding-bottom: 20px;
+    position: relative;
+}
