@@ -1,9 +1,8 @@
 const contact = require("express").Router();
 const nodemailer = require("nodemailer");
-const { EMAIL_TO, EMAIL_FROM } = require("./urls");
+const { EMAIL_TO, EMAIL_FROM } = require("../utils/urls");
 
 contact.post("/", (req, res, next) => {
-  console.log('request body: ', req.body)
   const validEmailRegex = RegExp(
     /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
   );
@@ -11,7 +10,7 @@ contact.post("/", (req, res, next) => {
 
   if (req.body.Name && req.body.Email && req.body.Enquiry) {
     if (!validEmailRegex.test(req.body.Email)) {
-      console.log('invalid email');
+
       const error = new Error("Email is invalid!");
       error.status = 400;
       next(error);
@@ -25,7 +24,6 @@ contact.post("/", (req, res, next) => {
 });
 
 contact.post("/", async (req, res, next) => {
-  console.log("All good proceeded to next()");
   const bodyHTML = `
   <b>Hello admin,</b> <br> <br>
   
@@ -53,10 +51,8 @@ contact.post("/", async (req, res, next) => {
     },
     function (err, data) {
       if (err) {
-        console.log("error: email did not send", err);
         next(err);
       } else {
-        console.log("email sent!");
         res.status(200).json({ message: "Message sent!" });
       }
     }

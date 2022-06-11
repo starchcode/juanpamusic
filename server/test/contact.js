@@ -70,7 +70,6 @@ chai.use(chaiHttp);
         .post("/contact")
         .send(body)
         .end((err, res) => {
-          console.log(res.text)
           res.should.have.status(400);
           done();
         });
@@ -88,7 +87,6 @@ chai.use(chaiHttp);
         .post("/contact")
         .send(body)
         .end((err, res) => {
-          console.log('response: ', res.status, ': ', res.text);
           res.should.have.status(200);
           res.body.should.be.a('object');
           res.body.should.have.property('message').eql('Message sent!');

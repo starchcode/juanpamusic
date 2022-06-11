@@ -15,10 +15,8 @@ const logger = (DATA) => {
     date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
   const DATE = "" + YEAR + MONTH + DAY + " - " + HOUR + MINUTE + SECONDS; //append date and convert to string
 
-  console.log("logger called: ", DATE);
   fs.appendFile(`log/log${DATE}.txt`, DATA, function (err) {
     if (err) throw err;
-    // console.log(DATA);
   });
 };
 

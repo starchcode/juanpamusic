@@ -19,8 +19,6 @@ import ScrollToTop from "./ScrollToTop";
           initClasses="musicimg"
           classesToAdd="loaded"
           />
-            {/* <img src="https://i.ibb.co/1rXCVHf/OLYMPUS-DIGITAL-CAMERA.jpg" loading="lazy" className="loader" alt="default artwork"/> */}
-            {/* <img src={require('../media/loader.jpg').default} loading="lazy" className="loader" alt="default artwork"/> */}
             <img
               src={loader}
               loading="lazy"

@@ -28,7 +28,6 @@ export const getAdminData = () => async (dispatch) => {
     dispatch({ type: "adminData", payload: response });
   } catch (e) {
     let message, status;
-    console.log(e.message)
     if(e.response){
       status = e.response.status || null;
       message = e.response.data || null;
@@ -51,7 +50,6 @@ export const getIglinksData = () => async (dispatch) => {
     dispatch({ type: "iglinksdata", payload: response });
   } catch (e) {
     let message, status;
-    console.log(e.message)
     if(e.response){
       status = e.response.status || null;
       message = e.response.data || null;

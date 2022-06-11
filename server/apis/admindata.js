@@ -1,7 +1,7 @@
 const { google } = require("googleapis");
 const sheets = google.sheets("v4");
 const admindata = require("express").Router();
-const logger = require("./helperFunctions/logger");
+const logger = require("../utils/logger");
 
 //SETUP
 const auth = new google.auth.GoogleAuth({
@@ -39,7 +39,6 @@ admindata.get("/", async (req, res, next) => {
               "\n" +
               err.response.data.error.message
           );
-          console.log("API returned an error");
           const error = new Error( "Google API Error \n" + err.response.data.error.message);
           error.status = err.response.data.error.code;
           next(error);
@@ -94,7 +93,6 @@ admindata.get("/", async (req, res, next) => {
               if(whenIs > 0){
                   shows.upcoming.unshift(show)
               }else if(whenIs == 0){
-                console.log('YES')
                 shows.today.unshift(show);
               }else{
                   shows.pastshows.push(show)
@@ -107,8 +105,6 @@ admindata.get("/", async (req, res, next) => {
     );
   } catch (e) {
     logger(e.response || e);
-    console.log("/adminData CATCH");
-    console.log(e.response || e);
     return res.status(500).json({
       error: e.response || e,
     });

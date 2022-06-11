@@ -20,18 +20,13 @@ var whitelist = [
 var corsOptions = {
   origin: function (origin, callback) {
     try {
-      // console.log(origin)
       if (whitelist.indexOf(origin) !== -1) {
-        console.log('request for: ', origin)
-        console.log("CORS allowed!");
         callback(null, true);
       } else {
-        console.log("Not in white list!");
         callback(null, false);
         // callback(new Error('Not allowed by CORS'))
       }
     } catch (e) {
-      console.log("CORS NOT ALLOWED!");
     }
   },
 };
@@ -61,13 +56,13 @@ app.get("/", (req, res) => {
   return res.json("Welcome to JuanpaMusic!");
 });
 
-const admindata = require("./admindata");
+const admindata = require("./apis/admindata");
 app.use("/admindata", limiter1, admindata);
 
-const contact = require("./contact");
+const contact = require("./apis/contact");
 app.use("/contact", limiter2, limiter3, contact);
 
-const iglinksdata = require("./iglinksdata");
+const iglinksdata = require("./apis/iglinksdata");
 app.use("/iglinksdata", limiter1, iglinksdata);
 
 // Error handler route:
@@ -80,18 +75,14 @@ app.use("/iglinksdata", limiter1, iglinksdata);
   ${err}
   -------------------
   `
-  console.log(DATA)
     fs.appendFile('error.txt', DATA, function (err) {
       if (err) throw err;
-      console.log('Saved!');
     });
     err.statusText = err.statusText + ' ' + err.message
-  console.log('EROOR: ', err.status, err.statusText);
     res.status(status).send(err.message);
   });
 
 app.listen(PORT, () => {
-  console.log("App started... on 4000");
 });
 
 

@@ -39,12 +39,10 @@ export const NavigationHandler = (
       if(!shouldProceed){
         shouldProceed = true;
         mainElement.current.classList.add(noProceed);
-        console.log('class added');
         mainElement.current.addEventListener('animationend', ()=>{
         // mainElement.current.addEventListener('transitionend', ()=>{
           mainElement.current.classList.remove(noProceed);
           shouldProceed = false;
-          console.log('class removed');
           mainElement.current.removeEventListener('transitionend', this);
         })
       }

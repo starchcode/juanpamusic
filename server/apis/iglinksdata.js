@@ -1,7 +1,7 @@
 const { google } = require("googleapis");
 const sheets = google.sheets("v4");
 const iglinksdata = require("express").Router();
-const logger = require("./helperFunctions/logger");
+const logger = require("../utils/logger");
 
 //SETUP
 const auth = new google.auth.GoogleAuth({
@@ -37,7 +37,6 @@ iglinksdata.get("/", async (req, res, next) => {
                 "\n" +
                 err.response.data.error.message
             );
-            console.log("API returned an error");
             const error = new Error( "Google API Error \n" + err.response.data.error.message);
             error.status = err.response.data.error.code;
             next(error);
@@ -55,8 +54,6 @@ iglinksdata.get("/", async (req, res, next) => {
       );
     } catch (e) {
       logger(e.response || e);
-      console.log("/iglinksdata CATCH");
-      console.log(e.response || e);
       return res.status(500).json({
         error: e.response || e,
       });

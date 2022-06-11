@@ -92,7 +92,7 @@ componentDidMount() {
               }
               if (!formValues.Enquiry) {
                 errors.Enquiry = errorMessages[4];
-              } else if(formValues.Enquiry.length > 200){
+              } else if(formValues.Enquiry.length > 2000){
                 errors.Enquiry = errorMessages[5]
               }
               return errors;

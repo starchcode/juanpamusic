@@ -20,7 +20,6 @@ describe("Testing the Server /adminData:", () => {
         .get("/")
         .end((err, res) => {
           res.should.have.status(200);
-          console.log("response: ", res.body);
           res.body.should.be.a("string");
           res.body.should.be.eql("Welcome to JuanpaMusic!");
           done();
@@ -33,7 +32,6 @@ describe("Testing the Server /adminData:", () => {
         .get("/admindata")
         .end((err, res) => {
           res.should.have.status(200);
-          // console.log('response: ', res.body);
           res.body.should.be.a("object");
 
           //should include home, music and shows:
@@ -70,7 +68,6 @@ describe("Testing the Server /adminData:", () => {
 
           const ytURL = res.body.home[0];
           const spotifyURL = res.body.home[1];
-          // console.log(/(https:\/\/youtu.be\/)(.+)/.test(ytURL))
           expect(/(https:\/\/youtu.be\/)(.+)/.test(ytURL)).to.be.false;
           expect(
             /(https:\/\/open.spotify.com\/playlist\/)(.+)[?](.*)/.test(
